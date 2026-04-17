@@ -1,0 +1,37 @@
+================================================================
+======== txAdmin v8.0.1 atop fxserver 27787 Starting - 06/04/2026 12:23:55
+================================================================
+[12:28:33][Jpasdaxe] created admins file
+[12:29:54][Jpasdaxe] Config changes: general.serverName
+[12:29:54][Jpasdaxe] Changing global settings via setup stepper and started Deployer.
+[12:30:03][Jpasdaxe] Setting recipe.
+[12:30:31][Jpasdaxe] Running recipe.
+[12:31:31][Jpasdaxe] Config changes: server.dataPath
+[12:31:31][Jpasdaxe] Completed and committed server deploy.
+[12:58:26][Jpasdaxe] Config changes: general.language
+[13:06:08][Jpasdaxe] Adding user 'palespider6524'.
+[13:07:53][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[13:13:38][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[13:17:58][Jpasdaxe] Editing user 'palespider6524'.
+[13:19:18][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[13:21:59][Jpasdaxe] Editing user 'palespider6524'.
+[13:22:09][Jpasdaxe] Editing user 'palespider6524'.
+[13:23:37][Jpasdaxe] DM to "PaleSpider6524": ntm
+[13:24:00][Jpasdaxe] Warned player "PaleSpider6524": bite
+[13:24:41][Jpasdaxe] Deleting user 'palespider6524'.
+[13:24:53][Jpasdaxe] Added 9c5510d86637b073d9b89ad251c257d69266a320 to the whitelist.
+[13:25:08][Jpasdaxe] Adding user 'palespider6524'.
+[13:25:52][Jpasdaxe] Deleting user 'palespider6524'.
+[13:26:00][Jpasdaxe] Adding user 'palespider6524'.
+[13:28:41][Jpasdaxe] [Jpasdaxe] executed "+exec server.cfg"
+[13:45:07][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[13:56:14][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[13:56:53][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[14:05:40][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[15:57:47][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[16:15:40][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[16:17:48][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[16:21:17][Jpasdaxe] [Jpasdaxe] executed "RESTART SERVER"
+[17:42:49][Jpasdaxe] [Jpasdaxe] executed "STOP SERVER"
+[18:03:44][Jpasdaxe] [Jpasdaxe] executed "START SERVER"
+[18:05:12][Jpasdaxe] DM to "SharpBeetle4861": ntm

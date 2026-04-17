@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "general": {
+    "serverName": "potes",
+    "language": "fr"
+  },
+  "server": {
+    "dataPath": "C:/Users/quent/Desktop/txData/FiveMBasicServerCFXDefault_D38B13.base/"
+  }
+}

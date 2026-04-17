@@ -1,0 +1,700 @@
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [23392] FXServer Starting - 06/04/2026 12:31:31        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 25 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[   script:mapmanager] Started map fivem-map-hipster
+[           resources] Started resource fivem-map-hipster
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaReportResources 
+[      script:monitor] [txAdmin] Sending resources list to txAdmin.
+║             TXADMIN║ txaReportResources 
+[      script:monitor] [txAdmin] Sending resources list to txAdmin.
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ setr "txAdmin-locale" "fr"
+║             TXADMIN║ set "txAdmin-serverName" "potes"
+║             TXADMIN║ set "txAdmin-checkPlayerJoin" "true"
+║             TXADMIN║ set "txAdmin-menuAlignRight" "false"
+║             TXADMIN║ set "txAdmin-menuPageKey" "Tab"
+║             TXADMIN║ set "txAdmin-playerModePtfx" "true"
+║             TXADMIN║ set "txAdmin-hideAdminInPunishments" "true"
+║             TXADMIN║ set "txAdmin-hideAdminInMessages" "false"
+║             TXADMIN║ set "txAdmin-hideDefaultAnnouncement" "false"
+║             TXADMIN║ set "txAdmin-hideDefaultDirectMessage" "false"
+║             TXADMIN║ set "txAdmin-hideDefaultWarning" "false"
+║             TXADMIN║ set "txAdmin-hideDefaultScheduledRestartWarning" "false"
+║             TXADMIN║ txaEvent "configChanged" "{}"
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: PaleSpider6524
+║             TXADMIN║ txaEvent "adminsUpdated" "[]"
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": read tcp 10.0.16.206:56518->78.241.190.50:30120: read: connection reset by peer)
+║             TXADMIN║ txaReportResources 
+[      script:monitor] [txAdmin] Sending resources list to txAdmin.
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [31752] FXServer Starting - 06/04/2026 13:07:58        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 25 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[   script:mapmanager] Started map fivem-map-hipster
+[           resources] Started resource fivem-map-hipster
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [16992] FXServer Starting - 06/04/2026 13:13:44        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 25 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[   script:mapmanager] Started map fivem-map-hipster
+[           resources] Started resource fivem-map-hipster
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "adminsUpdated" "[]"
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [30528] FXServer Starting - 06/04/2026 13:19:24        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 25 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[   script:mapmanager] Started map fivem-map-skater
+[           resources] Started resource fivem-map-skater
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "adminsUpdated" "[]"
+║             TXADMIN║ txaEvent "adminsUpdated" "[]"
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "playerDirectMessage" "{\"target\":1,\"author\":\"Jpasdaxe\",\"message\":\"ntm\"}"
+║             TXADMIN║ txaEvent "playerWarned" "{\"author\":\"Jpasdaxe\",\"reason\":\"bite\",\"actionId\":\"WKZG-G3XB\",\"targetNetId\":1,\"targetIds\":[\"license:9c5510d86637b073d9b89ad251c257d69266a320\",\"xbl:2535469984050478\",\"live:914798591794271\",\"license2:9c5510d86637b073d9b89ad251c257d69266a320\"],\"targetName\":\"PaleSpider6524\"}"
+[      script:monitor] [txAdmin] Warning player (#1) PaleSpider6524 for bite
+║             TXADMIN║ txaEvent "adminsUpdated" "[]"
+║             TXADMIN║ txaEvent "whitelistPlayer" "{\"action\":\"added\",\"license\":\"9c5510d86637b073d9b89ad251c257d69266a320\",\"playerName\":\"PaleSpider6524\",\"adminName\":\"Jpasdaxe\"}"
+║             TXADMIN║ txaEvent "adminsUpdated" "[]"
+║             TXADMIN║ txaEvent "adminsUpdated" "[]"
+║             TXADMIN║ txaEvent "adminsUpdated" "[]"
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║            Jpasdaxe║ +exec server.cfg
+[                 cmd] No such command +exec.
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [33648] FXServer Starting - 06/04/2026 13:45:13        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 25 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[   script:mapmanager] Started map fivem-map-skater
+[           resources] Started resource fivem-map-skater
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [35868] FXServer Starting - 06/04/2026 13:56:19        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 25 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[ citizen-server-impl] Couldn't find resource vMenu.
+[   script:mapmanager] Started map fivem-map-skater
+[           resources] Started resource fivem-map-skater
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [36580] FXServer Starting - 06/04/2026 13:56:59        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 26 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[     resources:vMenu] Warning: could not find client_script `vMenuClient.net.dll` (defined in fxmanifest.lua:26)
+[     resources:vMenu] Warning: could not find server_script `vMenuServer.net.dll` (defined in fxmanifest.lua:27)
+[     resources:vMenu] Warning: could not find file `Newtonsoft.Json.dll` (defined in fxmanifest.lua:20)
+[     resources:vMenu] Warning: could not find file `MenuAPI.dll` (defined in fxmanifest.lua:20)
+[     resources:vMenu] Warning: could not find file `config/*.json` (defined in fxmanifest.lua:20)
+[           resources] Started resource vMenu (5 warnings)
+[   script:mapmanager] Started map fivem-map-skater
+[           resources] Started resource fivem-map-skater
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": read tcp 10.0.16.206:50510->78.241.190.50:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [33936] FXServer Starting - 06/04/2026 14:05:46        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 26 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[ citizen-server-impl] Couldn't find resource vMenus.
+[    c-scripting-core] Creating script environments for vMenu
+[        script:vMenu] Instantiated instance of script vMenuServer.BanManager.
+[        script:vMenu] Instantiated instance of script vMenuServer.MainServer.
+[           resources] Started resource vMenu
+[   script:mapmanager] Started map fivem-map-hipster
+[           resources] Started resource fivem-map-hipster
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] server thread hitch warning: timer interval of 156 milliseconds
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": read tcp 10.0.16.206:42952->78.241.190.50:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": read tcp 10.0.16.206:32936->78.241.190.50:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": read tcp 10.0.16.206:57708->78.241.190.50:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: Draikeur
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [34336] FXServer Starting - 06/04/2026 15:57:53        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 26 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[ citizen-server-impl] Couldn't find resource vMenus.
+[    c-scripting-core] Creating script environments for vMenu
+[        script:vMenu] Instantiated instance of script vMenuServer.BanManager.
+[        script:vMenu] Instantiated instance of script vMenuServer.MainServer.
+[           resources] Started resource vMenu
+[   script:mapmanager] Started map fivem-map-hipster
+[           resources] Started resource fivem-map-hipster
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+[      script:hardcap] Connecting: Draikeur
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: SharpBeetle4861
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": read tcp 10.0.16.207:48474->78.241.190.50:30120: read: connection reset by peer)
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [40508] FXServer Starting - 06/04/2026 16:15:46        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 26 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[ citizen-server-impl] Couldn't find resource vMenus.
+[    c-scripting-core] Creating script environments for vMenu
+[        script:vMenu] Instantiated instance of script vMenuServer.BanManager.
+[        script:vMenu] Instantiated instance of script vMenuServer.MainServer.
+[           resources] Started resource vMenu
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] server thread hitch warning: timer interval of 156 milliseconds
+[      script:hardcap] Connecting: Draikeur
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: SharpBeetle4861
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [31464] FXServer Starting - 06/04/2026 16:17:53        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 26 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[ citizen-server-impl] Couldn't find resource vMenus.
+[    c-scripting-core] Creating script environments for vMenu
+[        script:vMenu] Instantiated instance of script vMenuServer.BanManager.
+[        script:vMenu] Instantiated instance of script vMenuServer.MainServer.
+[           resources] Started resource vMenu
+[   script:mapmanager] Started map fivem-map-skater
+[           resources] Started resource fivem-map-skater
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+[      script:hardcap] Connecting: SharpBeetle4861
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: Draikeur
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Le serveur redémarre (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+[      script:hardcap] Connecting: SharpBeetle4861
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [11488] FXServer Starting - 06/04/2026 16:21:23        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 26 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[ citizen-server-impl] Couldn't find resource vMenus.
+[    c-scripting-core] Creating script environments for vMenu
+[        script:vMenu] Instantiated instance of script vMenuServer.BanManager.
+[        script:vMenu] Instantiated instance of script vMenuServer.MainServer.
+[           resources] Started resource vMenu
+[   script:mapmanager] Started map fivem-map-hipster
+[           resources] Started resource fivem-map-hipster
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: PaleSpider6524
+[      script:hardcap] Connecting: Draikeur
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: SharpBeetle4861
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: SharpBeetle4861
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": read tcp 10.0.16.207:41342->78.241.190.50:30120: read: connection reset by peer)
+║             TXADMIN║ txaReportResources 
+[      script:monitor] [txAdmin] Sending resources list to txAdmin.
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": read tcp 10.0.16.207:41342->78.241.190.50:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": read tcp 10.0.16.207:58012->78.241.190.50:30120: read: connection reset by peer (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": read tcp 10.0.16.207:47024->78.241.190.50:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": read tcp 10.0.16.207:42156->78.241.190.50:30120: read: connection reset by peer)
+║             TXADMIN║ txaReportResources 
+[      script:monitor] [txAdmin] Sending resources list to txAdmin.
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/info.json (Get "https://78.241.190.50:30120/info.json": read tcp 10.0.11.95:57082->78.241.190.50:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/dynamic.json (Get "https://78.241.190.50:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.190.50:30120/players.json (Get "https://78.241.190.50:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "serverShuttingDown" "{\"delay\":5000,\"author\":\"Jpasdaxe\",\"message\":\"Fermeture du serveur (admin request).\"}"
+[      script:monitor] [txAdmin] Server shutting down. Kicking all players.
+
+║             TXADMIN║ ================================================================
+║             TXADMIN║ ======== [29176] FXServer Starting - 06/04/2026 18:03:44        
+║             TXADMIN║ ================================================================
+[           resources] Scanning resources.
+[           resources] Found 26 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdmin] Resource v8.0.1 threads and commands set up. All Ready.
+[           resources] Started resource monitor
+[    c-scripting-core] Creating script environments for mapmanager
+[           resources] Started resource mapmanager
+[    c-scripting-core] Creating script environments for chat
+[           resources] Started resource chat
+[           resources] Started resource spawnmanager
+[    c-scripting-core] Creating script environments for sessionmanager
+[           resources] Started resource sessionmanager
+[   script:mapmanager] Started gametype Freeroam
+[           resources] Started resource basic-gamemode
+[    c-scripting-core] Creating script environments for hardcap
+[           resources] Started resource hardcap
+[ citizen-server-impl] Couldn't find resource vMenus.
+[    c-scripting-core] Creating script environments for vMenu
+[        script:vMenu] Instantiated instance of script vMenuServer.BanManager.
+[        script:vMenu] Instantiated instance of script vMenuServer.MainServer.
+[           resources] Started resource vMenu
+[   script:mapmanager] Started map fivem-map-hipster
+[           resources] Started resource fivem-map-hipster
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://jpasdaxe-gada84m.users.cfx.re/
+[      script:hardcap] Connecting: SharpBeetle4861
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+║             TXADMIN║ txaEvent "playerDirectMessage" "{\"target\":1,\"author\":\"Jpasdaxe\",\"message\":\"ntm\"}"
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: Draikeur
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": read tcp 10.0.0.219:55934->78.241.151.7:30120: read: connection reset by peer (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": read tcp 10.0.0.219:55934->78.241.151.7:30120: read: connection reset by peer (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: PaleSpider6524
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": read tcp 10.0.16.206:57844->78.241.151.7:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": read tcp 10.0.16.206:40548->78.241.151.7:30120: read: connection reset by peer (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: SharpBeetle4861
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": read tcp 10.0.16.207:39130->78.241.151.7:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: SharpBeetle4861
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: PaleSpider6524
+[      script:hardcap] Connecting: Draikeur
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] server thread hitch warning: timer interval of 248 milliseconds
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": read tcp 10.0.16.207:58984->78.241.151.7:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": read tcp 10.0.16.206:43992->78.241.151.7:30120: read: connection reset by peer)
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/dynamic.json (Get "https://78.241.151.7:30120/dynamic.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[      script:hardcap] Connecting: SharpBeetle4861
+[      script:hardcap] Connecting: Draikeur
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/info.json (Get "https://78.241.151.7:30120/info.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
+[ citizen-server-impl] Server list query returned an error: server request failed: server request failed for endpoint https://78.241.151.7:30120/players.json (Get "https://78.241.151.7:30120/players.json": context deadline exceeded (Client.Timeout exceeded while awaiting headers))
