@@ -5,7 +5,6 @@ import HostLobby from "./pages/HostLobby";
 import PlayerLobby from "./pages/PlayerLobby";
 import GameScreen from "./pages/GameScreen";
 import RoundEnd from "./pages/RoundEnd";
-import CameraGrid from "./components/CameraGrid";
 
 export default function App() {
   const [screen, setScreen]           = useState("home");
@@ -23,7 +22,8 @@ export default function App() {
   const lastSongUrlRef = useRef(null);
   const lastCutAtRef   = useRef(0);
 
-  // Demande la caméra quand l'utilisateur entre dans le lobby ou le jeu
+  // Caméra demandée quand l'utilisateur entre dans le lobby
+  // — une seule fois, jamais réinitialisée
   useEffect(() => {
     if (screen === "hostLobby" || screen === "playerLobby" || screen === "game") {
       if (!localStream) {
@@ -32,7 +32,7 @@ export default function App() {
             console.log("[camera] stream obtenu");
             setLocalStream(stream);
           })
-          .catch(e => console.error("[camera] refusée ou erreur:", e));
+          .catch(e => console.error("[camera] refusée:", e));
       }
     }
   }, [screen]);
@@ -141,36 +141,18 @@ export default function App() {
     console.log("[screen]", screen, "| status:", roomState?.status, "| role:", role);
   }, [screen]);
 
-  const showCameras = (screen === "game" || screen === "roundEnd")
-    && roomState?.players?.length > 0;
-
   const props = {
     socket, roomState, setRoomState,
     myId, role, setRole, setScreen,
     songs, roundResult, setRoundResult,
     judgeData, setJudgeData,
     audioRef, lastSongUrlRef, lastCutAtRef,
-    usedSongIds, localStream,
+    usedSongIds,
+    localStream,  // ← passé à GameScreen qui le donne à CameraGrid
   };
 
   return (
     <>
-      {showCameras && (
-        <div style={{
-          position: "fixed", bottom: 0, left: 0, right: 0,
-          background: "var(--card)", borderTop: "1px solid var(--border)",
-          padding: "8px 16px", zIndex: 50,
-        }}>
-          <CameraGrid
-            players={roomState.players}
-            myId={myId}
-            activePlayerId={roomState.activePlayerId}
-            localStream={localStream}
-            socket={socket}
-          />
-        </div>
-      )}
-
       {screen === "home"        && <Home        {...props} />}
       {screen === "hostLobby"   && <HostLobby   {...props} />}
       {screen === "playerLobby" && <PlayerLobby {...props} />}

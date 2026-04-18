@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import CameraGrid from "../components/CameraGrid";
 import SongChoices from "../components/SongChoices";
 
 const SERVER = import.meta.env.VITE_SERVER_URL || "http://localhost:3001";
@@ -6,9 +7,9 @@ const SERVER = import.meta.env.VITE_SERVER_URL || "http://localhost:3001";
 export default function GameScreen({
   socket, roomState, myId, role, songs,
   judgeData, setJudgeData, audioRef,
-  usedSongIds = [],
+  usedSongIds = [], localStream,
 }) {
-  const [answer, setAnswer]     = useState("");
+  const [answer, setAnswer]       = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [countdown, setCountdown] = useState(null);
   const [volume, setVolume]       = useState(0.8);
@@ -100,9 +101,9 @@ export default function GameScreen({
 
   return (
     <div style={{ minHeight:"100vh", display:"flex", flexDirection:"column",
-      gap:16, padding:16, paddingBottom:180, maxWidth:860, margin:"0 auto" }}>
+      gap:16, padding:16, maxWidth:860, margin:"0 auto" }}>
 
-      {/* Barre de volume */}
+      {/* Volume */}
       <div style={{ display:"flex", alignItems:"center", gap:10,
         background:"var(--card)", border:"1px solid var(--border)",
         borderRadius:"var(--radius-sm)", padding:"10px 16px" }}>
@@ -114,6 +115,17 @@ export default function GameScreen({
           fontWeight:700, width:36, textAlign:"right" }}>
           {Math.round(volume * 100)}%
         </span>
+      </div>
+
+      {/* Caméras — localStream vient d'App.jsx, ne se réinitialise pas */}
+      <div className="card" style={{ padding:16 }}>
+        <CameraGrid
+          players={players}
+          myId={myId}
+          activePlayerId={activePlayerId}
+          localStream={localStream}
+          socket={socket}
+        />
       </div>
 
       {/* Zone centrale */}
