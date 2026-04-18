@@ -21,7 +21,7 @@
     "id": "3",
     "title": "C'est nous dans le top (Brainrot)",
     "artist": "UNCHAINED 5 mots",
-    "audioUrl": "/audio/UNCHAINED - C'est nous dans le top (Brainrot).mp3",
+    "audioUrl": "/audio/UNCHAINED - Cest nous dans le top (Brainrot).mp3",
     "cutAt": 43,
     "answer": "Maintenant j'ai le strawberry ",
     "points": 20
@@ -157,7 +157,7 @@
     "title": "LA CHANSON DE LA JOIE",
     "artist": "Mcfly et Carlito 7 mots",
     "audioUrl": "/audio/LA CHANSON DE LA JOIE (DEFI YOUTUBE WARRIOR 2 PERDU RE-UPLOAD).mp3",
-    "cutAt": 19 ,
+    "cutAt": 19,
     "answer": "c'est un peu vous les kings",
     "points": 10
   },
@@ -174,7 +174,7 @@
     "id": "20",
     "title": "ON S'FAIT UN FIFA ?",
     "artist": "Bigorneaux & Coquillage 26 mots",
-    "audioUrl": "/audio/ON S'FAIT UN FIFA ? - CLIP.mp3",
+    "audioUrl": "/audio/ON SFAIT UN FIFA - CLIP.mp3",
     "cutAt": 84.7,
     "answer": "ma mère veut me torturer ou me tuer ça j'sais pas",
     "points": 20
@@ -184,7 +184,7 @@
     "title": "ON FAIT LA PAIX ❤️",
     "artist": "Cyprien et Squeezie 9 mots",
     "audioUrl": "/audio/ON FAIT LA PAIX ❤️ (clip Cyprien & Squeezie).mp3",
-    "cutAt": 36 ,
+    "cutAt": 36,
     "answer": "J'ai eu la chance de croiser ton chemin",
     "points": 10
   },
@@ -194,7 +194,7 @@
     "artist": "SQUEEZIE 8 mots",
     "audioUrl": "/audio/SQUEEZIE - PAS TOUT SEUL.mp3",
     "cutAt": 38,
-    " answer": "j'suis une tête d'affiche de ma génération",
+    "answer": "j'suis une tête d'affiche de ma génération",
     "points": 30
   },
   {
@@ -205,5 +205,68 @@
     "cutAt": 84.7,
     "answer": "chienne de vie, le coffre est pleins de lingots mais c'est bien plus dure que d'empiler des Lego",
     "points": 30
-  }
+  },
+  {
+    "id": "24",
+    "title": "CE PETIT CÔTÉ KAWAII !",
+    "artist": "SQUEEZIE 7 mots",
+    "audioUrl": "/audio/CE PETIT CÔTÉ KAWAII ! (MUSIQUE).mp3",
+    "cutAt": 28,
+    "answer": "Parfois plus mature ! Parfois pas du tout !",
+    "points": 10
+  },
+  {
+    "id": "25",
+    "title": "ZELDA",
+    "artist": "NORMAN 21 mots",
+    "audioUrl": "/audio/NORMAN - ZELDA.mp3",
+    "cutAt": 117 ,
+    "answer": "Tous les soirs j'fais mes prières devant la statue déesse, j'aurais 20 en endurance si j'étais en EPS",
+    "points": 30
+  },
+  {
+    "id": "26",
+    "title": "J'EFFECTUE LE DAB",
+    "artist": "Mcfly et Carlito 6 mots",
+    "audioUrl": "/audio/MCFLY & CARLITO - JEFFECTUE LE DAB.mp3",
+    "cutAt": 32,
+    "answer": "Lors d'un repas avec mémé",
+    "points": 10
+  },
+  {
+    "id": "27",
+    "title": "Réponse à Cyprien",
+    "artist": "Squeezie 5 mots",
+    "audioUrl": "/audio/Réponse à Cyprien.mp3",
+    "cutAt": 58,
+    "answer": "Trouveront ça nul a chier",
+    "points": 10
+  },
+  {
+    "id": "28",
+    "title": "LA COUR DES GRANDS",
+    "artist": "Cyprien 11 mots",
+    "audioUrl": "/audio/LA COUR DES GRANDS (clash Squeezie).mp3",
+    "cutAt": 51 ,
+    "answer": "Si le majeur qui mate tes vidéos c'est ton monteur",
+    "points": 20
+  },
+  {
+    "id": "29",
+    "title": "FREESTYLE DU DICO",
+    "artist": "SQUEEZIE 6 mots",
+    "audioUrl": "/audio/SQUEEZIE - FREESTYLE DU DICO (ft Bigflo & Oli).mp3",
+    "cutAt": 46.8,
+    " answer": "C'est qui ? Squeezie Oli Bigflo",
+    "points": 10
+  },
+  {
+    "id": "30",
+    "title": "FREESTYLE DE TWITTER",
+    "artist": "SQUEEZIE 9 mots",
+    "audioUrl": "/audio/SQUEEZIE - FREESTYLE DE TWITTER (ft Bigflo & Oli).mp3",
+    "cutAt": 57.8,
+    "answer": "pardon alain, sans toi ,on a ouvert le dictionnaire",
+    "points": 20
+   }
 ]
