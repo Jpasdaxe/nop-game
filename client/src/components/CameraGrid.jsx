@@ -24,22 +24,24 @@ const ICE_SERVERS = {
 
 export default function CameraGrid({ players, myId, activePlayerId, localStream, socket }) {
   const [remoteStreams, setRemoteStreams] = useState({});
-  const peersRef        = useRef({});
-  const localStreamRef  = useRef(null);
+  const peersRef       = useRef({});
+  const localStreamRef = useRef(null);
+  const readyRef       = useRef(false);
 
-  // Garde toujours la ref à jour sans retrigger les effets WebRTC
   useEffect(() => {
     if (localStream) localStreamRef.current = localStream;
   }, [localStream]);
 
-  // WebRTC — se monte une seule fois quand socket + localStream sont prêts
   useEffect(() => {
-    if (!socket || !localStream) return;
+    if (!socket || !localStream || readyRef.current) return;
+    readyRef.current = true;
 
+    // Annonce notre présence à tous les autres
     socket.emit("webrtc:ready");
 
     const handleReady = async ({ peerId }) => {
       if (peerId === myId) return;
+      // Un nouveau arrive → on lui envoie une offre
       await createOffer(peerId);
     };
 
@@ -61,23 +63,33 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
       }
     };
 
-    socket.on("webrtc:ready",  handleReady);
-    socket.on("webrtc:offer",  handleOffer);
-    socket.on("webrtc:answer", handleAnswer);
-    socket.on("webrtc:ice",    handleIce);
+    // Reçoit la liste des peers déjà présents → on leur envoie une offre
+    const handlePeerList = async ({ peerIds }) => {
+      for (const peerId of peerIds) {
+        if (peerId !== myId) {
+          await createOffer(peerId);
+        }
+      }
+    };
+
+    socket.on("webrtc:ready",    handleReady);
+    socket.on("webrtc:offer",    handleOffer);
+    socket.on("webrtc:answer",   handleAnswer);
+    socket.on("webrtc:ice",      handleIce);
+    socket.on("webrtc:peerList", handlePeerList);
 
     return () => {
-      socket.off("webrtc:ready",  handleReady);
-      socket.off("webrtc:offer",  handleOffer);
-      socket.off("webrtc:answer", handleAnswer);
-      socket.off("webrtc:ice",    handleIce);
-      // Ferme tous les peers proprement au démontage
+      socket.off("webrtc:ready",    handleReady);
+      socket.off("webrtc:offer",    handleOffer);
+      socket.off("webrtc:answer",   handleAnswer);
+      socket.off("webrtc:ice",      handleIce);
+      socket.off("webrtc:peerList", handlePeerList);
       Object.values(peersRef.current).forEach(pc => pc.close());
       peersRef.current = {};
+      readyRef.current = false;
     };
-  }, [socket, localStream]); // ← une seule fois quand les deux sont prêts
+  }, [socket, localStream]);
 
-  // Nettoie les peers des joueurs qui ont quitté
   useEffect(() => {
     const currentIds = players.map(p => p.id);
     Object.keys(peersRef.current).forEach(peerId => {
@@ -98,7 +110,6 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
 
     const pc = new RTCPeerConnection(ICE_SERVERS);
 
-    // Utilise la ref pour avoir le stream même dans les callbacks async
     const stream = localStreamRef.current;
     if (stream) {
       stream.getTracks().forEach(track => pc.addTrack(track, stream));

@@ -31,6 +31,9 @@ const io = new Server(httpServer, {
   },
 });
 
+// Garde en mémoire les peers WebRTC prêts par room
+const roomPeers = new Map(); // roomCode => Set of socketIds
+
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
@@ -127,8 +130,6 @@ io.on("connection", (socket) => {
   socket.on("game:nextTurn", ({ roomCode }) => {
     console.log(`[nextTurn] reçu de ${socket.id} pour room ${roomCode}`);
     socket.join(roomCode);
-    const socketsInRoom = io.sockets.adapter.rooms.get(roomCode);
-    console.log("[nextTurn] sockets dans la room:", socketsInRoom ? [...socketsInRoom] : "VIDE");
     gm.endRound(roomCode);
     const state = gm.getRoomState(roomCode);
     console.log("[nextTurn] state:", state?.status, "activePlayer:", state?.activePlayerId);
@@ -138,11 +139,21 @@ io.on("connection", (socket) => {
 
   // ── WebRTC ────────────────────────────────────────────────────────────────
 
-  // Annonce qu'un peer est prêt avec sa caméra
   socket.on("webrtc:ready", () => {
     const found = gm.findRoomBySocket(socket.id);
     if (!found) return;
-    socket.to(found.room.code).emit("webrtc:ready", { peerId: socket.id });
+    const code = found.room.code;
+
+    // Envoie au nouveau la liste des peers déjà prêts
+    const existing = roomPeers.get(code) || new Set();
+    socket.emit("webrtc:peerList", { peerIds: [...existing] });
+
+    // Enregistre ce peer
+    if (!roomPeers.has(code)) roomPeers.set(code, new Set());
+    roomPeers.get(code).add(socket.id);
+
+    // Informe les autres qu'un nouveau peer est prêt
+    socket.to(code).emit("webrtc:ready", { peerId: socket.id });
   });
 
   socket.on("webrtc:offer",  ({ to, offer })     => io.to(to).emit("webrtc:offer",  { from: socket.id, offer }));
@@ -153,12 +164,22 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log(`[-] ${socket.id}`);
+
+    // Retire le peer WebRTC de toutes les rooms
+    for (const [code, peers] of roomPeers) {
+      if (peers.has(socket.id)) {
+        peers.delete(socket.id);
+        if (peers.size === 0) roomPeers.delete(code);
+      }
+    }
+
     const found = gm.findRoomBySocket(socket.id);
     if (!found) return;
     const { room, isHost } = found;
     if (isHost) {
       io.to(room.code).emit("room:closed", { reason: "Host déconnecté" });
       gm.deleteRoom(room.code);
+      roomPeers.delete(room.code);
     } else {
       gm.leaveRoom(room.code, socket.id);
       io.to(room.code).emit("room:updated", gm.getRoomState(room.code));
