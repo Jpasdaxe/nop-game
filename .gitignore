@@ -6,3 +6,19 @@ server/.env
 client/.env 
 txData/ 
 client/dist/ 
+FiveM_Server/ 
+"Solar Punk by JR Windows/" 
+"PC_PVZ-Fusion-2.8.2/" 
+Godot_v4.5-stable_win64.exe 
+TruckersMP-Setup.exe 
+"*.exe" 
+"*.dll" 
+"*.assets" 
+FiveM_Server/ 
+"Solar Punk by JR Windows/" 
+"PC_PVZ-Fusion-2.8.2/" 
+Godot_v4.5-stable_win64.exe 
+TruckersMP-Setup.exe 
+"*.exe" 
+"*.dll" 
+"*.assets" 
