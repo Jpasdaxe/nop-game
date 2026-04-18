@@ -98,54 +98,58 @@ io.on("connection", (socket) => {
   });
 
   socket.on("game:answer", ({ roomCode, answer }, cb) => {
-  const result = gm.submitAnswer(roomCode, socket.id, answer);
-  const state = gm.getRoomState(roomCode);
-
-  io.to(roomCode).emit("room:updated", state);
-
-  // Tout le monde voit les deux réponses
-  io.to(roomCode).emit("game:awaitJudge", {
-    playerAnswer: result.playerAnswer,
-    expected: result.expected,
-    points: result.points,
-    playerName: state.players.find(p => p.id === state.activePlayerId)?.name,
-  });
-
-  cb?.(result);
-});
-
-socket.on("game:judge", ({ roomCode, verdict }, cb) => {
-  const result = gm.judgeAnswer(roomCode, verdict);
-  const state = gm.getRoomState(roomCode);
-  // Envoie le résultat + les deux réponses à tout le monde
-  io.to(roomCode).emit("game:turnEnded", {
-    state,
-    result: {
-      ...result,
+    const result = gm.submitAnswer(roomCode, socket.id, answer);
+    const state = gm.getRoomState(roomCode);
+    io.to(roomCode).emit("room:updated", state);
+    io.to(roomCode).emit("game:awaitJudge", {
       playerAnswer: result.playerAnswer,
       expected: result.expected,
-    }
+      points: result.points,
+      playerName: state.players.find(p => p.id === state.activePlayerId)?.name,
+    });
+    cb?.(result);
   });
-  cb?.(result);
-});
 
-socket.on("game:nextTurn", ({ roomCode }) => {
-  console.log(`[nextTurn] reçu de ${socket.id} pour room ${roomCode}`);
-  socket.join(roomCode);
-  
-  // Vérifie qui est dans la room
-  const socketsInRoom = io.sockets.adapter.rooms.get(roomCode);
-  console.log("[nextTurn] sockets dans la room:", socketsInRoom ? [...socketsInRoom] : "VIDE");
-  
-  gm.endRound(roomCode);
-  const state = gm.getRoomState(roomCode);
-  console.log("[nextTurn] state:", state?.status, "activePlayer:", state?.activePlayerId);
-  io.to(roomCode).emit("game:goNext", state);
-  socket.emit("game:goNext", state);
-});
+  socket.on("game:judge", ({ roomCode, verdict }, cb) => {
+    const result = gm.judgeAnswer(roomCode, verdict);
+    const state = gm.getRoomState(roomCode);
+    io.to(roomCode).emit("game:turnEnded", {
+      state,
+      result: {
+        ...result,
+        playerAnswer: result.playerAnswer,
+        expected: result.expected,
+      }
+    });
+    cb?.(result);
+  });
+
+  socket.on("game:nextTurn", ({ roomCode }) => {
+    console.log(`[nextTurn] reçu de ${socket.id} pour room ${roomCode}`);
+    socket.join(roomCode);
+    const socketsInRoom = io.sockets.adapter.rooms.get(roomCode);
+    console.log("[nextTurn] sockets dans la room:", socketsInRoom ? [...socketsInRoom] : "VIDE");
+    gm.endRound(roomCode);
+    const state = gm.getRoomState(roomCode);
+    console.log("[nextTurn] state:", state?.status, "activePlayer:", state?.activePlayerId);
+    io.to(roomCode).emit("game:goNext", state);
+    socket.emit("game:goNext", state);
+  });
+
+  // ── WebRTC ────────────────────────────────────────────────────────────────
+
+  // Annonce qu'un peer est prêt avec sa caméra
+  socket.on("webrtc:ready", () => {
+    const found = gm.findRoomBySocket(socket.id);
+    if (!found) return;
+    socket.to(found.room.code).emit("webrtc:ready", { peerId: socket.id });
+  });
+
   socket.on("webrtc:offer",  ({ to, offer })     => io.to(to).emit("webrtc:offer",  { from: socket.id, offer }));
   socket.on("webrtc:answer", ({ to, answer })    => io.to(to).emit("webrtc:answer", { from: socket.id, answer }));
   socket.on("webrtc:ice",    ({ to, candidate }) => io.to(to).emit("webrtc:ice",    { from: socket.id, candidate }));
+
+  // ── Déconnexion ───────────────────────────────────────────────────────────
 
   socket.on("disconnect", () => {
     console.log(`[-] ${socket.id}`);
