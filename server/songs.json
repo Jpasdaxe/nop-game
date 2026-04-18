@@ -17,16 +17,16 @@
     "answer": "Dans l'anonymat je mène une vie semée d'embûches ",
     "points": 10
   },
-{
+  {
     "id": "3",
     "title": "C'est nous dans le top (Brainrot)",
     "artist": "UNCHAINED 5 mots",
-    "audioUrl": "/audio/UNCHAINED - Cest nous dans le top (Brainrot).mp3",
+    "audioUrl": "/audio/UNCHAINED - C'est nous dans le top (Brainrot).mp3",
     "cutAt": 43,
     "answer": "Maintenant j'ai le strawberry ",
     "points": 20
   },
-{
+  {
     "id": "4",
     "title": "TOP 1",
     "artist": "SQUEEZIE 24 mots",
@@ -44,7 +44,7 @@
     "answer": "Je suis dans l'hélicoptère, au sommet de la chaîne alimentaire",
     "points": 30
   },
-{
+  {
     "id": "6",
     "title": "LUIGI CLASH MARIO",
     "artist": "Norman 24 mots",
@@ -53,7 +53,7 @@
     "answer": "Je n'ai pas la peste, je ne suis pas boiteu. Alors pourquoi luigi est toujours le joueur 2 ?",
     "points": 20
   },
-{
+  {
     "id": "7",
     "title": "CONFINÉS",
     "artist": "JOYCA 13 mots",
@@ -71,7 +71,7 @@
     "answer": "Pourquoi devrais-je continuer tout ça ?",
     "points": 10
   },
- {
+  {
     "id": "9",
     "title": "Thick Of It",
     "artist": "KSI 12 mots",
@@ -85,11 +85,11 @@
     "title": "Clash Kumiz",
     "artist": "FUZE 9 mots",
     "audioUrl": "/audio/FUZE - Clash Kumiz (Musique Complète).mp3",
-    "cutAt": 41,
+    "cutAt": 41.2,
     "answer": "l'ajoute pas sur discord ou il t'harcèle",
     "points": 20
   },
-{
+  {
     "id": "11",
     "title": "La Fin de Nation Glory",
     "artist": "FUZE 11 mots",
@@ -103,11 +103,11 @@
     "title": "La trashance",
     "artist": "Trash 14 mots",
     "audioUrl": "/audio/LA TRASHANCE - Trash (Clip Officiel).mp3",
-    "cutAt": 85,
+    "cutAt": 85.3,
     "answer": "Néo c'est mon père, c'est lui qui m'a planté des ailes",
     "points": 30
   },
- {
+  {
     "id": "13",
     "title": " Pas b'soin dtoi ft. La Sirène ",
     "artist": "Inoxtag 12 mots",
@@ -125,7 +125,7 @@
     "answer": "j'ai attendu si longtemps, ce soir c'est notre moment, c'est juste toi et moi babe mais jte dis bye-bye si tu fais du sale",
     "points": 30
   },
- {
+  {
     "id": "15",
     "title": "FRIENDZONE",
     "artist": "Norman 8 mots",
@@ -139,11 +139,11 @@
     "title": "LA CHANSON DU FAUX",
     "artist": "Norman 26 mots",
     "audioUrl": "/audio/NORMAN - LA CHANSON DU FAUX.mp3",
-    "cutAt": 43,
+    "cutAt": 43.2,
     "answer": "Faire 8 ans d'allemand c'est vraiment super utile dans la vie, FAUX. Quand tu va en boite en couple, tu t'amuses vraiment, FAUX",
     "points": 30
   },
-{
+  {
     "id": "17",
     "title": "Euro 2016 : J'préfère te prévenir",
     "artist": "Lolywood 12 mots",
@@ -157,11 +157,11 @@
     "title": "LA CHANSON DE LA JOIE",
     "artist": "Mcfly et Carlito 7 mots",
     "audioUrl": "/audio/LA CHANSON DE LA JOIE (DEFI YOUTUBE WARRIOR 2 PERDU RE-UPLOAD).mp3",
-    "cutAt": 19,
+    "cutAt": 19 ,
     "answer": "c'est un peu vous les kings",
     "points": 10
   },
- {
+  {
     "id": "19",
     "title": "ON NE PORTE PAS DE SOUS-VÊTEMENTS",
     "artist": "Mcfly et Carlito 6 mots",
@@ -174,21 +174,21 @@
     "id": "20",
     "title": "ON S'FAIT UN FIFA ?",
     "artist": "Bigorneaux & Coquillage 26 mots",
-    "audioUrl": "/audio/ON SFAIT UN FIFA - CLIP.mp3",
+    "audioUrl": "/audio/ON SFAIT UN FIFA ? - CLIP.mp3",
     "cutAt": 84.7,
     "answer": "ma mère veut me torturer ou me tuer ça j'sais pas",
     "points": 20
   },
-{
+  {
     "id": "21",
     "title": "ON FAIT LA PAIX ❤️",
     "artist": "Cyprien et Squeezie 9 mots",
     "audioUrl": "/audio/ON FAIT LA PAIX ❤️ (clip Cyprien & Squeezie).mp3",
-    "cutAt": 36,
+    "cutAt": 36 ,
     "answer": "J'ai eu la chance de croiser ton chemin",
     "points": 10
   },
- {
+  {
     "id": "22",
     "title": "PAS TOUT SEUL",
     "artist": "SQUEEZIE 8 mots",
@@ -267,6 +267,96 @@
     "audioUrl": "/audio/SQUEEZIE - FREESTYLE DE TWITTER (ft Bigflo & Oli).mp3",
     "cutAt": 57.8,
     "answer": "pardon alain, sans toi ,on a ouvert le dictionnaire",
+    "points": 20  
+   },
+   {
+    "id": "31",
+    "title": "FREESTYLE DE POTES",
+    "artist": "sQUEEZIE 26 mots",
+    "audioUrl": "/audio/SQUEEZIE - FREESTYLE DE POTES (ft Seb & Maxenss).mp3",
+    "cutAt": 31,
+    "answer": "J'articule mal donc pour les paroles tu demandes à Nagui",
     "points": 20
-   }
-]
+  },
+  {
+    "id": "32",
+    "title": "LE GAMING C'EST FINI",
+    "artist": "Squeezie 7 mots",
+    "audioUrl": "/audio/SQUEEZIE - LE GAMING C'EST FINI.mp3",
+    "cutAt": 103 ,
+    "answer": "Qui m'a apporté tant d'bonheur",
+    "points": 10
+  },
+  {
+    "id": "33",
+    "title": "OK BOOMER",
+    "artist": "Mcfly et Carlito 6 mots",
+    "audioUrl": "/audio/OK BOOMER (clip officiel).mp3",
+    "cutAt": 69,
+    "answer": "dans tes boomers ,viens chercher bonheurrrrrr",
+    "points": 10
+  },
+  {
+    "id": "34",
+    "title": "Adieu les filles",
+    "artist": "Squeezie 9 mots",
+    "audioUrl": "/audio/Squeezie - Adieu les filles.mp3",
+    "cutAt": 96,
+    "answer": "j'vais mettre ma bite dans un gros concombre",
+    "points": 20
+  },
+  {
+    "id": "35",
+    "title": "1990 VS 2000 (Clash des générations)",
+    "artist": "SQUEEZIE 16 mots",
+    "audioUrl": "/audio/1990 VS 2000 (Clash des générations).mp3",
+    "cutAt": 99,
+    "answer": "Les discmans ça avait un son de bâtard, vous y connaissez rien avec vos mp3 tout pétés",
+    "points": 30
+  },
+  {
+    "id": "36",
+    "title": "Canard",
+    "artist": "Squeezie 9 mots",
+    "audioUrl": "/audio/Squeezie - Canard (Clip Officiel).mp3",
+    "cutAt": 83.5 ,
+    "answer": "Bah ducoup dans la maison ça fait 2 clébards",
+    "points": 20
+  },
+  {
+    "id": "37",
+    "title": "Mario Kart",
+    "artist": "Squeezie  6 mots",
+    "audioUrl": "/audio/Squeezie - Mario Kart (Clip Officiel).mp3",
+    "cutAt": 67,
+    "answer": "C'fils de pute, joue de la flute",
+    "points": 10
+  },
+  {
+    "id": "38",
+    "title": "Dans La Zone",
+    "artist": "Inoxtag  10 mots",
+    "audioUrl": "/audio/Inoxtag - Dans La Zone (Clip Officiel).mp3",
+    "cutAt": 45,
+    "answer": "J'suis dans la zoneeee prêt à te faire frissoner",
+    "points": 20
+  },
+  {
+    "id": "39",
+    "title": "M2LT",
+    "artist": "MICHOU 22 mots",
+    "audioUrl": "/audio/MICHOU - M2LT (Clip Officiel).mp3",
+    "cutAt": 45 ,
+    "answer": "J'navigue sur la méloooo, on m'dit frérot c'est bien, j'écrit au télo j'fais ça pour les miens",
+    "points": 30
+  },
+  {
+    "id": "40",
+    "title": "Balade à deux",
+    "artist": "Mastu 8 mots",
+    "audioUrl": "/audio/Mastu - Balade à deux.mp3",
+    "cutAt": 51.8,
+    "answer": "C'est comme imaginer la ville sans toits",
+    "points": 10
+  }
+  ]
