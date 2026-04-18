@@ -57,6 +57,12 @@ io.on("connection", (socket) => {
     socket.join(code);
     cb({ success: true, code });
   });
+  socket.on("audio:replay", ({ roomCode }) => {
+  const found = gm.findRoomBySocket(socket.id);
+  if (!found || !found.isHost) return;
+  roomAudioReady.delete(roomCode);
+  io.to(roomCode).emit("audio:replay");
+});
 
   socket.on("room:join", ({ roomCode, playerName }, cb) => {
     const result = gm.joinRoom(roomCode, socket.id, playerName);

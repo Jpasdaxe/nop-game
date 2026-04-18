@@ -8,10 +8,10 @@ export default function GameScreen({
   judgeData, setJudgeData, audioRef,
   usedSongIds = [],
 }) {
-  const [answer, setAnswer]         = useState("");
-  const [submitted, setSubmitted]   = useState(false);
-  const [countdown, setCountdown]   = useState(null);
-  const [volume, setVolume]         = useState(0.8);
+  const [answer, setAnswer]             = useState("");
+  const [submitted, setSubmitted]       = useState(false);
+  const [countdown, setCountdown]       = useState(null);
+  const [volume, setVolume]             = useState(0.8);
   const [audioLoading, setAudioLoading] = useState(false);
   const countdownRef = useRef(null);
   const stopRef      = useRef(null);
@@ -36,32 +36,22 @@ export default function GameScreen({
     setAnswer("");
     setAudioLoading(true);
 
-    // Précharge le fichier audio
     audio.src = SERVER + audioUrl;
     audio.volume = volume;
     audio.load();
 
-    // Quand l'audio est prêt → signal au serveur
-    const onCanPlay = () => {
-      console.log("[audio] canplaythrough — signal serveur");
-      setAudioLoading(false);
-      socket.emit("audio:ready", { roomCode: roomState.code });
-    };
-    audio.addEventListener("canplaythrough", onCanPlay, { once: true });
-
-    // Quand le serveur donne le go → tout le monde lance en même temps
-    const onGo = ({ serverTime }) => {
-      const lag = Date.now() - serverTime;
-      console.log("[audio] go ! lag:", lag, "ms");
-
-      // Rattrape le lag réseau (max 2s)
-      audio.currentTime = Math.min(lag / 1000, 2);
+    const startAudio = (lagMs = 0) => {
+      const lag = Math.min(lagMs, 2000);
+      audio.currentTime = lag / 1000;
       audio.play().catch(() => {});
 
       const remaining = (cutAt * 1000) - lag;
-
-      // Compte à rebours 3s avant coupure
       const cdStart = remaining - 3000;
+
+      clearTimeout(countdownRef.current);
+      clearTimeout(stopRef.current);
+      setCountdown(null);
+
       if (cdStart > 0) {
         countdownRef.current = setTimeout(() => {
           setCountdown(3);
@@ -72,23 +62,44 @@ export default function GameScreen({
             else { setCountdown(null); clearInterval(iv); }
           }, 1000);
         }, cdStart);
-      } else {
-        // Déjà dans les 3 dernières secondes
-        setCountdown(Math.max(1, Math.ceil(remaining / 1000)));
       }
 
-      // Coupure nette
       stopRef.current = setTimeout(() => {
         audio.pause();
         audio.currentTime = 0;
       }, Math.max(0, remaining));
     };
 
-    socket.on("audio:go", onGo);
+    const onCanPlay = () => {
+      setAudioLoading(false);
+      socket.emit("audio:ready", { roomCode: roomState.code });
+    };
+    audio.addEventListener("canplaythrough", onCanPlay, { once: true });
+
+    const onGo = ({ serverTime }) => {
+      const lag = Date.now() - serverTime;
+      console.log("[audio:go] lag:", lag, "ms");
+      startAudio(lag);
+    };
+
+    // Relance depuis le début (host a cliqué "relancer")
+    const onReplay = () => {
+      console.log("[audio:replay] relance depuis le début");
+      setAudioLoading(true);
+      audio.load();
+      audio.addEventListener("canplaythrough", () => {
+        setAudioLoading(false);
+        startAudio(0);
+      }, { once: true });
+    };
+
+    socket.on("audio:go",     onGo);
+    socket.on("audio:replay", onReplay);
 
     return () => {
       audio.removeEventListener("canplaythrough", onCanPlay);
-      socket.off("audio:go", onGo);
+      socket.off("audio:go",     onGo);
+      socket.off("audio:replay", onReplay);
       clearTimeout(countdownRef.current);
       clearTimeout(stopRef.current);
       setCountdown(null);
@@ -114,19 +125,32 @@ export default function GameScreen({
     if (!isHost) return;
     const available = songs.filter(s => !usedSongIds.includes(s.id));
     const pool = available.length >= 3 ? available : songs;
+
+    // Tirage sans remise
     const picked = [];
     const copy = [...pool];
     while (picked.length < 3 && copy.length > 0) {
       const idx = Math.floor(Math.random() * copy.length);
       picked.push(copy.splice(idx, 1)[0]);
     }
-    const choices = picked.map((s, i) => ({ ...s, points: [10, 20, 30][i] }));
+
+    // Points fixes par position — jamais modifiés
+    const choices = [
+      { ...picked[0], points: 10 },
+      { ...picked[1], points: 20 },
+      { ...picked[2], points: 30 },
+    ];
+
     socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
   }
 
   function judge(verdict) {
     socket.emit("game:judge", { roomCode: roomState.code, verdict });
     setJudgeData(null);
+  }
+
+  function replayAudio() {
+    socket.emit("audio:replay", { roomCode: roomState.code });
   }
 
   if (!roomState) return null;
@@ -156,7 +180,6 @@ export default function GameScreen({
         gap:20, alignItems:"center", justifyContent:"center", padding:"32px 24px",
         minHeight:300 }}>
 
-        {/* Host attend → choisit un joueur */}
         {isHost && status === "waiting" && !judgeData && (
           <div style={{ textAlign:"center", display:"flex",
             flexDirection:"column", gap:20, width:"100%" }}>
@@ -177,14 +200,12 @@ export default function GameScreen({
           </div>
         )}
 
-        {/* Joueurs attendent */}
         {!isHost && status === "waiting" && !judgeData && (
           <div style={{ color:"var(--text-dim)", textAlign:"center", fontSize:"1.1rem" }}>
             L'animateur choisit le prochain joueur...
           </div>
         )}
 
-        {/* Choix de chanson */}
         {status === "choosing" && (
           <div style={{ width:"100%", display:"flex", flexDirection:"column", gap:24 }}>
             <div style={{ textAlign:"center" }}>
@@ -197,12 +218,10 @@ export default function GameScreen({
           </div>
         )}
 
-        {/* Audio en cours */}
         {(status === "playing" || status === "judging") && currentSong && !judgeData && (
           <div style={{ width:"100%", display:"flex", flexDirection:"column",
             gap:20, alignItems:"center" }}>
 
-            {/* Countdown overlay */}
             {countdown !== null && (
               <div style={{ position:"fixed", top:0, left:0, right:0, bottom:0,
                 display:"flex", alignItems:"center", justifyContent:"center",
@@ -215,7 +234,6 @@ export default function GameScreen({
               </div>
             )}
 
-            {/* Info chanson */}
             <div style={{ textAlign:"center" }}>
               <div style={{ fontFamily:"var(--font-display)", fontSize:"2rem",
                 color:"var(--gold)" }}>{currentSong.title}</div>
@@ -227,7 +245,7 @@ export default function GameScreen({
               </div>
             </div>
 
-            {/* Chargement audio */}
+            {/* Spinner chargement */}
             {audioLoading && (
               <div style={{ color:"var(--text-dim)", fontSize:".9rem",
                 display:"flex", alignItems:"center", gap:8 }}>
@@ -238,14 +256,22 @@ export default function GameScreen({
               </div>
             )}
 
-            {/* Réponse joueur actif */}
+            {/* Bouton relancer — host uniquement */}
+            {isHost && !audioLoading && (
+              <button className="btn btn-ghost"
+                style={{ fontSize:".85rem", padding:"8px 16px", color:"var(--text-dim)" }}
+                onClick={replayAudio}>
+                Relancer la musique
+              </button>
+            )}
+
             {!audioLoading && isActive && !submitted && (
               <div style={{ display:"flex", flexDirection:"column", gap:12,
                 width:"100%", maxWidth:500, alignItems:"center" }}>
                 <div style={{ color:"var(--text-dim)", textAlign:"center" }}>
-                  Complète la suite des paroles :
+                  Complete la suite des paroles :
                 </div>
-                <input type="text" placeholder="Ta réponse..." value={answer}
+                <input type="text" placeholder="Ta reponse..." value={answer}
                   autoFocus
                   onChange={e => setAnswer(e.target.value)}
                   onKeyDown={e => e.key === "Enter" && handleSubmit()} />
@@ -259,7 +285,7 @@ export default function GameScreen({
 
             {!audioLoading && isActive && submitted && (
               <div style={{ color:"var(--text-dim)", fontStyle:"italic" }}>
-                Réponse envoyée, l'animateur juge...
+                Reponse envoyee, l'animateur juge...
               </div>
             )}
 
@@ -278,7 +304,6 @@ export default function GameScreen({
           </div>
         )}
 
-        {/* Panneau jugement */}
         {judgeData && (
           <div style={{ width:"100%", maxWidth:560, display:"flex",
             flexDirection:"column", gap:20, alignItems:"center" }}>
@@ -334,10 +359,7 @@ export default function GameScreen({
         )}
       </div>
 
-      {/* Animation spinner */}
-      <style>{`
-        @keyframes spin { to { transform: rotate(360deg); } }
-      `}</style>
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   );
 }
