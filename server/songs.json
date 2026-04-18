@@ -111,7 +111,7 @@
     "id": "13",
     "title": " Pas b'soin dtoi ft. La Sirène ",
     "artist": "Inoxtag 12 mots",
-    "audioUrl": "/audio/Inoxtag - Pas b'soin d'toi ft. La Sirène (Clip officiel).mp3",
+    "audioUrl": "/audio/zizi.mp3",
     "cutAt": 36,
     "answer": "Jvise ton coeur comme akainu et les prochains se sera nous ",
     "points": 20
@@ -147,9 +147,63 @@
     "id": "17",
     "title": "Euro 2016 : J'préfère te prévenir",
     "artist": "Lolywood 12 mots",
-    "audioUrl": "/audio/Euro 2016 Jpréfère te prévenir.mp3",
+    "audioUrl": "/audio/caca.mp3",
     "cutAt": 83.2,
     "answer": "on fera même plus l'amour, je penserais qu'à Pierre Ménès ",
     "points": 20
+  },
+  {
+    "id": "18",
+    "title": "LA CHANSON DE LA JOIE",
+    "artist": "Mcfly et Carlito 7 mots",
+    "audioUrl": "/audio/LA CHANSON DE LA JOIE (DEFI YOUTUBE WARRIOR 2 PERDU RE-UPLOAD).mp3",
+    "cutAt": 19 ,
+    "answer": "c'est un peu vous les kings",
+    "points": 10
+  },
+ {
+    "id": "19",
+    "title": "ON NE PORTE PAS DE SOUS-VÊTEMENTS",
+    "artist": "Mcfly et Carlito 6 mots",
+    "audioUrl": "/audio/ON NE PORTE PAS DE SOUS-VÊTEMENTS.mp3",
+    "cutAt": 61,
+    "answer": "moins de textile, plus de style",
+    "points": 10
+  },
+  {
+    "id": "20",
+    "title": "ON S'FAIT UN FIFA ?",
+    "artist": "Bigorneaux & Coquillage 26 mots",
+    "audioUrl": "/audio/ON S'FAIT UN FIFA ? - CLIP.mp3",
+    "cutAt": 84.7,
+    "answer": "ma mère veut me torturer ou me tuer ça j'sais pas",
+    "points": 20
+  },
+{
+    "id": "21",
+    "title": "ON FAIT LA PAIX ❤️",
+    "artist": "Cyprien et Squeezie 9 mots",
+    "audioUrl": "/audio/ON FAIT LA PAIX ❤️ (clip Cyprien & Squeezie).mp3",
+    "cutAt": 36 ,
+    "answer": "J'ai eu la chance de croiser ton chemin",
+    "points": 10
+  },
+ {
+    "id": "22",
+    "title": "PAS TOUT SEUL",
+    "artist": "SQUEEZIE 8 mots",
+    "audioUrl": "/audio/SQUEEZIE - PAS TOUT SEUL.mp3",
+    "cutAt": 38,
+    " answer": "j'suis une tête d'affiche de ma génération",
+    "points": 30
+  },
+  {
+    "id": "23",
+    "title": "Millionaire",
+    "artist": "JOYCA 20 mots",
+    "audioUrl": "/audio/JOYCA - Millionaire.mp3",
+    "cutAt": 84.7,
+    "answer": "chienne de vie, le coffre est pleins de lingots mais c'est bien plus dure que d'empiler des Lego",
+    "points": 30
   }
 ]
