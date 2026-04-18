@@ -26,17 +26,20 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
   const [remoteStreams, setRemoteStreams] = useState({});
   const peersRef       = useRef({});
   const localStreamRef = useRef(null);
-  const initiatedRef   = useRef(false);
 
   useEffect(() => {
     if (localStream) localStreamRef.current = localStream;
   }, [localStream]);
 
+  // Réémet webrtc:ready quand un joueur rejoint
   useEffect(() => {
-    if (!socket || !localStream || initiatedRef.current) return;
-    initiatedRef.current = true;
-
+    if (!socket || !localStream) return;
     socket.emit("webrtc:ready");
+  }, [players.length, socket, localStream]);
+
+  // Enregistre les listeners WebRTC une seule fois
+  useEffect(() => {
+    if (!socket || !localStream) return;
 
     const handlePeerList = async ({ peerIds }) => {
       for (const peerId of peerIds) {
@@ -76,11 +79,11 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
       socket.off("webrtc:answer",   handleAnswer);
       socket.off("webrtc:ice",      handleIce);
       Object.values(peersRef.current).forEach(pc => pc.close());
-      peersRef.current  = {};
-      initiatedRef.current = false;
+      peersRef.current = {};
     };
   }, [socket, localStream]);
 
+  // Nettoie les peers des joueurs partis
   useEffect(() => {
     const currentIds = players.map(p => p.id);
     Object.keys(peersRef.current).forEach(peerId => {
@@ -139,8 +142,7 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
   }
 
   return (
-    <div style={{ display:"flex", gap:10, justifyContent:"center",
-      flexWrap:"wrap" }}>
+    <div style={{ display:"flex", gap:10, justifyContent:"center", flexWrap:"wrap" }}>
       {players.map(p => (
         <PlayerTile
           key={p.id}
