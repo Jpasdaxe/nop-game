@@ -5,6 +5,7 @@ import HostLobby from "./pages/HostLobby";
 import PlayerLobby from "./pages/PlayerLobby";
 import GameScreen from "./pages/GameScreen";
 import RoundEnd from "./pages/RoundEnd";
+import CameraGrid from "./components/CameraGrid";
 
 export default function App() {
   const [screen, setScreen]           = useState("home");
@@ -22,18 +23,18 @@ export default function App() {
   const lastSongUrlRef = useRef(null);
   const lastCutAtRef   = useRef(0);
 
-  // Caméra demandée quand l'utilisateur entre dans le lobby
-  // — une seule fois, jamais réinitialisée
+  // Demande la caméra une seule fois quand on entre dans le lobby
   useEffect(() => {
-    if (screen === "hostLobby" || screen === "playerLobby" || screen === "game") {
-      if (!localStream) {
-        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-          .then(stream => {
-            console.log("[camera] stream obtenu");
-            setLocalStream(stream);
-          })
-          .catch(e => console.error("[camera] refusée:", e));
-      }
+    if (
+      (screen === "hostLobby" || screen === "playerLobby" || screen === "game")
+      && !localStream
+    ) {
+      navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+        .then(stream => {
+          console.log("[camera] stream obtenu");
+          setLocalStream(stream);
+        })
+        .catch(e => console.error("[camera] refusée:", e));
     }
   }, [screen]);
 
@@ -59,25 +60,11 @@ export default function App() {
       }
     });
 
-    socket.on("room:updated", (state) => {
-      console.log("[room:updated] status:", state?.status);
-      setRoomState(state);
-    });
-
-    socket.on("game:launched", (state) => {
-      console.log("[game:launched]");
-      setRoomState(state);
-      setScreen("game");
-    });
-
-    socket.on("game:playerSelected", (state) => {
-      console.log("[game:playerSelected] activePlayer:", state?.activePlayerId);
-      setRoomState(state);
-      setJudgeData(null);
-    });
+    socket.on("room:updated",      (state) => { setRoomState(state); });
+    socket.on("game:launched",     (state) => { setRoomState(state); setScreen("game"); });
+    socket.on("game:playerSelected",(state) => { setRoomState(state); setJudgeData(null); });
 
     socket.on("game:songChosen", ({ state }) => {
-      console.log("[game:songChosen] chanson:", state?.currentSong?.title);
       setRoomState(state);
       if (state?.currentSong?.audioUrl) {
         lastSongUrlRef.current = state.currentSong.audioUrl;
@@ -85,10 +72,7 @@ export default function App() {
       }
     });
 
-    socket.on("game:awaitJudge", (data) => {
-      console.log("[game:awaitJudge] joueur:", data?.playerName);
-      setJudgeData(data);
-    });
+    socket.on("game:awaitJudge", (data) => { setJudgeData(data); });
 
     socket.on("game:turnEnded", ({ state, result }) => {
       console.log("[game:turnEnded] correct:", result?.correct, "points:", result?.points);
@@ -137,9 +121,10 @@ export default function App() {
     if (roomState?.code) roomCodeRef.current = roomState.code;
   }, [roomState?.code]);
 
-  useEffect(() => {
-    console.log("[screen]", screen, "| status:", roomState?.status, "| role:", role);
-  }, [screen]);
+  // CameraGrid visible sur game ET roundEnd — ne se démonte jamais
+  const showCameras = (screen === "game" || screen === "roundEnd")
+    && roomState?.players?.length > 0
+    && localStream;
 
   const props = {
     socket, roomState, setRoomState,
@@ -148,16 +133,33 @@ export default function App() {
     judgeData, setJudgeData,
     audioRef, lastSongUrlRef, lastCutAtRef,
     usedSongIds,
-    localStream,  // ← passé à GameScreen qui le donne à CameraGrid
   };
 
   return (
-    <>
+    <div style={{ paddingBottom: showCameras ? 160 : 0 }}>
+
+      {/* CameraGrid fixé en bas — monté une seule fois, ne se démonte jamais */}
+      {showCameras && (
+        <div style={{
+          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
+          background: "var(--card)", borderTop: "1px solid var(--border)",
+          padding: "8px 16px",
+        }}>
+          <CameraGrid
+            players={roomState.players}
+            myId={myId}
+            activePlayerId={roomState.activePlayerId}
+            localStream={localStream}
+            socket={socket}
+          />
+        </div>
+      )}
+
       {screen === "home"        && <Home        {...props} />}
       {screen === "hostLobby"   && <HostLobby   {...props} />}
       {screen === "playerLobby" && <PlayerLobby {...props} />}
       {screen === "game"        && <GameScreen  {...props} />}
       {screen === "roundEnd"    && <RoundEnd    {...props} />}
-    </>
+    </div>
   );
 }

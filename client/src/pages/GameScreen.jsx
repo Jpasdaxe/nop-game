@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import CameraGrid from "../components/CameraGrid";
 import SongChoices from "../components/SongChoices";
 
 const SERVER = import.meta.env.VITE_SERVER_URL || "http://localhost:3001";
@@ -7,7 +6,7 @@ const SERVER = import.meta.env.VITE_SERVER_URL || "http://localhost:3001";
 export default function GameScreen({
   socket, roomState, myId, role, songs,
   judgeData, setJudgeData, audioRef,
-  usedSongIds = [], localStream,
+  usedSongIds = [],
 }) {
   const [answer, setAnswer]       = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -115,17 +114,6 @@ export default function GameScreen({
           fontWeight:700, width:36, textAlign:"right" }}>
           {Math.round(volume * 100)}%
         </span>
-      </div>
-
-      {/* Caméras — localStream vient d'App.jsx, ne se réinitialise pas */}
-      <div className="card" style={{ padding:16 }}>
-        <CameraGrid
-          players={players}
-          myId={myId}
-          activePlayerId={activePlayerId}
-          localStream={localStream}
-          socket={socket}
-        />
       </div>
 
       {/* Zone centrale */}
