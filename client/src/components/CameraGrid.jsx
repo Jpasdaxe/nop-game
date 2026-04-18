@@ -26,22 +26,26 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
   const [remoteStreams, setRemoteStreams] = useState({});
   const peersRef       = useRef({});
   const localStreamRef = useRef(null);
-  const readyRef       = useRef(false);
+  const initiatedRef   = useRef(false);
 
   useEffect(() => {
     if (localStream) localStreamRef.current = localStream;
   }, [localStream]);
 
   useEffect(() => {
-    if (!socket || !localStream || readyRef.current) return;
-    readyRef.current = true;
+    if (!socket || !localStream || initiatedRef.current) return;
+    initiatedRef.current = true;
 
-    // Annonce notre présence à tous les autres
     socket.emit("webrtc:ready");
+
+    const handlePeerList = async ({ peerIds }) => {
+      for (const peerId of peerIds) {
+        if (peerId !== myId) await createOffer(peerId);
+      }
+    };
 
     const handleReady = async ({ peerId }) => {
       if (peerId === myId) return;
-      // Un nouveau arrive → on lui envoie une offre
       await createOffer(peerId);
     };
 
@@ -51,42 +55,29 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
 
     const handleAnswer = async ({ from, answer }) => {
       const pc = peersRef.current[from];
-      if (pc) {
-        try { await pc.setRemoteDescription(new RTCSessionDescription(answer)); } catch {}
-      }
+      if (pc) try { await pc.setRemoteDescription(new RTCSessionDescription(answer)); } catch {}
     };
 
     const handleIce = async ({ from, candidate }) => {
       const pc = peersRef.current[from];
-      if (pc && candidate) {
-        try { await pc.addIceCandidate(new RTCIceCandidate(candidate)); } catch {}
-      }
+      if (pc && candidate) try { await pc.addIceCandidate(new RTCIceCandidate(candidate)); } catch {}
     };
 
-    // Reçoit la liste des peers déjà présents → on leur envoie une offre
-    const handlePeerList = async ({ peerIds }) => {
-      for (const peerId of peerIds) {
-        if (peerId !== myId) {
-          await createOffer(peerId);
-        }
-      }
-    };
-
+    socket.on("webrtc:peerList", handlePeerList);
     socket.on("webrtc:ready",    handleReady);
     socket.on("webrtc:offer",    handleOffer);
     socket.on("webrtc:answer",   handleAnswer);
     socket.on("webrtc:ice",      handleIce);
-    socket.on("webrtc:peerList", handlePeerList);
 
     return () => {
+      socket.off("webrtc:peerList", handlePeerList);
       socket.off("webrtc:ready",    handleReady);
       socket.off("webrtc:offer",    handleOffer);
       socket.off("webrtc:answer",   handleAnswer);
       socket.off("webrtc:ice",      handleIce);
-      socket.off("webrtc:peerList", handlePeerList);
       Object.values(peersRef.current).forEach(pc => pc.close());
-      peersRef.current = {};
-      readyRef.current = false;
+      peersRef.current  = {};
+      initiatedRef.current = false;
     };
   }, [socket, localStream]);
 
@@ -107,36 +98,23 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
 
   function createPeerConnection(peerId) {
     if (peersRef.current[peerId]) return peersRef.current[peerId];
-
     const pc = new RTCPeerConnection(ICE_SERVERS);
-
     const stream = localStreamRef.current;
-    if (stream) {
-      stream.getTracks().forEach(track => pc.addTrack(track, stream));
-    }
+    if (stream) stream.getTracks().forEach(track => pc.addTrack(track, stream));
 
-    pc.ontrack = (event) => {
-      setRemoteStreams(prev => ({ ...prev, [peerId]: event.streams[0] }));
+    pc.ontrack = (e) => {
+      setRemoteStreams(prev => ({ ...prev, [peerId]: e.streams[0] }));
     };
-
-    pc.onicecandidate = (event) => {
-      if (event.candidate) {
-        socket.emit("webrtc:ice", { to: peerId, candidate: event.candidate });
-      }
+    pc.onicecandidate = (e) => {
+      if (e.candidate) socket.emit("webrtc:ice", { to: peerId, candidate: e.candidate });
     };
-
     pc.onconnectionstatechange = () => {
       if (pc.connectionState === "disconnected" || pc.connectionState === "failed") {
         pc.close();
         delete peersRef.current[peerId];
-        setRemoteStreams(prev => {
-          const next = { ...prev };
-          delete next[peerId];
-          return next;
-        });
+        setRemoteStreams(prev => { const n = { ...prev }; delete n[peerId]; return n; });
       }
     };
-
     peersRef.current[peerId] = pc;
     return pc;
   }
@@ -162,7 +140,7 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
 
   return (
     <div style={{ display:"flex", gap:10, justifyContent:"center",
-      flexWrap:"wrap", padding:"12px 0" }}>
+      flexWrap:"wrap" }}>
       {players.map(p => (
         <PlayerTile
           key={p.id}
@@ -180,19 +158,16 @@ function PlayerTile({ player, isMe, isActive, stream }) {
   const videoRef = useRef();
 
   useEffect(() => {
-    if (videoRef.current && stream) {
-      videoRef.current.srcObject = stream;
-    }
+    if (videoRef.current && stream) videoRef.current.srcObject = stream;
   }, [stream]);
 
   const borderColor = isActive ? "var(--gold)" : isMe ? "var(--pink)" : "var(--border)";
   const glow        = isActive ? "var(--glow-gold)" : isMe ? "var(--glow-pink)" : "none";
 
   return (
-    <div style={{ width:140, display:"flex", flexDirection:"column", gap:6 }}>
+    <div style={{ width:130, display:"flex", flexDirection:"column", gap:4 }}>
       <div style={{ position:"relative", aspectRatio:"4/3", background:"var(--bg2)",
-        borderRadius:10, border:`2px solid ${borderColor}`,
-        boxShadow:glow, overflow:"hidden" }}>
+        borderRadius:8, border:`2px solid ${borderColor}`, boxShadow:glow, overflow:"hidden" }}>
         {stream
           ? <video ref={videoRef} autoPlay muted={isMe} playsInline
               style={{ width:"100%", height:"100%", objectFit:"cover",
@@ -204,23 +179,20 @@ function PlayerTile({ player, isMe, isActive, stream }) {
             </div>
         }
         {isActive && (
-          <div style={{ position:"absolute", top:6, right:6, background:"var(--gold)",
-            color:"#111", fontWeight:900, fontSize:".65rem",
-            padding:"2px 7px", borderRadius:99 }}>
+          <div style={{ position:"absolute", top:4, right:4, background:"var(--gold)",
+            color:"#111", fontWeight:900, fontSize:".6rem", padding:"2px 6px", borderRadius:99 }}>
             JOUE
           </div>
         )}
       </div>
       <div style={{ display:"flex", justifyContent:"space-between",
         alignItems:"center", padding:"0 2px" }}>
-        <span style={{ fontWeight:700, fontSize:".85rem",
+        <span style={{ fontWeight:700, fontSize:".8rem",
           color: isMe ? "var(--pink)" : "var(--text)",
-          overflow:"hidden", textOverflow:"ellipsis",
-          whiteSpace:"nowrap", maxWidth:90 }}>
+          overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", maxWidth:85 }}>
           {player.name}
         </span>
-        <span style={{ fontFamily:"var(--font-display)", fontSize:"1rem",
-          color:"var(--gold)", letterSpacing:".03em" }}>
+        <span style={{ fontFamily:"var(--font-display)", fontSize:".95rem", color:"var(--gold)" }}>
           {player.score}
         </span>
       </div>

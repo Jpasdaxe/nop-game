@@ -21,10 +21,7 @@ export default function GameScreen({
   const isActive = roomState?.activePlayerId === myId;
   const status   = roomState?.status;
 
-  useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-      .then(setLocalStream).catch(() => {});
-  }, []);
+  
 
   useEffect(() => {
     if (audioRef?.current) audioRef.current.volume = volume;
@@ -124,15 +121,7 @@ export default function GameScreen({
       </div>
 
       {/* Caméras */}
-      <div className="card" style={{ padding:16 }}>
-        <CameraGrid
-          players={players}
-          myId={myId}
-          activePlayerId={activePlayerId}
-          localStream={localStream}
-          socket={socket}
-        />
-      </div>
+      
 
       {/* Zone centrale */}
       <div className="card" style={{ flex:1, display:"flex", flexDirection:"column",

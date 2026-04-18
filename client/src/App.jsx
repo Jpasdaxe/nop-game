@@ -5,6 +5,7 @@ import HostLobby from "./pages/HostLobby";
 import PlayerLobby from "./pages/PlayerLobby";
 import GameScreen from "./pages/GameScreen";
 import RoundEnd from "./pages/RoundEnd";
+import CameraGrid from "./components/CameraGrid";
 
 export default function App() {
   const [screen, setScreen]           = useState("home");
@@ -15,12 +16,19 @@ export default function App() {
   const [songs, setSongs]             = useState([]);
   const [judgeData, setJudgeData]     = useState(null);
   const [usedSongIds, setUsedSongIds] = useState([]);
-  const audioRef     = useRef(new Audio());
-  const roomCodeRef  = useRef(null);
-  const songsRef     = useRef([]);
-  // Refs pour lastSongUrl et lastCutAt — jamais périmés dans les closures
+  const [localStream, setLocalStream] = useState(null);
+  const audioRef       = useRef(new Audio());
+  const roomCodeRef    = useRef(null);
+  const songsRef       = useRef([]);
   const lastSongUrlRef = useRef(null);
   const lastCutAtRef   = useRef(0);
+
+  // Caméra lancée une seule fois au montage — ne se réinitialise jamais
+  useEffect(() => {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+      .then(setLocalStream)
+      .catch(() => {});
+  }, []);
 
   const fetchSongs = () => {
     fetch(`${import.meta.env.VITE_SERVER_URL || "http://localhost:3001"}/songs`)
@@ -40,7 +48,6 @@ export default function App() {
       console.log("[connect] socket id:", socket.id);
       setMyId(socket.id);
       if (roomCodeRef.current) {
-        console.log("[reconnect] rejoin room", roomCodeRef.current);
         socket.emit("room:rejoin", { roomCode: roomCodeRef.current });
       }
     });
@@ -63,9 +70,7 @@ export default function App() {
     });
 
     socket.on("game:songChosen", ({ state }) => {
-      console.log("[game:songChosen] chanson:", state?.currentSong?.title,
-        "url:", state?.currentSong?.audioUrl,
-        "cutAt:", state?.currentSong?.cutAt);
+      console.log("[game:songChosen] chanson:", state?.currentSong?.title);
       setRoomState(state);
       if (state?.currentSong?.audioUrl) {
         lastSongUrlRef.current = state.currentSong.audioUrl;
@@ -74,13 +79,12 @@ export default function App() {
     });
 
     socket.on("game:awaitJudge", (data) => {
-      console.log("[game:awaitJudge] joueur:", data?.playerName, "réponse:", data?.playerAnswer);
+      console.log("[game:awaitJudge] joueur:", data?.playerName);
       setJudgeData(data);
     });
 
     socket.on("game:turnEnded", ({ state, result }) => {
       console.log("[game:turnEnded] correct:", result?.correct, "points:", result?.points);
-      console.log("[game:turnEnded] lastSongUrl ref:", lastSongUrlRef.current);
       if (state?.currentSong?.id) {
         setUsedSongIds(prev => [...prev, state.currentSong.id]);
       }
@@ -91,8 +95,7 @@ export default function App() {
     });
 
     socket.on("game:goNext", (state) => {
-      console.log("[game:goNext] reçu — status:", state?.status,
-        "players:", state?.players?.length, "code:", state?.code);
+      console.log("[game:goNext] status:", state?.status, "code:", state?.code);
       fetchSongs();
       setRoomState(state);
       setRoundResult(null);
@@ -101,7 +104,6 @@ export default function App() {
     });
 
     socket.on("room:closed", () => {
-      console.log("[room:closed]");
       alert("L'animateur a quitté la partie.");
       setScreen("home");
       setRoomState(null);
@@ -129,23 +131,40 @@ export default function App() {
   }, [roomState?.code]);
 
   useEffect(() => {
-    console.log("[screen]", screen, "| songs:", songsRef.current.length,
-      "| status:", roomState?.status, "| role:", role);
+    console.log("[screen]", screen, "| status:", roomState?.status, "| role:", role);
   }, [screen]);
+
+  const showCameras = (screen === "game" || screen === "roundEnd")
+    && roomState?.players?.length > 0;
 
   const props = {
     socket, roomState, setRoomState,
     myId, role, setRole, setScreen,
     songs, roundResult, setRoundResult,
     judgeData, setJudgeData,
-    audioRef,
-    lastSongUrlRef,  // ← ref
-    lastCutAtRef,    // ← ref
-    usedSongIds,
+    audioRef, lastSongUrlRef, lastCutAtRef,
+    usedSongIds, localStream,
   };
 
   return (
     <>
+      {/* CameraGrid monté de façon permanente pendant le jeu */}
+      {showCameras && (
+        <div style={{
+          position: "fixed", bottom: 0, left: 0, right: 0,
+          background: "var(--card)", borderTop: "1px solid var(--border)",
+          padding: "8px 16px", zIndex: 50,
+        }}>
+          <CameraGrid
+            players={roomState.players}
+            myId={myId}
+            activePlayerId={roomState.activePlayerId}
+            localStream={localStream}
+            socket={socket}
+          />
+        </div>
+      )}
+
       {screen === "home"        && <Home        {...props} />}
       {screen === "hostLobby"   && <HostLobby   {...props} />}
       {screen === "playerLobby" && <PlayerLobby {...props} />}
