@@ -31,8 +31,8 @@ const io = new Server(httpServer, {
   },
 });
 
-// Garde en mémoire les peers WebRTC prêts par room
-const roomPeers = new Map(); // roomCode => Set of socketIds
+const roomPeers      = new Map(); // roomCode => Set of socketIds
+const roomAudioReady = new Map(); // roomCode => Set of socketIds
 
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
@@ -83,6 +83,9 @@ io.on("connection", (socket) => {
   });
 
   socket.on("game:chooseSong", ({ roomCode, choiceIndex }, cb) => {
+    // Reset les ready audio pour cette room
+    roomAudioReady.delete(roomCode);
+
     const result = gm.chooseSong(roomCode, socket.id, choiceIndex);
     if (!result.success) return cb?.(result);
     const state = gm.getRoomState(roomCode);
@@ -137,22 +140,42 @@ io.on("connection", (socket) => {
     socket.emit("game:goNext", state);
   });
 
-  // ── WebRTC ────────────────────────────────────────────────────────────────
+  // ── Sync audio ───────────────────────────────────────────────────────────
+
+  socket.on("audio:ready", ({ roomCode }) => {
+    const found = gm.findRoomBySocket(socket.id);
+    if (!found) return;
+
+    if (!roomAudioReady.has(roomCode)) roomAudioReady.set(roomCode, new Set());
+    roomAudioReady.get(roomCode).add(socket.id);
+
+    const roomSockets = io.sockets.adapter.rooms.get(roomCode);
+    const total = roomSockets ? roomSockets.size : 0;
+    const ready = roomAudioReady.get(roomCode).size;
+
+    console.log(`[audio:ready] ${ready}/${total} prêts dans ${roomCode}`);
+
+    // Quand tout le monde est prêt → go
+    if (ready >= total) {
+      roomAudioReady.delete(roomCode);
+      console.log(`[audio:go] tout le monde prêt dans ${roomCode}`);
+      io.to(roomCode).emit("audio:go", { serverTime: Date.now() });
+    }
+  });
+
+  // ── WebRTC ───────────────────────────────────────────────────────────────
 
   socket.on("webrtc:ready", () => {
     const found = gm.findRoomBySocket(socket.id);
     if (!found) return;
     const code = found.room.code;
 
-    // Envoie au nouveau la liste des peers déjà prêts
     const existing = roomPeers.get(code) || new Set();
     socket.emit("webrtc:peerList", { peerIds: [...existing] });
 
-    // Enregistre ce peer
     if (!roomPeers.has(code)) roomPeers.set(code, new Set());
     roomPeers.get(code).add(socket.id);
 
-    // Informe les autres qu'un nouveau peer est prêt
     socket.to(code).emit("webrtc:ready", { peerId: socket.id });
   });
 
@@ -160,16 +183,22 @@ io.on("connection", (socket) => {
   socket.on("webrtc:answer", ({ to, answer })    => io.to(to).emit("webrtc:answer", { from: socket.id, answer }));
   socket.on("webrtc:ice",    ({ to, candidate }) => io.to(to).emit("webrtc:ice",    { from: socket.id, candidate }));
 
-  // ── Déconnexion ───────────────────────────────────────────────────────────
+  // ── Déconnexion ──────────────────────────────────────────────────────────
 
   socket.on("disconnect", () => {
     console.log(`[-] ${socket.id}`);
 
-    // Retire le peer WebRTC de toutes les rooms
     for (const [code, peers] of roomPeers) {
       if (peers.has(socket.id)) {
         peers.delete(socket.id);
         if (peers.size === 0) roomPeers.delete(code);
+      }
+    }
+
+    for (const [code, ready] of roomAudioReady) {
+      if (ready.has(socket.id)) {
+        ready.delete(socket.id);
+        if (ready.size === 0) roomAudioReady.delete(code);
       }
     }
 
@@ -180,6 +209,7 @@ io.on("connection", (socket) => {
       io.to(room.code).emit("room:closed", { reason: "Host déconnecté" });
       gm.deleteRoom(room.code);
       roomPeers.delete(room.code);
+      roomAudioReady.delete(room.code);
     } else {
       gm.leaveRoom(room.code, socket.id);
       io.to(room.code).emit("room:updated", gm.getRoomState(room.code));
