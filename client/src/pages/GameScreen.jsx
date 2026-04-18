@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import CameraGrid from "../components/CameraGrid";
 import SongChoices from "../components/SongChoices";
 
 const SERVER = import.meta.env.VITE_SERVER_URL || "http://localhost:3001";
@@ -9,19 +8,16 @@ export default function GameScreen({
   judgeData, setJudgeData, audioRef,
   usedSongIds = [],
 }) {
-  const [localStream, setLocalStream] = useState(null);
-  const [answer, setAnswer]           = useState("");
-  const [submitted, setSubmitted]     = useState(false);
-  const [countdown, setCountdown]     = useState(null);
-  const [volume, setVolume]           = useState(0.8);
+  const [answer, setAnswer]     = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [countdown, setCountdown] = useState(null);
+  const [volume, setVolume]       = useState(0.8);
   const countdownRef = useRef(null);
   const stopRef      = useRef(null);
 
   const isHost   = role === "host";
   const isActive = roomState?.activePlayerId === myId;
   const status   = roomState?.status;
-
-  
 
   useEffect(() => {
     if (audioRef?.current) audioRef.current.volume = volume;
@@ -104,7 +100,7 @@ export default function GameScreen({
 
   return (
     <div style={{ minHeight:"100vh", display:"flex", flexDirection:"column",
-      gap:16, padding:16, maxWidth:860, margin:"0 auto" }}>
+      gap:16, padding:16, paddingBottom:180, maxWidth:860, margin:"0 auto" }}>
 
       {/* Barre de volume */}
       <div style={{ display:"flex", alignItems:"center", gap:10,
@@ -119,9 +115,6 @@ export default function GameScreen({
           {Math.round(volume * 100)}%
         </span>
       </div>
-
-      {/* Caméras */}
-      
 
       {/* Zone centrale */}
       <div className="card" style={{ flex:1, display:"flex", flexDirection:"column",

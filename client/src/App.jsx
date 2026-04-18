@@ -23,12 +23,19 @@ export default function App() {
   const lastSongUrlRef = useRef(null);
   const lastCutAtRef   = useRef(0);
 
-  // Caméra lancée une seule fois au montage — ne se réinitialise jamais
+  // Demande la caméra quand l'utilisateur entre dans le lobby ou le jeu
   useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-      .then(setLocalStream)
-      .catch(() => {});
-  }, []);
+    if (screen === "hostLobby" || screen === "playerLobby" || screen === "game") {
+      if (!localStream) {
+        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+          .then(stream => {
+            console.log("[camera] stream obtenu");
+            setLocalStream(stream);
+          })
+          .catch(e => console.error("[camera] refusée ou erreur:", e));
+      }
+    }
+  }, [screen]);
 
   const fetchSongs = () => {
     fetch(`${import.meta.env.VITE_SERVER_URL || "http://localhost:3001"}/songs`)
@@ -148,7 +155,6 @@ export default function App() {
 
   return (
     <>
-      {/* CameraGrid monté de façon permanente pendant le jeu */}
       {showCameras && (
         <div style={{
           position: "fixed", bottom: 0, left: 0, right: 0,
