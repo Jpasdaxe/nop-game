@@ -4,38 +4,47 @@ const ICE_SERVERS = {
   iceServers: [
     { urls: "stun:stun.l.google.com:19302" },
     { urls: "stun:stun1.l.google.com:19302" },
+    {
+      urls: "turn:openrelay.metered.ca:80",
+      username: "openrelayproject",
+      credential: "openrelayproject",
+    },
+    {
+      urls: "turn:openrelay.metered.ca:443",
+      username: "openrelayproject",
+      credential: "openrelayproject",
+    },
+    {
+      urls: "turn:openrelay.metered.ca:443?transport=tcp",
+      username: "openrelayproject",
+      credential: "openrelayproject",
+    },
   ],
 };
 
 export default function CameraGrid({ players, myId, activePlayerId, localStream, socket }) {
-  const [remoteStreams, setRemoteStreams] = useState({}); // { peerId: MediaStream }
-  const peersRef = useRef({}); // { peerId: RTCPeerConnection }
+  const [remoteStreams, setRemoteStreams] = useState({});
+  const peersRef = useRef({});
 
-  // Quand localStream est prêt, on annonce notre présence
   useEffect(() => {
     if (!socket || !localStream) return;
 
-    // Informe les autres qu'on est prêt avec une caméra
-    socket.emit("webrtc:ready", { myId });
+    socket.emit("webrtc:ready");
 
-    // Un nouveau pair est prêt → on lui envoie une offre
     socket.on("webrtc:ready", async ({ peerId }) => {
       if (peerId === myId) return;
       await createOffer(peerId);
     });
 
-    // On reçoit une offre → on répond
     socket.on("webrtc:offer", async ({ from, offer }) => {
       await createAnswer(from, offer);
     });
 
-    // On reçoit une réponse
     socket.on("webrtc:answer", async ({ from, answer }) => {
       const pc = peersRef.current[from];
       if (pc) await pc.setRemoteDescription(new RTCSessionDescription(answer));
     });
 
-    // On reçoit un ICE candidate
     socket.on("webrtc:ice", async ({ from, candidate }) => {
       const pc = peersRef.current[from];
       if (pc && candidate) await pc.addIceCandidate(new RTCIceCandidate(candidate));
@@ -49,7 +58,6 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
     };
   }, [socket, localStream, myId]);
 
-  // Nettoie les peers quand un joueur part
   useEffect(() => {
     const currentIds = players.map(p => p.id);
     Object.keys(peersRef.current).forEach(peerId => {
@@ -70,17 +78,14 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
 
     const pc = new RTCPeerConnection(ICE_SERVERS);
 
-    // Ajoute notre stream local
     if (localStream) {
       localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
     }
 
-    // Reçoit le stream distant
     pc.ontrack = (event) => {
       setRemoteStreams(prev => ({ ...prev, [peerId]: event.streams[0] }));
     };
 
-    // Envoie les ICE candidates
     pc.onicecandidate = (event) => {
       if (event.candidate) {
         socket.emit("webrtc:ice", { to: peerId, candidate: event.candidate });

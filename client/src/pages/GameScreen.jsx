@@ -26,18 +26,15 @@ export default function GameScreen({
       .then(setLocalStream).catch(() => {});
   }, []);
 
-  // Sync volume
   useEffect(() => {
     if (audioRef?.current) audioRef.current.volume = volume;
   }, [volume]);
 
-  // Lance l'audio quand une chanson est choisie
   useEffect(() => {
     if (status !== "playing" || !roomState?.currentSong) return;
     const { audioUrl, cutAt } = roomState.currentSong;
     const audio = audioRef.current;
 
-    // Nettoie les anciens timers
     clearTimeout(countdownRef.current);
     clearTimeout(stopRef.current);
     setCountdown(null);
@@ -49,7 +46,6 @@ export default function GameScreen({
     audio.currentTime = 0;
     audio.play().catch(() => {});
 
-    // Compte à rebours 3s avant la coupure
     const countdownStartMs = Math.max(0, (cutAt - 3) * 1000);
     countdownRef.current = setTimeout(() => {
       setCountdown(3);
@@ -61,7 +57,6 @@ export default function GameScreen({
       }, 1000);
     }, countdownStartMs);
 
-    // Coupe l'audio net
     stopRef.current = setTimeout(() => {
       audio.pause();
     }, cutAt * 1000);
@@ -88,26 +83,18 @@ export default function GameScreen({
   }
 
   function selectPlayer(playerId) {
-  if (!isHost) return;
-
-  const available = songs.filter(s => !usedSongIds.includes(s.id));
-  const pool = available.length >= 3 ? available : songs;
-
-  const picked = [];
-  const copy = [...pool];
-  while (picked.length < 3 && copy.length > 0) {
-    const idx = Math.floor(Math.random() * copy.length);
-    picked.push(copy.splice(idx, 1)[0]);
+    if (!isHost) return;
+    const available = songs.filter(s => !usedSongIds.includes(s.id));
+    const pool = available.length >= 3 ? available : songs;
+    const picked = [];
+    const copy = [...pool];
+    while (picked.length < 3 && copy.length > 0) {
+      const idx = Math.floor(Math.random() * copy.length);
+      picked.push(copy.splice(idx, 1)[0]);
+    }
+    const choices = picked.map((s, i) => ({ ...s, points: [10, 20, 30][i] }));
+    socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
   }
-
-  // Mélange aléatoire puis assigne 10/20/30 selon la position
-  const choices = picked.map((s, i) => ({
-    ...s,
-    points: [10, 20, 30][i],
-  }));
-
-  socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
-}
 
   function judge(verdict) {
     socket.emit("game:judge", { roomCode: roomState.code, verdict });
@@ -121,8 +108,6 @@ export default function GameScreen({
   return (
     <div style={{ minHeight:"100vh", display:"flex", flexDirection:"column",
       gap:16, padding:16, maxWidth:860, margin:"0 auto" }}>
-
-     
 
       {/* Barre de volume */}
       <div style={{ display:"flex", alignItems:"center", gap:10,
@@ -140,8 +125,13 @@ export default function GameScreen({
 
       {/* Caméras */}
       <div className="card" style={{ padding:16 }}>
-        <CameraGrid players={players} myId={myId}
-          activePlayerId={activePlayerId} localStream={localStream} />
+        <CameraGrid
+          players={players}
+          myId={myId}
+          activePlayerId={activePlayerId}
+          localStream={localStream}
+          socket={socket}
+        />
       </div>
 
       {/* Zone centrale */}
@@ -149,44 +139,32 @@ export default function GameScreen({
         gap:20, alignItems:"center", justifyContent:"center", padding:"32px 24px",
         minHeight:300 }}>
 
-        {/* HOST : choisit un joueur */}
         {isHost && status === "waiting" && !judgeData && (
-  <div style={{ textAlign:"center", display:"flex",
-    flexDirection:"column", gap:20, width:"100%" }}>
-    <div style={{ fontFamily:"var(--font-display)", fontSize:"1.8rem",
-      letterSpacing:".05em", color:"var(--gold)" }}>
-      Choisissez un joueur
-    </div>
+          <div style={{ textAlign:"center", display:"flex",
+            flexDirection:"column", gap:20, width:"100%" }}>
+            <div style={{ fontFamily:"var(--font-display)", fontSize:"1.8rem",
+              letterSpacing:".05em", color:"var(--gold)" }}>
+              Choisissez un joueur
+            </div>
+            <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
+              {players.map(p => (
+                <button key={p.id} className="btn btn-ghost"
+                  style={{ minWidth:130, flexDirection:"column", gap:4, padding:"16px 20px" }}
+                  onClick={() => selectPlayer(p.id)}>
+                  <span style={{ fontFamily:"var(--font-display)", fontSize:"1.2rem" }}>{p.name}</span>
+                  <span style={{ color:"var(--gold)", fontFamily:"var(--font-display)" }}>{p.score} pts</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
-    {/* Debug temporaire */}
-    <div style={{ color:"var(--text-dim)", fontSize:".8rem" }}>
-      players: {players.length} | songs: {songs.length} | status: {status}
-    </div>
-
-    <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
-      {players.length === 0 && (
-        <div style={{ color:"var(--red)" }}>Aucun joueur reçu</div>
-      )}
-      {players.map(p => (
-        <button key={p.id} className="btn btn-ghost"
-          style={{ minWidth:130, flexDirection:"column", gap:4, padding:"16px 20px" }}
-          onClick={() => selectPlayer(p.id)}>
-          <span style={{ fontFamily:"var(--font-display)", fontSize:"1.2rem" }}>{p.name}</span>
-          <span style={{ color:"var(--gold)", fontFamily:"var(--font-display)" }}>{p.score} pts</span>
-        </button>
-      ))}
-    </div>
-  </div>
-)}
-
-        {/* JOUEURS : attendent */}
         {!isHost && status === "waiting" && !judgeData && (
           <div style={{ color:"var(--text-dim)", textAlign:"center", fontSize:"1.1rem" }}>
             L'animateur choisit le prochain joueur…
           </div>
         )}
 
-        {/* Choix de chanson */}
         {status === "choosing" && (
           <div style={{ width:"100%", display:"flex", flexDirection:"column", gap:24 }}>
             <div style={{ textAlign:"center" }}>
@@ -199,12 +177,10 @@ export default function GameScreen({
           </div>
         )}
 
-        {/* Audio + réponse */}
         {(status === "playing" || status === "judging") && currentSong && !judgeData && (
           <div style={{ width:"100%", display:"flex", flexDirection:"column",
             gap:20, alignItems:"center" }}>
 
-            {/* Countdown overlay */}
             {countdown !== null && (
               <div style={{ position:"fixed", top:0, left:0, right:0, bottom:0,
                 display:"flex", alignItems:"center", justifyContent:"center",
@@ -267,7 +243,6 @@ export default function GameScreen({
           </div>
         )}
 
-        {/* Panneau de jugement — visible par tous */}
         {judgeData && (
           <div style={{ width:"100%", maxWidth:560, display:"flex",
             flexDirection:"column", gap:20, alignItems:"center" }}>
