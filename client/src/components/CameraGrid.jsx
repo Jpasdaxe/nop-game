@@ -24,40 +24,60 @@ const ICE_SERVERS = {
 
 export default function CameraGrid({ players, myId, activePlayerId, localStream, socket }) {
   const [remoteStreams, setRemoteStreams] = useState({});
-  const peersRef = useRef({});
+  const peersRef        = useRef({});
+  const localStreamRef  = useRef(null);
 
+  // Garde toujours la ref à jour sans retrigger les effets WebRTC
+  useEffect(() => {
+    if (localStream) localStreamRef.current = localStream;
+  }, [localStream]);
+
+  // WebRTC — se monte une seule fois quand socket + localStream sont prêts
   useEffect(() => {
     if (!socket || !localStream) return;
 
     socket.emit("webrtc:ready");
 
-    socket.on("webrtc:ready", async ({ peerId }) => {
+    const handleReady = async ({ peerId }) => {
       if (peerId === myId) return;
       await createOffer(peerId);
-    });
+    };
 
-    socket.on("webrtc:offer", async ({ from, offer }) => {
+    const handleOffer = async ({ from, offer }) => {
       await createAnswer(from, offer);
-    });
+    };
 
-    socket.on("webrtc:answer", async ({ from, answer }) => {
+    const handleAnswer = async ({ from, answer }) => {
       const pc = peersRef.current[from];
-      if (pc) await pc.setRemoteDescription(new RTCSessionDescription(answer));
-    });
+      if (pc) {
+        try { await pc.setRemoteDescription(new RTCSessionDescription(answer)); } catch {}
+      }
+    };
 
-    socket.on("webrtc:ice", async ({ from, candidate }) => {
+    const handleIce = async ({ from, candidate }) => {
       const pc = peersRef.current[from];
-      if (pc && candidate) await pc.addIceCandidate(new RTCIceCandidate(candidate));
-    });
+      if (pc && candidate) {
+        try { await pc.addIceCandidate(new RTCIceCandidate(candidate)); } catch {}
+      }
+    };
+
+    socket.on("webrtc:ready",  handleReady);
+    socket.on("webrtc:offer",  handleOffer);
+    socket.on("webrtc:answer", handleAnswer);
+    socket.on("webrtc:ice",    handleIce);
 
     return () => {
-      socket.off("webrtc:ready");
-      socket.off("webrtc:offer");
-      socket.off("webrtc:answer");
-      socket.off("webrtc:ice");
+      socket.off("webrtc:ready",  handleReady);
+      socket.off("webrtc:offer",  handleOffer);
+      socket.off("webrtc:answer", handleAnswer);
+      socket.off("webrtc:ice",    handleIce);
+      // Ferme tous les peers proprement au démontage
+      Object.values(peersRef.current).forEach(pc => pc.close());
+      peersRef.current = {};
     };
-  }, [socket, localStream, myId]);
+  }, [socket, localStream]); // ← une seule fois quand les deux sont prêts
 
+  // Nettoie les peers des joueurs qui ont quitté
   useEffect(() => {
     const currentIds = players.map(p => p.id);
     Object.keys(peersRef.current).forEach(peerId => {
@@ -78,8 +98,10 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
 
     const pc = new RTCPeerConnection(ICE_SERVERS);
 
-    if (localStream) {
-      localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+    // Utilise la ref pour avoir le stream même dans les callbacks async
+    const stream = localStreamRef.current;
+    if (stream) {
+      stream.getTracks().forEach(track => pc.addTrack(track, stream));
     }
 
     pc.ontrack = (event) => {
@@ -110,21 +132,26 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
 
   async function createOffer(peerId) {
     const pc = createPeerConnection(peerId);
-    const offer = await pc.createOffer();
-    await pc.setLocalDescription(offer);
-    socket.emit("webrtc:offer", { to: peerId, offer });
+    try {
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+      socket.emit("webrtc:offer", { to: peerId, offer });
+    } catch {}
   }
 
   async function createAnswer(peerId, offer) {
     const pc = createPeerConnection(peerId);
-    await pc.setRemoteDescription(new RTCSessionDescription(offer));
-    const answer = await pc.createAnswer();
-    await pc.setLocalDescription(answer);
-    socket.emit("webrtc:answer", { to: peerId, answer });
+    try {
+      await pc.setRemoteDescription(new RTCSessionDescription(offer));
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+      socket.emit("webrtc:answer", { to: peerId, answer });
+    } catch {}
   }
 
   return (
-    <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", padding: "12px 0" }}>
+    <div style={{ display:"flex", gap:10, justifyContent:"center",
+      flexWrap:"wrap", padding:"12px 0" }}>
       {players.map(p => (
         <PlayerTile
           key={p.id}
@@ -148,35 +175,43 @@ function PlayerTile({ player, isMe, isActive, stream }) {
   }, [stream]);
 
   const borderColor = isActive ? "var(--gold)" : isMe ? "var(--pink)" : "var(--border)";
-  const glow = isActive ? "var(--glow-gold)" : isMe ? "var(--glow-pink)" : "none";
+  const glow        = isActive ? "var(--glow-gold)" : isMe ? "var(--glow-pink)" : "none";
 
   return (
-    <div style={{ width: 140, display: "flex", flexDirection: "column", gap: 6 }}>
-      <div style={{ position: "relative", aspectRatio: "4/3", background: "var(--bg2)",
-        borderRadius: 10, border: `2px solid ${borderColor}`, boxShadow: glow, overflow: "hidden" }}>
+    <div style={{ width:140, display:"flex", flexDirection:"column", gap:6 }}>
+      <div style={{ position:"relative", aspectRatio:"4/3", background:"var(--bg2)",
+        borderRadius:10, border:`2px solid ${borderColor}`,
+        boxShadow:glow, overflow:"hidden" }}>
         {stream
           ? <video ref={videoRef} autoPlay muted={isMe} playsInline
-              style={{ width: "100%", height: "100%", objectFit: "cover",
-                transform: isMe ? "scaleX(-1)" : "none", display: "block" }} />
-          : <div style={{ width: "100%", height: "100%", display: "flex",
-              alignItems: "center", justifyContent: "center", fontSize: "1.8rem", color: "var(--text-dim)" }}>
+              style={{ width:"100%", height:"100%", objectFit:"cover",
+                transform: isMe ? "scaleX(-1)" : "none", display:"block" }} />
+          : <div style={{ width:"100%", height:"100%", display:"flex",
+              alignItems:"center", justifyContent:"center",
+              fontSize:"1.8rem", color:"var(--text-dim)" }}>
               {player.name[0].toUpperCase()}
             </div>
         }
         {isActive && (
-          <div style={{ position: "absolute", top: 6, right: 6, background: "var(--gold)",
-            color: "#111", fontWeight: 900, fontSize: ".65rem", padding: "2px 7px", borderRadius: 99 }}>
+          <div style={{ position:"absolute", top:6, right:6, background:"var(--gold)",
+            color:"#111", fontWeight:900, fontSize:".65rem",
+            padding:"2px 7px", borderRadius:99 }}>
             JOUE
           </div>
         )}
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 2px" }}>
-        <span style={{ fontWeight: 700, fontSize: ".85rem", color: isMe ? "var(--pink)" : "var(--text)",
-          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: 90 }}>
+      <div style={{ display:"flex", justifyContent:"space-between",
+        alignItems:"center", padding:"0 2px" }}>
+        <span style={{ fontWeight:700, fontSize:".85rem",
+          color: isMe ? "var(--pink)" : "var(--text)",
+          overflow:"hidden", textOverflow:"ellipsis",
+          whiteSpace:"nowrap", maxWidth:90 }}>
           {player.name}
         </span>
-        <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem",
-          color: "var(--gold)", letterSpacing: ".03em" }}>{player.score}</span>
+        <span style={{ fontFamily:"var(--font-display)", fontSize:"1rem",
+          color:"var(--gold)", letterSpacing:".03em" }}>
+          {player.score}
+        </span>
       </div>
     </div>
   );
