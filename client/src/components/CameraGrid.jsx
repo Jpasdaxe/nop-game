@@ -1,13 +1,11 @@
 ﻿import { useEffect, useRef, useState } from "react";
 
-// Serveurs TURN plus fiables
 const ICE_SERVERS = {
   iceServers: [
     { urls: "stun:stun.l.google.com:19302" },
     { urls: "stun:stun2.l.google.com:19302" },
     { urls: "stun:stun3.l.google.com:19302" },
     { urls: "stun:stun4.l.google.com:19302" },
-    // TURN Metered (gratuit, plus stable)
     {
       urls: "turn:a.relay.metered.ca:80",
       username: "83eebabf8b4cce9d5dbcb649",
@@ -32,18 +30,29 @@ const ICE_SERVERS = {
 };
 
 export default function CameraGrid({ players, myId, activePlayerId, localStream, socket }) {
-  const [remoteStreams, setRemoteStreams]   = useState({});
-  const [connStates, setConnStates]         = useState({}); // peerId => state
+  const [remoteStreams, setRemoteStreams] = useState({});
+  const [connStates, setConnStates]       = useState({});
   const peersRef       = useRef({});
   const localStreamRef = useRef(null);
   const initiatedRef   = useRef(false);
 
+  // Met à jour la ref et remplace les tracks si des peers existent déjà
   useEffect(() => {
-    if (localStream) localStreamRef.current = localStream;
+    if (!localStream) return;
+    localStreamRef.current = localStream;
+    Object.values(peersRef.current).forEach(pc => {
+      if (pc.connectionState === "closed") return;
+      localStream.getTracks().forEach(track => {
+        const sender = pc.getSenders().find(s => s.track?.kind === track.kind);
+        if (sender) sender.replaceTrack(track);
+        else pc.addTrack(track, localStream);
+      });
+    });
   }, [localStream]);
 
+  // Lance WebRTC dès que socket est prêt — indépendant de localStream
   useEffect(() => {
-    if (!socket || !localStream || initiatedRef.current) return;
+    if (!socket || initiatedRef.current) return;
     initiatedRef.current = true;
 
     socket.emit("webrtc:ready");
@@ -89,7 +98,7 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
       peersRef.current = {};
       initiatedRef.current = false;
     };
-  }, [socket, localStream]);
+  }, [socket]);
 
   // Nettoie les peers des joueurs partis
   useEffect(() => {
@@ -108,11 +117,19 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
     if (peersRef.current[peerId]) return peersRef.current[peerId];
 
     const pc = new RTCPeerConnection(ICE_SERVERS);
+
     const stream = localStreamRef.current;
-    if (stream) stream.getTracks().forEach(track => pc.addTrack(track, stream));
+    if (stream) {
+      stream.getTracks().forEach(track => pc.addTrack(track, stream));
+    } else {
+      // Sans caméra : peut quand même recevoir le flux des autres
+      try { pc.addTransceiver("video", { direction: "recvonly" }); } catch {}
+    }
 
     pc.ontrack = (e) => {
-      setRemoteStreams(prev => ({ ...prev, [peerId]: e.streams[0] }));
+      if (e.streams?.[0]) {
+        setRemoteStreams(prev => ({ ...prev, [peerId]: e.streams[0] }));
+      }
     };
 
     pc.onicecandidate = (e) => {
@@ -121,12 +138,11 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
 
     pc.onconnectionstatechange = () => {
       const state = pc.connectionState;
-      console.log(`[WebRTC] ${peerId} → ${state}`);
+      console.log(`[WebRTC] ${peerId.slice(0,6)} → ${state}`);
       setConnStates(prev => ({ ...prev, [peerId]: state }));
 
       if (state === "failed") {
-        // Tente de relancer la connexion
-        console.log(`[WebRTC] Relance connexion avec ${peerId}`);
+        console.log(`[WebRTC] restart ICE pour ${peerId.slice(0,6)}`);
         pc.restartIce();
       }
       if (state === "disconnected" || state === "closed") {
@@ -147,7 +163,7 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
       const offer = await pc.createOffer();
       await pc.setLocalDescription(offer);
       socket.emit("webrtc:offer", { to: peerId, offer });
-    } catch (e) { console.error("[WebRTC] createOffer error:", e); }
+    } catch (e) { console.error("[WebRTC] createOffer:", e); }
   }
 
   async function createAnswer(peerId, offer) {
@@ -157,22 +173,29 @@ export default function CameraGrid({ players, myId, activePlayerId, localStream,
       const answer = await pc.createAnswer();
       await pc.setLocalDescription(answer);
       socket.emit("webrtc:answer", { to: peerId, answer });
-    } catch (e) { console.error("[WebRTC] createAnswer error:", e); }
+    } catch (e) { console.error("[WebRTC] createAnswer:", e); }
   }
 
   return (
-    <div style={{ display:"flex", gap:10, justifyContent:"center", flexWrap:"wrap" }}>
-      {players.map(p => (
-        <PlayerTile
-          key={p.id}
-          player={p}
-          isMe={p.id === myId}
-          isActive={p.id === activePlayerId}
-          stream={p.id === myId ? localStream : remoteStreams[p.id] || null}
-          connState={p.id === myId ? (localStream ? "connected" : "no-cam") : connStates[p.id]}
-        />
-      ))}
-    </div>
+    <>
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      <div style={{ display:"flex", gap:10, justifyContent:"center", flexWrap:"wrap" }}>
+        {players.map(p => (
+          <PlayerTile
+            key={p.id}
+            player={p}
+            isMe={p.id === myId}
+            isActive={p.id === activePlayerId}
+            stream={p.id === myId ? localStream : remoteStreams[p.id] || null}
+            connState={
+              p.id === myId
+                ? (localStream ? "connected" : "no-cam")
+                : connStates[p.id]
+            }
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -186,21 +209,20 @@ function PlayerTile({ player, isMe, isActive, stream, connState }) {
   const borderColor = isActive ? "var(--gold)" : isMe ? "var(--pink)" : "var(--border)";
   const glow        = isActive ? "var(--glow-gold)" : isMe ? "var(--glow-pink)" : "none";
 
-  // Indicateur de statut connexion
-  const statusDot = () => {
-    if (isMe) return localStream
+  const dot = (() => {
+    if (isMe) return stream
       ? { color:"var(--green)", label:"CAM" }
-      : { color:"var(--text-dim)", label:"PAS DE CAM" };
+      : { color:"var(--text-dim)", label:"NO CAM" };
     if (!connState || connState === "new" || connState === "checking")
       return { color:"var(--gold)", label:"..." };
     if (connState === "connected" || connState === "completed")
       return { color:"var(--green)", label:"OK" };
     if (connState === "failed" || connState === "disconnected")
       return { color:"var(--red)", label:"ERR" };
+    if (connState === "no-cam")
+      return { color:"var(--text-dim)", label:"NO CAM" };
     return { color:"var(--text-dim)", label:"?" };
-  };
-
-  const dot = statusDot();
+  })();
 
   return (
     <div style={{ width:130, display:"flex", flexDirection:"column", gap:4 }}>
@@ -211,34 +233,34 @@ function PlayerTile({ player, isMe, isActive, stream, connState }) {
           ? <video ref={videoRef} autoPlay muted={isMe} playsInline
               style={{ width:"100%", height:"100%", objectFit:"cover",
                 transform: isMe ? "scaleX(-1)" : "none", display:"block" }} />
-          : <div style={{ width:"100%", height:"100%", display:"flex", flexDirection:"column",
-              alignItems:"center", justifyContent:"center", gap:6 }}>
+          : <div style={{ width:"100%", height:"100%", display:"flex",
+              flexDirection:"column", alignItems:"center", justifyContent:"center", gap:6 }}>
               <span style={{ fontSize:"1.8rem", color:"var(--text-dim)" }}>
                 {player.name[0].toUpperCase()}
               </span>
-              {/* Spinner si en cours de connexion */}
               {!isMe && (!connState || connState === "new" || connState === "checking") && (
-                <span style={{ width:10, height:10, border:"2px solid var(--text-dim)",
-                  borderTopColor:"var(--gold)", borderRadius:"50%",
-                  animation:"spin 1s linear infinite", display:"inline-block" }} />
+                <span style={{ width:10, height:10,
+                  border:"2px solid var(--text-dim)", borderTopColor:"var(--gold)",
+                  borderRadius:"50%", animation:"spin 1s linear infinite",
+                  display:"inline-block" }} />
               )}
             </div>
         }
 
         {isActive && (
           <div style={{ position:"absolute", top:4, right:4, background:"var(--gold)",
-            color:"#111", fontWeight:900, fontSize:".6rem", padding:"2px 6px", borderRadius:99 }}>
+            color:"#111", fontWeight:900, fontSize:".6rem",
+            padding:"2px 6px", borderRadius:99 }}>
             JOUE
           </div>
         )}
 
-        {/* Indicateur statut en bas à gauche */}
         <div style={{ position:"absolute", bottom:4, left:4,
-          background:"rgba(0,0,0,.6)", borderRadius:99,
+          background:"rgba(0,0,0,.65)", borderRadius:99,
           padding:"1px 6px", fontSize:".6rem", fontWeight:900,
           color: dot.color, display:"flex", alignItems:"center", gap:3 }}>
           <span style={{ width:5, height:5, borderRadius:"50%",
-            background: dot.color, display:"inline-block" }} />
+            background: dot.color, flexShrink:0 }} />
           {dot.label}
         </div>
       </div>
@@ -247,10 +269,12 @@ function PlayerTile({ player, isMe, isActive, stream, connState }) {
         alignItems:"center", padding:"0 2px" }}>
         <span style={{ fontWeight:700, fontSize:".8rem",
           color: isMe ? "var(--pink)" : "var(--text)",
-          overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", maxWidth:85 }}>
+          overflow:"hidden", textOverflow:"ellipsis",
+          whiteSpace:"nowrap", maxWidth:85 }}>
           {player.name}
         </span>
-        <span style={{ fontFamily:"var(--font-display)", fontSize:".95rem", color:"var(--gold)" }}>
+        <span style={{ fontFamily:"var(--font-display)", fontSize:".95rem",
+          color:"var(--gold)" }}>
           {player.score}
         </span>
       </div>

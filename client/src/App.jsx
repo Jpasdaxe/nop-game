@@ -22,32 +22,29 @@ export default function App() {
   const songsRef       = useRef([]);
   const lastSongUrlRef = useRef(null);
   const lastCutAtRef   = useRef(0);
+  const cameraRequestedRef = useRef(false);
 
   // Demande la caméra une seule fois quand on entre dans le lobby
-  useEffect(() => {
-    if (
-      (screen === "hostLobby" || screen === "playerLobby" || screen === "game")
-      && !localStream
-    ) {
-      navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-        .then(stream => {
-          console.log("[camera] stream obtenu");
-          setLocalStream(stream);
-        })
-        .catch(e => console.error("[camera] refusée:", e));
-    }
-  }, [screen]);
+  // Demande la caméra UNE SEULE FOIS quand on entre dans le lobby
+// On utilise une ref pour éviter les re-renders
+const cameraRequestedRef = useRef(false);
 
-  const fetchSongs = () => {
-    fetch(`${import.meta.env.VITE_SERVER_URL || "http://localhost:3001"}/songs`)
-      .then(r => r.json())
-      .then(data => {
-        console.log("[fetchSongs] chansons chargées:", data.length);
-        setSongs(data);
-        songsRef.current = data;
+useEffect(() => {
+  if (cameraRequestedRef.current) return;
+  if (screen === "hostLobby" || screen === "playerLobby" || screen === "game") {
+    cameraRequestedRef.current = true;
+    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+      .then(stream => {
+        console.log("[camera] stream obtenu");
+        setLocalStream(stream);
       })
-      .catch(e => console.error("[fetchSongs] erreur:", e));
-  };
+      .catch(e => {
+        console.warn("[camera] refusée ou indisponible:", e);
+        // On met un stream "vide" pour ne pas bloquer le jeu
+        setLocalStream(null);
+      });
+  }
+}, [screen]);
 
   useEffect(() => {
     socket.connect();
