@@ -122,27 +122,30 @@ export default function GameScreen({
   }
 
   function selectPlayer(playerId) {
-    if (!isHost) return;
-    const available = songs.filter(s => !usedSongIds.includes(s.id));
-    const pool = available.length >= 3 ? available : songs;
+  if (!isHost) return;
+  const available = songs.filter(s => !usedSongIds.includes(s.id));
+  const pool = available.length >= 3 ? available : songs;
 
-    // Tirage sans remise
-    const picked = [];
-    const copy = [...pool];
-    while (picked.length < 3 && copy.length > 0) {
-      const idx = Math.floor(Math.random() * copy.length);
-      picked.push(copy.splice(idx, 1)[0]);
-    }
-
-    // Points fixes par position — jamais modifiés
-    const choices = [
-      { ...picked[0], points: 10 },
-      { ...picked[1], points: 20 },
-      { ...picked[2], points: 30 },
-    ];
-
-    socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
+  // Tirage sans remise
+  const picked = [];
+  const copy = [...pool];
+  while (picked.length < 3 && copy.length > 0) {
+    const idx = Math.floor(Math.random() * copy.length);
+    picked.push(copy.splice(idx, 1)[0]);
   }
+
+  // Trie par points croissants pour garder facile < moyen < difficile
+  // mais assigne TOUJOURS 10/20/30 selon la position après tri
+  picked.sort((a, b) => a.points - b.points);
+
+  const choices = [
+    { ...picked[0], points: 10 },
+    { ...picked[1], points: 20 },
+    { ...picked[2], points: 30 },
+  ];
+
+  socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
+}
 
   function judge(verdict) {
     socket.emit("game:judge", { roomCode: roomState.code, verdict });
