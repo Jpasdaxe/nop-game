@@ -6,7 +6,7 @@
     "audioUrl": "/audio/NORMAN - INTERNET DE LÉPOQUE.mp3",
     "cutAt": 31,
     "answer": "Pour téléphoner et faire d'la muscu",
-    "points": 10
+    "points": 20
   },
   {
     "id": "2",
@@ -15,7 +15,7 @@
     "audioUrl": "/audio/NORMAN - ASSASSIN DES TEMPLIERS (ft Squeezie) 4K.mp3",
     "cutAt": 26,
     "answer": "Dans l'anonymat je mène une vie semée d'embûches ",
-    "points": 10
+    "points": 20
   },
   {
     "id": "3",
@@ -47,7 +47,7 @@
   {
     "id": "6",
     "title": "LUIGI CLASH MARIO",
-    "artist": "Norman 24 mots",
+    "artist": "Norman 19 mots",
     "audioUrl": "/audio/NORMAN - LUIGI CLASH MARIO.mp3",
     "cutAt": 91 ,
     "answer": "Je n'ai pas la peste, je ne suis pas boiteu. Alors pourquoi luigi est toujours le joueur 2 ?",
@@ -56,10 +56,10 @@
   {
     "id": "7",
     "title": "CONFINÉS",
-    "artist": "JOYCA 13 mots",
+    "artist": "JOYCA 5 mots",
     "audioUrl": "/audio/JOYCA - CONFINÉS.mp3",
     "cutAt": 22.3,
-    "answer": "J'dois rester chez moi, c'est l'président qui l'a dit !",
+    "answer": "J'dois rester chez moi",
     "points": 10
   },
   {
@@ -92,10 +92,10 @@
   {
     "id": "11",
     "title": "La Fin de Nation Glory",
-    "artist": "FUZE 11 mots",
+    "artist": "FUZE 8 mots",
     "audioUrl": "/audio/Fuze III - La Fin de Nations Glory (Clip Officiel).mp3",
-    "cutAt": 59,
-    "answer": "Nations glory Nations glory vous êtes la casio j'suis la Rolly",
+    "cutAt": 60,
+    "answer": "Vous êtes la casio j'suis la Rolly",
     "points": 10
   },
   {
@@ -113,25 +113,25 @@
     "artist": "Inoxtag 12 mots",
     "audioUrl": "/audio/zizi.mp3",
     "cutAt": 36,
-    "answer": "Jvise ton coeur comme akainu et les prochains se sera nous ",
+    "answer": "J'vise ton coeur comme akainu et les prochains se sera nous ",
     "points": 20
   },
   {
     "id": "14",
     "title": "Bye Bye ft Joyca",
-    "artist": "Squeezie 28 mots",
+    "artist": "Squeezie 29 mots",
     "audioUrl": "/audio/Squeezie ft Joyca - Bye Bye.mp3",
     "cutAt": 82.3,
-    "answer": "j'ai attendu si longtemps, ce soir c'est notre moment, c'est juste toi et moi babe mais jte dis bye-bye si tu fais du sale",
+    "answer": "j'ai attendu si longtemps, ce soir c'est notre moment, c'est juste toi et moi babe mais j'te dis bye-bye si tu fais du sale",
     "points": 30
   },
   {
     "id": "15",
     "title": "FRIENDZONE",
-    "artist": "Norman 8 mots",
+    "artist": "Norman 6 mots",
     "audioUrl": "/audio/NORMAN feat NATOO - FRIENDZONE.mp3",
-    "cutAt": 78,
-    "answer": "Je suis destinéeeee ,à me masturber toute l'éternité ",
+    "cutAt": 80,
+    "answer": "à me masturber toute l'éternité ",
     "points": 10
   },
   {
@@ -147,7 +147,7 @@
     "id": "17",
     "title": "Euro 2016 : J'préfère te prévenir",
     "artist": "Lolywood 12 mots",
-    "audioUrl": "/audio/caca.mp3",
+    "audioUrl": "/audio/Euro 2016 Jpréfère te prévenir.mp3",
     "cutAt": 83.2,
     "answer": "on fera même plus l'amour, je penserais qu'à Pierre Ménès ",
     "points": 20
@@ -174,7 +174,7 @@
     "id": "20",
     "title": "ON S'FAIT UN FIFA ?",
     "artist": "Bigorneaux & Coquillage 26 mots",
-    "audioUrl": "/audio/ON SFAIT UN FIFA ? - CLIP.mp3",
+    "audioUrl": "/audio/ON SFAIT UN FIFA  - CLIP.mp3",
     "cutAt": 84.7,
     "answer": "ma mère veut me torturer ou me tuer ça j'sais pas",
     "points": 20
@@ -202,7 +202,7 @@
     "title": "Millionaire",
     "artist": "JOYCA 20 mots",
     "audioUrl": "/audio/JOYCA - Millionaire.mp3",
-    "cutAt": 56.7,
+    "cutAt": 55,
     "answer": "chienne de vie, le coffre est pleins de lingots mais c'est bien plus dure que d'empiler des Lego",
     "points": 30
   },
@@ -238,17 +238,17 @@
     "title": "Réponse à Cyprien",
     "artist": "Squeezie 5 mots",
     "audioUrl": "/audio/Réponse à Cyprien.mp3",
-    "cutAt": 58,
+    "cutAt": 58.2,
     "answer": "Trouveront ça nul a chier",
     "points": 10
   },
   {
     "id": "28",
     "title": "LA COUR DES GRANDS",
-    "artist": "Cyprien 11 mots",
+    "artist": "Cyprien 12 mots",
     "audioUrl": "/audio/LA COUR DES GRANDS (clash Squeezie).mp3",
     "cutAt": 51 ,
-    "answer": "Si le majeur qui mate tes vidéos c'est ton monteur",
+    "answer": "Si le seul majeur qui mate tes vidéos c'est ton monteur",
     "points": 20
   },
   {
@@ -272,7 +272,7 @@
    {
     "id": "31",
     "title": "FREESTYLE DE POTES",
-    "artist": "sQUEEZIE 26 mots",
+    "artist": "sQUEEZIE 11 mots",
     "audioUrl": "/audio/SQUEEZIE - FREESTYLE DE POTES (ft Seb & Maxenss).mp3",
     "cutAt": 31,
     "answer": "J'articule mal donc pour les paroles tu demandes à Nagui",
@@ -308,7 +308,7 @@
   {
     "id": "35",
     "title": "1990 VS 2000 (Clash des générations)",
-    "artist": "SQUEEZIE 16 mots",
+    "artist": "SQUEEZIE 17 mots",
     "audioUrl": "/audio/1990 VS 2000 (Clash des générations).mp3",
     "cutAt": 99,
     "answer": "Les discmans ça avait un son de bâtard, vous y connaissez rien avec vos mp3 tout pétés",
@@ -326,7 +326,7 @@
   {
     "id": "37",
     "title": "Mario Kart",
-    "artist": "Squeezie  6 mots",
+    "artist": "Squeezie  8 mots",
     "audioUrl": "/audio/Squeezie - Mario Kart (Clip Officiel).mp3",
     "cutAt": 67,
     "answer": "C'fils de pute, joue de la flute",
@@ -347,7 +347,7 @@
     "artist": "MICHOU 22 mots",
     "audioUrl": "/audio/MICHOU - M2LT (Clip Officiel).mp3",
     "cutAt": 45 ,
-    "answer": "J'navigue sur la méloooo, on m'dit frérot c'est bien, j'écrit au télo j'fais ça pour les miens",
+    "answer": "J'navigue sur la méloooo, on m'dit frérot c'est bien, j'écrit au tel-hô j'fais ça pour les miens",
     "points": 30
   },
   {
@@ -358,5 +358,185 @@
     "cutAt": 51.8,
     "answer": "C'est comme imaginer la ville sans toits",
     "points": 10
+  },
+   {
+    "id": "41",
+    "title": "Clash Tibo Inshape",
+    "artist": "Juju Fitcats 15 mots",
+    "audioUrl": "/audio/Juju Fitcats - Clash Tibo Inshape (Clip Officiel).mp3",
+    "cutAt": 35.4,
+    "answer": "Et ça fait Bim Bam Boum, y'a pas qu'la veine qui est petite",
+    "points": 20
+  },
+  {
+    "id": "42",
+    "title": "Funkinox ft. Kazzey",
+    "artist": "Inoxtag 5 mots",
+    "audioUrl": "/audio/Inoxtag - Funkinox ft. Kazzey (Clip officiel).mp3",
+    "cutAt": 33.7 ,
+    "answer": "continue c'que tu fais",
+    "points": 10
+  },
+  {
+    "id": "43",
+    "title": "Guerrier",
+    "artist": "DOIGBY 5 mots",
+    "audioUrl": "/audio/Doigby - GUERRIER (clip officiel).mp3",
+    "cutAt": 68.5,
+    "answer": "talent,travail pour faire carrière",
+    "points": 10
+  },
+  {
+    "id": "44",
+    "title": "Clash Jujufitcats",
+    "artist": "Tibo Inshape 24 mots",
+    "audioUrl": "/audio/Tibo InShape - Clash Juju Fitcats (clip officiel).mp3",
+    "cutAt": 96,
+    "answer": "Ta première cuite t'avais 9 ans, j'crois qu't'as des séquelles. Arrête de mater mes fesses quand j'fais la vaisselle",
+    "points": 30
+  },
+  {
+    "id": "45",
+    "title": "Mili Mili",
+    "artist": "Inoxtag 12 mots",
+    "audioUrl": "/audio/INOXTAG - MILI MILI (clip officiel).mp3",
+    "cutAt": 91.7,
+    "answer": "J'suis porté par ma team, j'sirote un sirop d'grenadine",
+    "points": 20
+  },
+  {
+    "id": "46",
+    "title": "Dans le club",
+    "artist": "Michou 4 mots",
+    "audioUrl": "/audio/Michou - Dans le club (Clip Officiel).mp3",
+    "cutAt": 67 ,
+    "answer": "Chica dance avec moi",
+    "points": 10
+  },
+  {
+    "id": "47",
+    "title": "ça va aller",
+    "artist": "Pidi 9 mots",
+    "audioUrl": "/audio/PIDI - Ça va aller (Clip Officiel).mp3",
+    "cutAt": 27,
+    "answer": "que tout s'effondre, t'es pas tout seul",
+    "points": 10
+  },
+  {
+    "id": "48",
+    "title": "Rockstar ft.Inoxtag",
+    "artist": "Michou 25 mots",
+    "audioUrl": "/audio/Michou - Rockstar ft. Inoxtag (Clip Officiel).mp3",
+    "cutAt": 133,
+    "answer": "mais moi j'suis toujours en retard, inox, fais passer mon song dans tous les jukebox, à la fin tu feras ma chorée sur tiktok",
+    "points": 30
+  },
+  {
+    "id": "49",
+    "title": "Fier",
+    "artist": "MICHOU 24 mots",
+    "audioUrl": "/audio/Michou - FIER (Clip Officiel).mp3",
+    "cutAt": 42 ,
+    "answer": "j'ai toujours eu cette lueur d'espoir, j'étais tout seul solo dans le noir et malgré qu'ils refusaient d'y croire",
+    "points": 30
+  },
+  {
+    "id": "50",
+    "title": "Shamballa",
+    "artist": "Anyme 12 mots",
+    "audioUrl": "/audio/Mastu - Balade à deux.mp3",
+    "cutAt": 48.8,
+    "answer": "oe j't'ai vue en boite t'avais des fesses de quality",
+    "points": 20
+  },
+{
+    "id": "51",
+    "title": "La chanson des choses inutiles feat. Julien Doré",
+    "artist": "Mcfly et Carlito 18 mots",
+    "audioUrl": "/audio/La chanson des choses inutiles feat. Julien Doré.mp3",
+    "cutAt": 35.4,
+    "answer": "La petite signature au dos de la carte bleue, linkedin (on ne sait pas), les cookies sur internet",
+    "points": 30
+  },
+  {
+    "id": "52",
+    "title": "La chanson des commentaires",
+    "artist": "Amixem 21 mots",
+    "audioUrl": "/audio/La chanson de l'humour - Natoo.mp3",
+    "cutAt": 33.7 ,
+    "answer": "Ok merci Père Fouras, paye tu tes impôts en france ? J'ai quitté Pornhub pour ta vidéo,  Je m'appelle Léonard",
+    "points": 30
+  },
+  {
+    "id": "53",
+    "title": "La chanson de l'humour",
+    "artist": "Squeezie 5 mots",
+    "audioUrl": "/audio/La chanson de l'humour - Natoo.mp3",
+    "cutAt": 73.5,
+    "answer": "les trois poils de ton cul",
+    "points": 10
+  },
+  {
+    "id": "54",
+    "title": "Influenceur",
+    "artist": "natoo 8 mots",
+    "audioUrl": "/audio/SQUEEZIE - INFLUENCEURS.mp3",
+    "cutAt": 37,
+    "answer": "quand dans les médias on parle de moi",
+    "points": 10
+  },
+  {
+    "id": "55",
+    "title": "la chanson des licornes",
+    "artist": "Natoo 12 mots",
+    "audioUrl": "/audio/La chanson des licornes - Natoo.mp3",
+    "cutAt": 27,
+    "answer": "Chez nous y'a pas de sex, on fait seulement des bisous",
+    "points": 20
+  },
+  {
+    "id": "56",
+    "title": "Kawai ft. Gaelle Garcia",
+    "artist": "Natoo 5 mots",
+    "audioUrl": "/audio/Natoo Gaelle Garcia Diaz Kawai.mp3",
+    "cutAt": 46.3 ,
+    "answer": "ramène ici tes grosses couilles",
+    "points": 10
+  },
+  {
+    "id": "57",
+    "title": "Dégagez d'ici - Sidney feat Vince",
+    "artist": "Le monde à l'envers 8 mots",
+    "audioUrl": "/audio/Dégagez d'ici - Sidney feat Vince (Clip Officiel).mp3",
+    "cutAt": 48.4,
+    "answer": "dégagez d'ici ou vous finirez au cimetière",
+    "points": 20
+  },
+  {
+    "id": "58",
+    "title": "Le rap des cp",
+    "artist": "MonsieurTroun 18 mots",
+    "audioUrl": "/audio/LE RAP des CP.mp3",
+    "cutAt": 45,
+    "answer": "Le maître est un casse-pied, il m'a privé de récrée non c'est pas ma journée",
+    "points": 20
+  },
+  {
+    "id": "59",
+    "title": "Overwatch Rap Battle",
+    "artist": "Squeezie 18 mots",
+    "audioUrl": "/audio/OVERWATCH RAP BATTLE.mp3",
+    "cutAt": 45 ,
+    "answer": "et si tu cries medic !, j't'emmène aux urgences pour mieux te défoncer la gueule,sans ordonnance",
+    "points": 20
+  },
+  {
+    "id": "60",
+    "title": "ON M'APPELLE FUZE III",
+    "artist": "FUZE III 21 mots",
+    "audioUrl": "/audio/FUZE - ON MAPPELLE FUZE III (Musique Complète).mp3",
+    "cutAt": 51.8,
+    "answer": "Un creeper explose ma base, j'ai mon stuff faut que j'le pose, y'a un joueur dans les parages",
+    "points": 30
   }
   ]
