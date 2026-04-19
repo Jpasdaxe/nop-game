@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import SongChoices from "../components/SongChoices";
+import LyricsDisplay from "../components/LyricsDisplay";
 
 const SERVER = import.meta.env.VITE_SERVER_URL || "http://localhost:3001";
 
@@ -285,15 +286,26 @@ export default function GameScreen({
             )}
 
             <div style={{ textAlign:"center" }}>
-              <div style={{ fontFamily:"var(--font-display)", fontSize:"2rem",
-                color:"var(--gold)" }}>{currentSong.title}</div>
-              <div style={{ color:"var(--text-dim)", fontWeight:600 }}>{currentSong.artist}</div>
-              <div style={{ marginTop:8, background:"var(--bg2)", display:"inline-block",
-                padding:"4px 16px", borderRadius:99, color:"var(--gold)",
-                fontFamily:"var(--font-display)", fontSize:"1.1rem" }}>
-                {currentSong.points} pts
-              </div>
-            </div>
+  <div style={{ fontFamily:"var(--font-display)", fontSize:"2rem",
+    color:"var(--gold)" }}>{currentSong.title}</div>
+  <div style={{ color:"var(--text-dim)", fontWeight:600 }}>{currentSong.artist}</div>
+  <div style={{ marginTop:8, background:"var(--bg2)", display:"inline-block",
+    padding:"4px 16px", borderRadius:99, color:"var(--gold)",
+    fontFamily:"var(--font-display)", fontSize:"1.1rem" }}>
+    {currentSong.points} pts
+  </div>
+</div>
+
+{/* Paroles synchronisées */}
+{!audioLoading && currentSong?.lyrics?.length > 0 && (
+  <div style={{ width:"100%", maxWidth:600 }}>
+    <LyricsDisplay
+      audioRef={audioRef}
+      lyrics={currentSong.lyrics}
+      cutAt={currentSong.cutAt}
+    />
+  </div>
+)}
 
             {audioLoading && (
               <div style={{ color:"var(--text-dim)", fontSize:".9rem",
