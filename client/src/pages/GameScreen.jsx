@@ -126,22 +126,29 @@ export default function GameScreen({
   const available = songs.filter(s => !usedSongIds.includes(s.id));
   const pool = available.length >= 3 ? available : songs;
 
-  // Tirage sans remise
-  const picked = [];
-  const copy = [...pool];
-  while (picked.length < 3 && copy.length > 0) {
-    const idx = Math.floor(Math.random() * copy.length);
-    picked.push(copy.splice(idx, 1)[0]);
-  }
+  // Sépare par catégorie de points
+  const easy   = pool.filter(s => s.points === 10);
+  const medium = pool.filter(s => s.points === 20);
+  const hard   = pool.filter(s => s.points === 30);
 
-  // Trie par points croissants pour garder facile < moyen < difficile
-  // mais assigne TOUJOURS 10/20/30 selon la position après tri
-  picked.sort((a, b) => a.points - b.points);
+  // Tire une chanson au hasard dans chaque catégorie
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+  // Fallback si une catégorie est vide : tire dans le pool général
+  const all = [...pool];
+  const pickFallback = () => {
+    const idx = Math.floor(Math.random() * all.length);
+    return all.splice(idx, 1)[0];
+  };
+
+  const choice10 = easy.length   > 0 ? pick(easy)   : pickFallback();
+  const choice20 = medium.length > 0 ? pick(medium) : pickFallback();
+  const choice30 = hard.length   > 0 ? pick(hard)   : pickFallback();
 
   const choices = [
-    { ...picked[0], points: 10 },
-    { ...picked[1], points: 20 },
-    { ...picked[2], points: 30 },
+    { ...choice10, points: 10 },
+    { ...choice20, points: 20 },
+    { ...choice30, points: 30 },
   ];
 
   socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
