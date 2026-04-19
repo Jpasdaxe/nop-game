@@ -139,7 +139,7 @@
     "title": "LA CHANSON DU FAUX",
     "artist": "Norman 26 mots",
     "audioUrl": "/audio/NORMAN - LA CHANSON DU FAUX.mp3",
-    "cutAt": 43.2,
+    "cutAt": 43.1,
     "answer": "Faire 8 ans d'allemand c'est vraiment super utile dans la vie, FAUX. Quand tu va en boite en couple, tu t'amuses vraiment, FAUX",
     "points": 30
   },
@@ -147,7 +147,7 @@
     "id": "17",
     "title": "Euro 2016 : J'préfère te prévenir",
     "artist": "Lolywood 12 mots",
-    "audioUrl": "/audio/Euro 2016 Jpréfère te prévenir.mp3",
+    "audioUrl": "/audio/Euro 2016  Jpréfère te prévenir (mp3cut.net).mp3",
     "cutAt": 83.2,
     "answer": "on fera même plus l'amour, je penserais qu'à Pierre Ménès ",
     "points": 20
@@ -319,7 +319,7 @@
     "title": "Canard",
     "artist": "Squeezie 9 mots",
     "audioUrl": "/audio/Squeezie - Canard.mp3",
-    "cutAt": 83.5 ,
+    "cutAt": 83.7 ,
     "answer": "Bah ducoup dans la maison ça fait 2 clébards",
     "points": 20
   },
@@ -391,7 +391,7 @@
     "title": "Clash Jujufitcats",
     "artist": "Tibo Inshape 24 mots",
     "audioUrl": "/audio/Tibo InShape - Clash Juju Fitcats (clip officiel).mp3",
-    "cutAt": 96,
+    "cutAt": 66,
     "answer": "Ta première cuite t'avais 9 ans, j'crois qu't'as des séquelles. Arrête de mater mes fesses quand j'fais la vaisselle",
     "points": 30
   },
@@ -418,7 +418,7 @@
     "title": "ça va aller",
     "artist": "Pidi 9 mots",
     "audioUrl": "/audio/PIDI - Ça va aller (Clip Officiel).mp3",
-    "cutAt": 27,
+    "cutAt": 27.4,
     "answer": "que tout s'effondre, t'es pas tout seul",
     "points": 10
   },
@@ -444,7 +444,7 @@
     "id": "50",
     "title": "Shamballa",
     "artist": "Anyme 12 mots",
-    "audioUrl": "/audio/Mastu - Balade à deux.mp3",
+    "audioUrl": "/audio/Anyme - Shamballa feat. Shaydee's (Clip officiel).mp3",
     "cutAt": 48.8,
     "answer": "oe j't'ai vue en boite t'avais des fesses de quality",
     "points": 20
@@ -462,7 +462,7 @@
     "id": "52",
     "title": "La chanson des commentaires",
     "artist": "Amixem 21 mots",
-    "audioUrl": "/audio/La chanson de l'humour - Natoo.mp3",
+    "audioUrl": "/audio/LA CHANSON DES COMMENTAIRES - AMIXEM (Clip Officiel).mp3",
     "cutAt": 33.7 ,
     "answer": "Ok merci Père Fouras, paye tu tes impôts en france ? J'ai quitté Pornhub pour ta vidéo,  Je m'appelle Léonard",
     "points": 30
@@ -470,8 +470,8 @@
   {
     "id": "53",
     "title": "La chanson de l'humour",
-    "artist": "Squeezie 5 mots",
-    "audioUrl": "/audio/La chanson de l'humour - Natoo.mp3",
+    "artist": "natoo 5 mots",
+    "audioUrl": "/audio/La chanson de lhumour - Natoo.mp3",
     "cutAt": 73.5,
     "answer": "les trois poils de ton cul",
     "points": 10
@@ -479,7 +479,7 @@
   {
     "id": "54",
     "title": "Influenceur",
-    "artist": "natoo 8 mots",
+    "artist": "squeezie 8 mots",
     "audioUrl": "/audio/SQUEEZIE - INFLUENCEURS.mp3",
     "cutAt": 37,
     "answer": "quand dans les médias on parle de moi",
@@ -517,7 +517,7 @@
     "title": "Le rap des cp",
     "artist": "MonsieurTroun 18 mots",
     "audioUrl": "/audio/LE RAP des CP.mp3",
-    "cutAt": 45,
+    "cutAt": 122,
     "answer": "Le maître est un casse-pied, il m'a privé de récrée non c'est pas ma journée",
     "points": 20
   },
@@ -526,7 +526,7 @@
     "title": "Overwatch Rap Battle",
     "artist": "Squeezie 18 mots",
     "audioUrl": "/audio/OVERWATCH RAP BATTLE.mp3",
-    "cutAt": 45 ,
+    "cutAt": 99.8 ,
     "answer": "et si tu cries medic !, j't'emmène aux urgences pour mieux te défoncer la gueule,sans ordonnance",
     "points": 20
   },
@@ -535,7 +535,7 @@
     "title": "ON M'APPELLE FUZE III",
     "artist": "FUZE III 21 mots",
     "audioUrl": "/audio/FUZE - ON MAPPELLE FUZE III (Musique Complète).mp3",
-    "cutAt": 51.8,
+    "cutAt": 30,
     "answer": "Un creeper explose ma base, j'ai mon stuff faut que j'le pose, y'a un joueur dans les parages",
     "points": 30
   }
