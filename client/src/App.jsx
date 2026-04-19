@@ -17,34 +17,36 @@ export default function App() {
   const [judgeData, setJudgeData]     = useState(null);
   const [usedSongIds, setUsedSongIds] = useState([]);
   const [localStream, setLocalStream] = useState(null);
-  const audioRef       = useRef(new Audio());
-  const roomCodeRef    = useRef(null);
-  const songsRef       = useRef([]);
-  const lastSongUrlRef = useRef(null);
-  const lastCutAtRef   = useRef(0);
+  const audioRef           = useRef(new Audio());
+  const roomCodeRef        = useRef(null);
+  const songsRef           = useRef([]);
+  const lastSongUrlRef     = useRef(null);
+  const lastCutAtRef       = useRef(0);
   const cameraRequestedRef = useRef(false);
 
-  // Demande la caméra une seule fois quand on entre dans le lobby
-  // Demande la caméra UNE SEULE FOIS quand on entre dans le lobby
-// On utilise une ref pour éviter les re-renders
-const cameraRequestedRef = useRef(false);
+  const fetchSongs = () => {
+    fetch(`${import.meta.env.VITE_SERVER_URL || "http://localhost:3001"}/songs`)
+      .then(r => r.json())
+      .then(data => { setSongs(data); songsRef.current = data; })
+      .catch(() => {});
+  };
 
-useEffect(() => {
-  if (cameraRequestedRef.current) return;
-  if (screen === "hostLobby" || screen === "playerLobby" || screen === "game") {
-    cameraRequestedRef.current = true;
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-      .then(stream => {
-        console.log("[camera] stream obtenu");
-        setLocalStream(stream);
-      })
-      .catch(e => {
-        console.warn("[camera] refusée ou indisponible:", e);
-        // On met un stream "vide" pour ne pas bloquer le jeu
-        setLocalStream(null);
-      });
-  }
-}, [screen]);
+  // Demande la caméra UNE SEULE FOIS quand on entre dans le lobby
+  useEffect(() => {
+    if (cameraRequestedRef.current) return;
+    if (screen === "hostLobby" || screen === "playerLobby" || screen === "game") {
+      cameraRequestedRef.current = true;
+      navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+        .then(stream => {
+          console.log("[camera] stream obtenu");
+          setLocalStream(stream);
+        })
+        .catch(e => {
+          console.warn("[camera] refusée ou indisponible:", e);
+          setLocalStream(null);
+        });
+    }
+  }, [screen]);
 
   useEffect(() => {
     socket.connect();
@@ -57,8 +59,8 @@ useEffect(() => {
       }
     });
 
-    socket.on("room:updated",      (state) => { setRoomState(state); });
-    socket.on("game:launched",     (state) => { setRoomState(state); setScreen("game"); });
+    socket.on("room:updated",       (state) => { setRoomState(state); });
+    socket.on("game:launched",      (state) => { setRoomState(state); setScreen("game"); });
     socket.on("game:playerSelected",(state) => { setRoomState(state); setJudgeData(null); });
 
     socket.on("game:songChosen", ({ state }) => {
@@ -118,10 +120,8 @@ useEffect(() => {
     if (roomState?.code) roomCodeRef.current = roomState.code;
   }, [roomState?.code]);
 
-  // CameraGrid visible sur game ET roundEnd — ne se démonte jamais
   const showCameras = (screen === "game" || screen === "roundEnd")
-    && roomState?.players?.length > 0
-    && localStream;
+    && roomState?.players?.length > 0;
 
   const props = {
     socket, roomState, setRoomState,
@@ -134,8 +134,6 @@ useEffect(() => {
 
   return (
     <div style={{ paddingBottom: showCameras ? 160 : 0 }}>
-
-      {/* CameraGrid fixé en bas — monté une seule fois, ne se démonte jamais */}
       {showCameras && (
         <div style={{
           position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
