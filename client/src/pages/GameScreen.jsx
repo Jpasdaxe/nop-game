@@ -13,12 +13,23 @@ export default function GameScreen({
   const [countdown, setCountdown]       = useState(null);
   const [volume, setVolume]             = useState(0.8);
   const [audioLoading, setAudioLoading] = useState(false);
-  const countdownRef = useRef(null);
-  const stopRef      = useRef(null);
+  const [isMyTurn, setIsMyTurn]         = useState(false);
+  const countdownRef  = useRef(null);
+  const stopRef       = useRef(null);
+  const cutCheckRef   = useRef(null);
 
   const isHost   = role === "host";
   const isActive = roomState?.activePlayerId === myId;
   const status   = roomState?.status;
+
+  // Effet visuel "c'est ton tour"
+  useEffect(() => {
+    if (status === "choosing" && isActive) {
+      setIsMyTurn(true);
+      const t = setTimeout(() => setIsMyTurn(false), 3000);
+      return () => clearTimeout(t);
+    }
+  }, [status, isActive]);
 
   useEffect(() => {
     if (audioRef?.current) audioRef.current.volume = volume;
@@ -31,6 +42,7 @@ export default function GameScreen({
 
     clearTimeout(countdownRef.current);
     clearTimeout(stopRef.current);
+    clearInterval(cutCheckRef.current);
     setCountdown(null);
     setSubmitted(false);
     setAnswer("");
@@ -45,29 +57,30 @@ export default function GameScreen({
       audio.currentTime = lag / 1000;
       audio.play().catch(() => {});
 
-      const remaining = (cutAt * 1000) - lag;
-      const cdStart = remaining - 3000;
+      // Surveille currentTime pour couper exactement à cutAt
+      // indépendant des timeouts qui peuvent dériver
+      cutCheckRef.current = setInterval(() => {
+        if (audio.currentTime >= cutAt) {
+          audio.pause();
+          audio.currentTime = 0;
+          clearInterval(cutCheckRef.current);
+          setCountdown(null);
+        }
+      }, 50);
 
-      clearTimeout(countdownRef.current);
-      clearTimeout(stopRef.current);
-      setCountdown(null);
+      // Countdown 3s avant coupure basé sur currentTime
+      const checkCountdown = setInterval(() => {
+        const remaining = cutAt - audio.currentTime;
+        if (remaining <= 3 && remaining > 0) {
+          setCountdown(Math.ceil(remaining));
+        }
+        if (remaining <= 0) {
+          clearInterval(checkCountdown);
+          setCountdown(null);
+        }
+      }, 200);
 
-      if (cdStart > 0) {
-        countdownRef.current = setTimeout(() => {
-          setCountdown(3);
-          let c = 3;
-          const iv = setInterval(() => {
-            c -= 1;
-            if (c > 0) setCountdown(c);
-            else { setCountdown(null); clearInterval(iv); }
-          }, 1000);
-        }, cdStart);
-      }
-
-      stopRef.current = setTimeout(() => {
-        audio.pause();
-        audio.currentTime = 0;
-      }, Math.max(0, remaining));
+      countdownRef.current = checkCountdown;
     };
 
     const onCanPlay = () => {
@@ -82,10 +95,12 @@ export default function GameScreen({
       startAudio(lag);
     };
 
-    // Relance depuis le début (host a cliqué "relancer")
     const onReplay = () => {
-      console.log("[audio:replay] relance depuis le début");
       setAudioLoading(true);
+      clearInterval(cutCheckRef.current);
+      clearInterval(countdownRef.current);
+      clearTimeout(stopRef.current);
+      setCountdown(null);
       audio.load();
       audio.addEventListener("canplaythrough", () => {
         setAudioLoading(false);
@@ -100,7 +115,8 @@ export default function GameScreen({
       audio.removeEventListener("canplaythrough", onCanPlay);
       socket.off("audio:go",     onGo);
       socket.off("audio:replay", onReplay);
-      clearTimeout(countdownRef.current);
+      clearInterval(cutCheckRef.current);
+      clearInterval(countdownRef.current);
       clearTimeout(stopRef.current);
       setCountdown(null);
       setAudioLoading(false);
@@ -122,37 +138,25 @@ export default function GameScreen({
   }
 
   function selectPlayer(playerId) {
-  if (!isHost) return;
-  const available = songs.filter(s => !usedSongIds.includes(s.id));
-  const pool = available.length >= 3 ? available : songs;
+    if (!isHost) return;
+    const available = songs.filter(s => !usedSongIds.includes(s.id));
+    const pool = available.length >= 3 ? available : songs;
 
-  // Sépare par catégorie de points
-  const easy   = pool.filter(s => s.points === 10);
-  const medium = pool.filter(s => s.points === 20);
-  const hard   = pool.filter(s => s.points === 30);
+    const easy   = pool.filter(s => s.points === 10);
+    const medium = pool.filter(s => s.points === 20);
+    const hard   = pool.filter(s => s.points === 30);
+    const pick   = (arr) => arr[Math.floor(Math.random() * arr.length)];
+    const all    = [...pool];
+    const pickFallback = () => all.splice(Math.floor(Math.random() * all.length), 1)[0];
 
-  // Tire une chanson au hasard dans chaque catégorie
-  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+    const choices = [
+      { ...(easy.length   > 0 ? pick(easy)   : pickFallback()), points: 10 },
+      { ...(medium.length > 0 ? pick(medium) : pickFallback()), points: 20 },
+      { ...(hard.length   > 0 ? pick(hard)   : pickFallback()), points: 30 },
+    ];
 
-  // Fallback si une catégorie est vide : tire dans le pool général
-  const all = [...pool];
-  const pickFallback = () => {
-    const idx = Math.floor(Math.random() * all.length);
-    return all.splice(idx, 1)[0];
-  };
-
-  const choice10 = easy.length   > 0 ? pick(easy)   : pickFallback();
-  const choice20 = medium.length > 0 ? pick(medium) : pickFallback();
-  const choice30 = hard.length   > 0 ? pick(hard)   : pickFallback();
-
-  const choices = [
-    { ...choice10, points: 10 },
-    { ...choice20, points: 20 },
-    { ...choice30, points: 30 },
-  ];
-
-  socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
-}
+    socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
+  }
 
   function judge(verdict) {
     socket.emit("game:judge", { roomCode: roomState.code, verdict });
@@ -171,6 +175,29 @@ export default function GameScreen({
     <div style={{ minHeight:"100vh", display:"flex", flexDirection:"column",
       gap:16, padding:16, maxWidth:860, margin:"0 auto" }}>
 
+      {/* Overlay "c'est ton tour !" */}
+      {isMyTurn && (
+        <div style={{
+          position:"fixed", top:0, left:0, right:0, bottom:0, zIndex:200,
+          display:"flex", flexDirection:"column", alignItems:"center",
+          justifyContent:"center", pointerEvents:"none",
+          background:"rgba(0,0,0,.6)",
+          animation:"fadeInOut 3s ease forwards",
+        }}>
+          <div style={{
+            fontFamily:"var(--font-display)", fontSize:"5rem",
+            color:"var(--gold)", letterSpacing:".05em",
+            textShadow:"0 0 60px rgba(245,200,66,.8)",
+            animation:"pop .4s cubic-bezier(.34,1.56,.64,1) both",
+          }}>
+            C'EST TON TOUR !
+          </div>
+          <div style={{ color:"var(--text-dim)", fontSize:"1.2rem", marginTop:16 }}>
+            Choisis ta chanson
+          </div>
+        </div>
+      )}
+
       {/* Volume */}
       <div style={{ display:"flex", alignItems:"center", gap:10,
         background:"var(--card)", border:"1px solid var(--border)",
@@ -188,7 +215,16 @@ export default function GameScreen({
       {/* Zone centrale */}
       <div className="card" style={{ flex:1, display:"flex", flexDirection:"column",
         gap:20, alignItems:"center", justifyContent:"center", padding:"32px 24px",
-        minHeight:300 }}>
+        minHeight:300,
+        // Bordure dorée si c'est le tour du joueur
+        border: isActive && status === "choosing"
+          ? "2px solid var(--gold)"
+          : "1px solid var(--border)",
+        boxShadow: isActive && status === "choosing"
+          ? "var(--glow-gold)"
+          : "none",
+        transition:"border .3s, box-shadow .3s",
+      }}>
 
         {isHost && status === "waiting" && !judgeData && (
           <div style={{ textAlign:"center", display:"flex",
@@ -220,7 +256,10 @@ export default function GameScreen({
           <div style={{ width:"100%", display:"flex", flexDirection:"column", gap:24 }}>
             <div style={{ textAlign:"center" }}>
               <span style={{ fontFamily:"var(--font-display)", fontSize:"1.5rem",
-                color:"var(--gold)" }}>{activeName}</span>
+                color: isActive ? "var(--gold)" : "var(--text)",
+                textShadow: isActive ? "0 0 20px rgba(245,200,66,.5)" : "none" }}>
+                {activeName}
+              </span>
               <span style={{ color:"var(--text-dim)", marginLeft:10 }}>choisit sa chanson</span>
             </div>
             <SongChoices choices={songChoices} isActive={isActive}
@@ -232,6 +271,7 @@ export default function GameScreen({
           <div style={{ width:"100%", display:"flex", flexDirection:"column",
             gap:20, alignItems:"center" }}>
 
+            {/* Countdown */}
             {countdown !== null && (
               <div style={{ position:"fixed", top:0, left:0, right:0, bottom:0,
                 display:"flex", alignItems:"center", justifyContent:"center",
@@ -255,30 +295,32 @@ export default function GameScreen({
               </div>
             </div>
 
-            {/* Spinner chargement */}
             {audioLoading && (
               <div style={{ color:"var(--text-dim)", fontSize:".9rem",
                 display:"flex", alignItems:"center", gap:8 }}>
                 <span style={{ display:"inline-block", width:12, height:12,
                   border:"2px solid var(--text-dim)", borderTopColor:"var(--gold)",
                   borderRadius:"50%", animation:"spin 1s linear infinite" }} />
-                Chargement de la musique...
+                Chargement...
               </div>
             )}
 
-            {/* Bouton relancer — host uniquement */}
             {isHost && !audioLoading && (
               <button className="btn btn-ghost"
-                style={{ fontSize:".85rem", padding:"8px 16px", color:"var(--text-dim)" }}
+                style={{ fontSize:".85rem", padding:"8px 16px" }}
                 onClick={replayAudio}>
                 Relancer la musique
               </button>
             )}
 
             {!audioLoading && isActive && !submitted && (
-              <div style={{ display:"flex", flexDirection:"column", gap:12,
-                width:"100%", maxWidth:500, alignItems:"center" }}>
-                <div style={{ color:"var(--text-dim)", textAlign:"center" }}>
+              <div style={{ width:"100%", maxWidth:500, display:"flex",
+                flexDirection:"column", gap:12, alignItems:"center",
+                // Highlight si c'est le joueur actif
+                background:"rgba(245,200,66,.05)",
+                border:"1px solid rgba(245,200,66,.2)",
+                borderRadius:"var(--radius)", padding:20 }}>
+                <div style={{ color:"var(--gold)", fontWeight:700, fontSize:".95rem" }}>
                   Complete la suite des paroles :
                 </div>
                 <input type="text" placeholder="Ta reponse..." value={answer}
@@ -369,7 +411,15 @@ export default function GameScreen({
         )}
       </div>
 
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeInOut {
+          0%   { opacity: 0; }
+          15%  { opacity: 1; }
+          75%  { opacity: 1; }
+          100% { opacity: 0; }
+        }
+      `}</style>
     </div>
   );
 }
