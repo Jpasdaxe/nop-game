@@ -71,7 +71,28 @@
     "audioUrl": "/audio/MAITRE CRINGE - JE SUIS UN SNIPER.mp3",
     "cutAt": 37.5,
     "answer": "Je suis dans l'hélicoptère, au sommet de la chaîne alimentaire",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+    { "t": 8.24, "text": "Regarde moi bien " },
+    { "t": 10.94, "text": "Je suis un sniper " },
+    { "t": 11.99, "text": "]Une balle entre les deux yeux " },
+    { "t": 13.33, "text": "Mort, l'écran s'assombrit " },
+    { "t": 14.65, "text": "Tu retournes au spawn mon gars " },
+    { "t": 16.27, "text": "Fais attention à toi " },
+    { "t": 17.61, "text": "Ne te retournes pas" },
+    { "t": 18.93, "text": "Comment tu vas faire pour me renvoyer les bastos que je t'envoie " },
+    { "t": 21.86, "text": "Je suis un sniper " },
+    { "t": 22.92, "text": "Ranger vos couteaux vos flèches et vos armures  " },
+    { "t": 25.30, "text": "Car ils ne font pas le poids " },
+    { "t": 26.91, "text": "Charger à bloc canon enclenché " },
+    { "t": 28.52, "text": "Vélocité 2000 m/s " },
+    { "t": 30.38, "text": "Comment tu vas faire pour esquiver ça" },
+    { "t": 32.25, "text": "Entraîner depuis des années à sniper" },
+    { "t": 34.35, "text": "C'est pas un archer ni un boucher qui va me stopper " },
+    { "t": 32.25, "text": "Entraîner depuis des années à sniper" },
+    { "t": 34.35, "text": "C'est pas un archer ni un boucher qui va me stopper " },
+    { "t": 37.57, "text": "???" }
+    ]
   },
   {
     "id": "6",
@@ -80,7 +101,24 @@
     "audioUrl": "/audio/NORMAN - LUIGI CLASH MARIO.mp3",
     "cutAt": 91 ,
     "answer": "Je n'ai pas la peste, je ne suis pas boiteu. Alors pourquoi luigi est toujours le joueur 2 ?",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+    { "t": 1, "text": "Vingt années que je suis dans le game Et je sais que Mario sera toujours le favori " },
+    { "t": 6, "text": "Le préféré, le numéro un Mais bon, au fond de mon cœur ça ne me dérange pas Faux" },
+    { "t": 13, "text": "Je ne suis plus gentil, Luigi sort la kalash'Pendant son sommeil, j'vais lui refaire la moustache " },
+    { "t": 20, "text": "On verra bientôt qui sera le champion Quand j'lui ferai avaler ses deux-cents champignons " },
+    { "t": 25, "text": "Mon kart est pourave, il tombe toujours en panne J'peux pas tourner, j'me prends toutes les peaux de banane " },
+    { "t": 30, "text": "Pour lui niquer sa race, je n'ai qu'une carapace Moi j'veux qu'on case le mode kamikaze " },
+    { "t": 34, "text": "Comment voulez-vous que Mario soit le maître? Alors que ce mec mesure moins d'un mètre?" },
+    { "t": 39, "text": "Cette petite lopette s'habille en salopette Alors que moi, ah ouais moi aussi en fait" },
+    { "t": 44, "text": "L.U.I.G.I mon nom c'est Luigi Here we, here we go, cest la fin de Mario " },
+    { "t": 54, "text": "Hé moi jsuis vénère, jdois m'habiller en vert Avec cette couleur, on me prend pour un éboueur" },
+    { "t": 58, "text": "Mario par là, Mario par-ci Le perso quon choisit ce n'est jamais Luigi " },
+    { "t": 64, "text": "Pourtant jfais des efforts, Luigi fait du sport J'ai un max de pecs, lui est gros comme un porc " },
+    { "t": 68, "text": "Luigis Mansion c'était ma carrière solo, mais en arme de tueur Ils m'ont mis un aspirateur " },
+    { "t": 81, "text": "L.U.I.G.I mon nom cest Luigi Here we, here we go, cest la fin de Mario" },
+    { "t": 90, "text": "???" }
+    ]
   },
   {
     "id": "7",
@@ -89,8 +127,16 @@
     "audioUrl": "/audio/JOYCA - CONFINÉS.mp3",
     "cutAt": 22.3,
     "answer": "J'dois rester chez moi",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+    { "t": 1, "text": "Confinés, yeah-yeah C'est le jour un It's JOYCA " },
+    { "t": 6, "text": "Comme tous les matins, morning routine Déjeuner, café et vitamines" },
+    { "t": 11, "text": "D'ailleurs, j'ai plus d'fruits, faut qu'j'aille en acheter Ça tombe bien, j'connais Tony l'maraîcher " },
+    { "t": 15, "text": "J'allume la télé avant d'partir Discours en direct, plus personne ne peut sortir " },
+    { "t": 22, "text": "???" }
+    ]
   },
+
   {
     "id": "8",
     "title": "Déprime",
@@ -98,7 +144,22 @@
     "audioUrl": "/audio/Mastu - Déprime.mp3",
     "cutAt": 67,
     "answer": "Pourquoi devrais-je continuer tout ça ?",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+    { "t": 9, "text": "Pas envie de tourner la vidéo, il est trop tard Et pourquoi est-ce que je ferais semblant tel un bâtard? (Ah, oui) " },
+    { "t": 15, "text": "C'est ça la question Hormis l'argent, est-ce que j'ai vraiment d'autres raisons?" },
+    { "t": 19, "text": "J'avoue que je m'sens bloqué Sur les terres angevines, j'ai du mal à respirer " },
+    { "t": 24, "text": "Le lieu ne compte même pas J'ai l'impression que peu importe où j'suis, j'suis pas là " },
+    { "t": 30, "text": "On appelle ça la déprime, j'ai tous les symptômes Et ce, d'puis tout petit" },
+    { "t": 34, "text": "Moi, j'appelle ça vie d'adulte, ça fait des annéesQue ça m'intoxique" },
+    { "t": 39, "text": "Pas facile de s'faire des potes, quand t'es connu, t'es coincé T'as le melon quand tu dis qu't'es fier d'avoir un peu percé" },
+    { "t": 43, "text": "Toujours dans le doute quand tu rencontres un gars cool L'est-il autant parce qu'il veut s'en mettre plein les fouilles? " },
+    { "t": 48, "text": "Les yeux collés sur mon téléphone, eh Toute la journée, j'peux pas m'en passer, eh" },
+    { "t": 53, "text": "Les stats ont baissé, mon égo est brisé J'ai mal au ventre, ça veut plus s'arrêter" },
+    { "t": 58, "text": "On appelle ça la déprime, j'ai tous les symptômes Et ce, d'puis tout petit " },
+    { "t": 63, "text": "Moi, j'appelle ça vie d'adulte, ça fait des années Que ça m'intoxique (yeah yeah yeah)" },
+    { "t": 67, "text": "???" }
+    ]
   },
   {
     "id": "9",
