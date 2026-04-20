@@ -161,14 +161,18 @@ function getRoomState(roomCode) {
     status: room.status,
     players: room.players,
     activePlayerId: room.activePlayerId,
-    // Choix de chansons sans les réponses
     songChoices: room.songChoices.map(({ title, artist, points, audioUrl, cutAt }) => ({
       title, artist, points, audioUrl, cutAt
     })),
     currentSong: room.currentSong
-      ? { title: room.currentSong.title, artist: room.currentSong.artist,
-          points: room.currentSong.points, audioUrl: room.currentSong.audioUrl,
-          cutAt: room.currentSong.cutAt }
+      ? {
+          title:   room.currentSong.title,
+          artist:  room.currentSong.artist,
+          points:  room.currentSong.points,
+          audioUrl: room.currentSong.audioUrl,
+          cutAt:   room.currentSong.cutAt,
+          lyrics:  room.currentSong.lyrics || [],  // ← ajoute ça
+        }
       : null,
   };
 }
