@@ -33,7 +33,7 @@
     "id": "3",
     "title": "C'est nous dans le top (Brainrot)",
     "artist": "UNCHAINED 5 mots",
-    "audioUrl": "/audio/UNCHAINED - C'est nous dans le top (Brainrot).mp3",
+    "audioUrl": "/audio/UNCHAINED - Cest nous dans le top (Brainrot).mp3",
     "cutAt": 43,
     "answer": "Maintenant j'ai le strawberry ",
     "points": 20,
@@ -42,7 +42,7 @@
     { "t": 16, "text": "J'garde le focus, évite les pièges Ils veulent me scam mais j'les baise Unchained, je lock le spot J'avance, droit vers le top " },
     { "t": 24, "text": "Brainrot, c'est nous dans le top Brainrot, c'est nous dans le top, brainrot Brainrot, c'est nous dans le top Brainrot, c'est nous dans le top, brainrot" },
     { "t": 40, "text": "Parti d'un Pizzanini" },
-    { "t": 40, "text": "???" }
+    { "t": 42, "text": "???" }
     
   ]
   },
@@ -53,7 +53,16 @@
     "audioUrl": "/audio/SQUEEZIE - TOP 1.mp3",
     "cutAt": 56.8,
     "answer": "J'ai voulu faire top 1 sans l'aide d'aucun copain, sans la puissance d'un forrain ni le charisme d'un vilain",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+    { "t": 10, "text": "Gérer l'atterrissage J'suis hyper chaud, j'ai vite la weapon que tout le monde s'arrache J'te tue pépouze, t'es minable J'le vois ton piège collé au plafond (grillé)" },
+    { "t": 17, "text": "Mec, tu vas faire dans ton pantalon J'te vois au loin, tu restes statique J'te la mets dans la tête puis je m'astique " },
+    { "t": 24, "text": "AR, pompe ou Uzi J'gère mes 1v1 easy Retour à la réalité J'suis pas Gota, j'suis Squeezie (j'suis Squeezie)" },
+    { "t": 29, "text": "Et ce mec sur un toit lointain (ah ouais) Qui snipe et a un gros killfeed (oh le bâtard) Et ce joueur qui campe dans les toilettes (mais nan) Qui boit ses popos de shield" },
+    { "t": 39, "text": "Et ce feeling désagréable d'être en retard dans la tempête Et ces pensées noires qui te traversent Quand tu perds face au joueur adverse" },
+    { "t": 47, "text": "J'mate des streams pour m'entraîner Mais j'reste un joueur tout pété Chaque game on m'appelle Bambi Facile à kill comme Squeezie" },
+    { "t": 56, "text": "???" }
+    ]
   },
   {
     "id": "5",
