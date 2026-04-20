@@ -37,80 +37,101 @@ export default function GameScreen({
   }, [volume]);
 
   useEffect(() => {
-    if (status !== "playing" || !roomState?.currentSong) return;
-    const { audioUrl, cutAt } = roomState.currentSong;
-    const audio = audioRef.current;
+  if (status !== "playing" || !roomState?.currentSong) return;
+  const { audioUrl, cutAt } = roomState.currentSong;
+  const audio = audioRef.current;
 
-    clearTimeout(countdownRef.current);
-    clearTimeout(stopRef.current);
+  // Nettoie TOUT avant de recommencer
+  clearInterval(cutCheckRef.current);
+  clearInterval(countdownRef.current);
+  clearTimeout(stopRef.current);
+  socket.off("audio:go");
+  socket.off("audio:replay");
+  setCountdown(null);
+  setSubmitted(false);
+  setAnswer("");
+  setAudioLoading(true);
+
+  audio.pause();
+  audio.src = SERVER + audioUrl;
+  audio.volume = volume;
+  audio.load();
+
+  const startAudio = (lagMs = 0) => {
+    const lag = Math.min(lagMs, 2000);
+    audio.currentTime = lag / 1000;
+    audio.play().catch(() => {});
+
     clearInterval(cutCheckRef.current);
+    clearInterval(countdownRef.current);
     setCountdown(null);
-    setSubmitted(false);
-    setAnswer("");
-    setAudioLoading(true);
 
-    audio.src = SERVER + audioUrl;
-    audio.volume = volume;
-    audio.load();
+    cutCheckRef.current = setInterval(() => {
+      if (!audioRef.current) return;
+      if (audioRef.current.currentTime >= cutAt) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        clearInterval(cutCheckRef.current);
+        setCountdown(null);
+      }
+    }, 50);
 
-    const startAudio = (lagMs = 0) => {
-      const lag = Math.min(lagMs, 2000);
-      audio.currentTime = lag / 1000;
-      audio.play().catch(() => {});
+    countdownRef.current = setInterval(() => {
+      if (!audioRef.current) return;
+      const remaining = cutAt - audioRef.current.currentTime;
+      if (remaining <= 3 && remaining > 0) {
+        setCountdown(Math.ceil(remaining));
+      }
+      if (remaining <= 0) {
+        clearInterval(countdownRef.current);
+        setCountdown(null);
+      }
+    }, 200);
+  };
 
-      // Surveille currentTime pour couper exactement à cutAt
-      // indépendant des timeouts qui peuvent dériver
-      cutCheckRef.current = setInterval(() => {
-        if (audio.currentTime >= cutAt) {
-          audio.pause();
-          audio.currentTime = 0;
-          clearInterval(cutCheckRef.current);
-          setCountdown(null);
-        }
-      }, 50);
+  const onCanPlay = () => {
+    setAudioLoading(false);
+    socket.emit("audio:ready", { roomCode: roomState.code });
+  };
+  audio.addEventListener("canplaythrough", onCanPlay, { once: true });
 
-      // Countdown 3s avant coupure basé sur currentTime
-      const checkCountdown = setInterval(() => {
-        const remaining = cutAt - audio.currentTime;
-        if (remaining <= 3 && remaining > 0) {
-          setCountdown(Math.ceil(remaining));
-        }
-        if (remaining <= 0) {
-          clearInterval(checkCountdown);
-          setCountdown(null);
-        }
-      }, 200);
+  // once = s'autodétruit après le premier appel, impossible d'en accumuler
+  const onGo = ({ serverTime }) => {
+    const lag = Date.now() - serverTime;
+    console.log("[audio:go] lag:", lag, "ms");
+    startAudio(lag);
+  };
+  socket.once("audio:go", onGo);
 
-      countdownRef.current = checkCountdown;
-    };
-
-    const onCanPlay = () => {
-      setAudioLoading(false);
-      socket.emit("audio:ready", { roomCode: roomState.code });
-    };
-    audio.addEventListener("canplaythrough", onCanPlay, { once: true });
-
-    const onGo = ({ serverTime }) => {
-      const lag = Date.now() - serverTime;
-      console.log("[audio:go] lag:", lag, "ms");
-      startAudio(lag);
-    };
-
-    const onReplay = () => {
+  const setupReplay = () => {
+    socket.once("audio:replay", () => {
       setAudioLoading(true);
       clearInterval(cutCheckRef.current);
       clearInterval(countdownRef.current);
-      clearTimeout(stopRef.current);
       setCountdown(null);
+      audio.pause();
       audio.load();
       audio.addEventListener("canplaythrough", () => {
         setAudioLoading(false);
         startAudio(0);
+        // Réenregistre le listener replay pour les prochains replays
+        setupReplay();
       }, { once: true });
-    };
+    });
+  };
+  setupReplay();
 
-    socket.on("audio:go",     onGo);
-    socket.on("audio:replay", onReplay);
+  return () => {
+    audio.removeEventListener("canplaythrough", onCanPlay);
+    socket.off("audio:go",     onGo);
+    socket.off("audio:replay");
+    clearInterval(cutCheckRef.current);
+    clearInterval(countdownRef.current);
+    clearTimeout(stopRef.current);
+    setCountdown(null);
+    setAudioLoading(false);
+  };
+}, [status, roomState?.currentSong?.audioUrl]);
 
     return () => {
       audio.removeEventListener("canplaythrough", onCanPlay);
