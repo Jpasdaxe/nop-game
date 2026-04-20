@@ -91,7 +91,7 @@
     { "t": 34.35, "text": "C'est pas un archer ni un boucher qui va me stopper " },
     { "t": 32.25, "text": "Entraîner depuis des années à sniper" },
     { "t": 34.35, "text": "C'est pas un archer ni un boucher qui va me stopper " },
-    { "t": 37.57, "text": "???" }
+    { "t": 37.35, "text": "???" }
     ]
   },
   {
@@ -168,7 +168,18 @@
     "audioUrl": "/audio/KSI - Thick Of It (feat. Trippie Redd) [Official Music Video].mp3",
     "cutAt": 57,
     "answer": "From the screen to the ring to the pen to the king ",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+    { "t": 4, "text": "I'm in the thick of it, everybody knows They know me where it snows, I skied in and they froze " },
+    { "t": 11, "text": "I don't know no nothin' 'bout no ice, I'm just cold Forty somethin' milli' subs or so, I've been told" },
+    { "t": 18, "text": "I'm in my prime but this ain't even final form " },
+    { "t": 21, "text": "They knocked me down, but still, my feet, they find the floor" },
+    { "t": 24, "text": "I went from living rooms straight up to sold-out tours Life's a fight, but trust, I'm ready for the war" },
+    { "t": 31, "text": "Whoa-oh-oh This is how the story goes Whoa-oh-oh I guess this is how the story goes" },
+    { "t": 44, "text": "I'm in the thick of it, everybody knows They know me where it snows, I skied in and they froze" },
+    { "t": 50, "text": "I don't know no nothin' 'bout no ice, I'm just cold Forty somethin' milli' subs or so, I've been told " },
+    { "t": 57, "text": "???" }
+    ]
   },
   {
     "id": "10",
