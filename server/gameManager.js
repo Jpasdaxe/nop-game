@@ -78,7 +78,7 @@ function chooseSong(roomCode, playerId, choiceIndex) {
   if (room.status !== "choosing") return { success: false, error: "Mauvais état" };
 
   const song = room.songChoices[choiceIndex];
-  if (!song) return { success: false, error: "Choix invalide" };
+  if (!song) return { success: false, error: "Catégorie épuisée" }; // ← null rejeté
 
   room.currentSong = song;
   room.status = "playing";

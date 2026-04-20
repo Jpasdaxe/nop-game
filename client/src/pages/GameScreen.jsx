@@ -139,25 +139,23 @@ export default function GameScreen({
   }
 
   function selectPlayer(playerId) {
-    if (!isHost) return;
-    const available = songs.filter(s => !usedSongIds.includes(s.id));
-    const pool = available.length >= 3 ? available : songs;
+  if (!isHost) return;
+  const available = songs.filter(s => !usedSongIds.includes(s.id));
+  const pool = available.length > 0 ? available : songs;
 
-    const easy   = pool.filter(s => s.points === 10);
-    const medium = pool.filter(s => s.points === 20);
-    const hard   = pool.filter(s => s.points === 30);
-    const pick   = (arr) => arr[Math.floor(Math.random() * arr.length)];
-    const all    = [...pool];
-    const pickFallback = () => all.splice(Math.floor(Math.random() * all.length), 1)[0];
+  const easy   = pool.filter(s => s.points === 10);
+  const medium = pool.filter(s => s.points === 20);
+  const hard   = pool.filter(s => s.points === 30);
+  const pick   = (arr) => arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
 
-    const choices = [
-      { ...(easy.length   > 0 ? pick(easy)   : pickFallback()), points: 10 },
-      { ...(medium.length > 0 ? pick(medium) : pickFallback()), points: 20 },
-      { ...(hard.length   > 0 ? pick(hard)   : pickFallback()), points: 30 },
-    ];
+  const choices = [
+    easy.length   > 0 ? { ...pick(easy),   points: 10 } : null,
+    medium.length > 0 ? { ...pick(medium), points: 20 } : null,
+    hard.length   > 0 ? { ...pick(hard),   points: 30 } : null,
+  ];
 
-    socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
-  }
+  socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
+}
 
   function judge(verdict) {
     socket.emit("game:judge", { roomCode: roomState.code, verdict });
