@@ -11,7 +11,7 @@
     { "t": 6, "text": "C'était l'époque d'internet de l'époque À l'époque, il n'y avait pas les pokes" },
     { "t": 13, "text": "On ne googlelisait pas: on lycossait sur Lycos" },
     { "t": 20, "text": "On se donnait rencard le soir sur MSN pour s'envoyer des wizz" },
-    { "t": 25, "text": "Les téléphones n'avaient pas de 4G C'était des téléphones pour téléphoner" },
+    { "t": 25, "text": "Les téléphones n'avaient pas de 4G C'était des téléphones" },
     { "t": 33, "text": "???" }
   ]
   },
@@ -22,7 +22,12 @@
     "audioUrl": "/audio/NORMAN - ASSASSIN DES TEMPLIERS (ft Squeezie) 4K.mp3",
     "cutAt": 26,
     "answer": "Dans l'anonymat je mène une vie semée d'embûches ",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+    { "t": 10, "text": "J'fais des trucs un peu malsains J'mène une vie d'assassin À éliminer sans pitié, les templiers " },
+    { "t": 20, "text": "J'arpente les rues sapé comme un moine Lame dans la manche, tueur dans l'âme " },
+    { "t": 25, "text": "???" }
+  ]
   },
   {
     "id": "3",
@@ -31,7 +36,15 @@
     "audioUrl": "/audio/UNCHAINED - C'est nous dans le top (Brainrot).mp3",
     "cutAt": 43,
     "answer": "Maintenant j'ai le strawberry ",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+    { "t": 3, "text": "Mode, mode brainrot, yeah yeah yeah Unchained on top Je me co encore une fois Grind en boucle, y'a pas le choix" },
+    { "t": 16, "text": "J'garde le focus, évite les pièges Ils veulent me scam mais j'les baise Unchained, je lock le spot J'avance, droit vers le top " },
+    { "t": 24, "text": "Brainrot, c'est nous dans le top Brainrot, c'est nous dans le top, brainrot Brainrot, c'est nous dans le top Brainrot, c'est nous dans le top, brainrot" },
+    { "t": 40, "text": "Parti d'un Pizzanini" },
+    { "t": 40, "text": "???" }
+    
+  ]
   },
   {
     "id": "4",
