@@ -188,7 +188,17 @@
     "audioUrl": "/audio/FUZE - Clash Kumiz (Musique Complète).mp3",
     "cutAt": 41.2,
     "answer": "l'ajoute pas sur discord ou il t'harcèle",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+    { "t": 1, "text": "(Bon Kumiz, cette chanson t'es dédiée, Mais c'est pas une raison pour me spammer 32 mille messages !)  " },
+    { "t": 6, "text": "Je t'ai d'jà vu dans trop de mes concepts, Lache moi les basques, T'es partout comme l'air. " },
+    { "t": 11, "text": "J'entend tes notifs à 3 heures du mat', Frère c'est quand qu'tu dors ? J'ai reçu tellement de message.. Tellement de message.. " },
+    { "t": 23, "text": "(Tu Tu) Tu respectes pas les règles sur NG sur Pala, Si je lance un event tu seras là, T'passes ta journée sur Discord," },
+    { "t": 28, "text": "A attendre les Pokes. T'as dis que t'était chomeur, Mais tes surement à l'école. " },
+    { "t": 33, "text": "Kumiz tes partout, Intuable comme un.. CAFARD ! Quand t'es dans la game, C'est un CARNAGE, " },
+    { "t": 39, "text": "On te dit quoi faire, Tu fais NAWAK ! " },
+    { "t": 41, "text": "???" }
+    ]
   },
   {
     "id": "11",
@@ -197,7 +207,24 @@
     "audioUrl": "/audio/Fuze III - La Fin de Nations Glory (Clip Officiel).mp3",
     "cutAt": 60,
     "answer": "Vous êtes la casio j'suis la Rolly",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+    { "t": 10, "text": "NG et moi c'est dead Ça rajoute des features mais J'vous vois voler tous nos mods, nos devs Votre HDV pue la merde" },
+    { "t": 16, "text": "On n'a jamais rien vu d'tel Tu m'demandes une pub, j'réponds pas au tel Vous voulez m'deban mais c'est pas la peine (oh-oh-oh)" },
+    { "t": 20, "text": "Vous avez des joueurs mais combien viennent de moi ?" },
+    { "t": 23, "text": "Demain j'quitte le serveur j'crois qu'il ferme dans 2 mois" },
+    { "t": 24, "text": "Faut que j'me rachète une voiture J'ai tout fait gratuitement mais j'aime pas les ingrats" },
+    { "t": 27, "text": "On m'dit FuzeIII, pourquoi tu rappes ? J'sais pas mais toi tu raques" },
+    { "t": 30, "text": "Maintenant si j'reviens ma présence vaut plus d'20k Revends ta Tesla, va prendre ton kart" },
+    { "t": 32, "text": "C'est des voleurs, moi j'suis un rate-pi Sans mes vidéos, dites moi vous êtes qui ? " },
+    { "t": 35, "text": "Sans mes vidéos vous finirez comme Funcraft Paladium ou NG, la réponse est rapide" },
+    { "t": 38, "text": "Paladium à la mort, moi je partirai pas S/O Arty, S/O Pala c'est le roi" },
+    { "t": 41, "text": "J'touche pas à la Bedrock, à jamais Java J'écoute pas les menteurs, à jamais j'avance " },
+    { "t": 45, "text": "Ça commencer par ba- (lix) ça fini par -tard Paladium fait faillite, j'ai pas vu la VAR (hein ?) Paladium c'est nous les pa-rrains" },
+    { "t": 50, "text": "Repose en paix mon gars Arty De NG j'suis parti C'est bien moi FuzeIII C'est pas Blazy (je suis pas blasé)" },
+    { "t": 56, "text": "Nations Glory, Nations Glory Sans moi vos stats elles font gol-ri Nations Glory, Nations Glory" },
+    { "t": 60, "text": "???" }
+    ]
   },
   {
     "id": "12",
@@ -206,7 +233,22 @@
     "audioUrl": "/audio/LA TRASHANCE - Trash (Clip Officiel).mp3",
     "cutAt": 85.3,
     "answer": "Néo c'est mon père, c'est lui qui m'a planté des ailes",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+    { "t": 8, "text": "Vas-y Kelyan, balance l'instru ! On va les faire danser ! (STAT)" },
+    { "t": 13, "text": "J'viens de taper 500k aujourd'hui (OKAY) D'retour à la villa, pour des streams de folie" },
+    { "t": 19, "text": "Toute la semaine, comme le J, mon ami (JULGANE) P'tit live Hot Tub dans le troisième jacuzzi" },
+    { "t": 26, "text": "Demain j'encaisse encore un placement d'produit S/o Sylphe, Pierre, Volst, et merci aussi à Samy (Samy)" },
+    { "t": 33, "text": "Comme à l'ancienne, j'mets pull Animal Crossing N'm'envoie pas tes seings, je ne suis pas intéresséing !" },
+    { "t": 40, "text": "Voyager jusqu'au Cap Marin Manger dans le grand buffet, homard, caviar et foie gras" },
+    { "t": 46, "text": "Il ne me reste plus qu'mes 5 derniers dégradés Papa m'reniera jamais, j'suis ni flic ni— Eh, t'es sérieux là ?!" },
+    { "t": 54, "text": "Faut qu'j'quitte la hess, que j'finisse top 1 tendances C'est la trashance, c'est la trashance !" },
+    { "t": 60, "text": "En classe bizness, je ne compte plus mes dépenses C'est la trashance, c'est la trashance !" },
+    { "t": 68, "text": "J'gagne trop d'oseille, j'dois quitter le sol français Locklear mon exemple, j'fais de très grosses économies" },
+    { "t": 75, "text": "Paire de TN, le nouveau jet financé Ta gadji fait du e-sex sur mon chibi !" },
+    { "t": 81, "text": "Je quitterai jamais Trash, pour Neo j'suis bien trop fidèle (GANG)" },
+    { "t": 85, "text": "???" }
+    ]
   },
   {
     "id": "13",
@@ -215,17 +257,43 @@
     "audioUrl": "/audio/zizi.mp3",
     "cutAt": 36,
     "answer": "J'vise ton coeur comme akainu et les prochains se sera nous ",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+    { "t": 8, "text": "J'vis la vie d'rêve, depuis trois piges Toujours pas d'meuf, depuis trois piges" },
+    { "t": 11, "text": "J'ai la big tige, depuis trois piges J'crois que j'suis en manque, est-ce que tu piges ?" },
+    { "t": 16, "text": "Mexicaine, te amo ou je t'aime ? J'ai la haine car je n'ai jamais ken" },
+    { "t": 20, "text": "Quand j'te vois j'ai l'Ultramare dans le caleçon Faut qu'au lit tu m'apprennes la leçon" },
+    { "t": 24, "text": "T'es sous coco, moi sous coca Belek Oracio t'met un ratio !" },
+    { "t": 27, "text": "Señorita t'as la boca Exotique comme fruit à la passion" },
+    { "t": 31, "text": "Charismatique comme la tempête Grace Des yeux ardents comme l'hermano Ace" },
+    { "t": 36, "text": "???" }
+    ]
   },
   {
     "id": "14",
-    "title": "Bye Bye ft Joyca",
+    "title": "Bye Bye ft. Joyca",
     "artist": "Squeezie 29 mots",
     "audioUrl": "/audio/Squeezie ft Joyca - Bye Bye.mp3",
     "cutAt": 82.3,
     "answer": "j'ai attendu si longtemps, ce soir c'est notre moment, c'est juste toi et moi babe mais j'te dis bye-bye si tu fais du sale",
-    "points": 30
-  },
+    "points": 30,
+    "lyrics": [
+      { "t": 10, "text": "À chaque fois que j'te vois, nos regards se croisent et je me noie" },
+      { "t": 15, "text": "Ta douceur, ma douleur, quand t'approches un autre gars que moi" },
+      { "t": 20, "text": "J'vais tout donner, t'es ma beauté, on va s'évader, tu m'as hypnotisé, hey" },
+      { "t": 25, "text": "Ça va le faire, j'cale l'affaire, l'étau se resserre, je sens la chaleur monter" },
+      { "t": 30, "text": "J'ai attendu si longtemps, ce soir, c'est notre moment" },
+      { "t": 36, "text": "C'est juste toi et moi, babe, mais j'te dis : « Bye-bye », si tu fais du sale" },
+      { "t": 41, "text": "Oh, je rêve de toi, je n'pense qu'à toi et mon cœur fait" },
+      { "t": 46, "text": "Oh, je rêve de toi, je n'pense qu'à toi" },
+      { "t": 50, "text": "Mais j'te dis : « Bye-bye, bye-bye, bye-bye », si tu fais du sale" },
+      { "t": 61, "text": "J'perds le contrôle quand nos corps se frôlent, quand tu bouges en rythme" },
+      { "t": 67, "text": "C'est toi la reine, j'vais pas hésiter, j'peux pas résister, j'peux pas t'éviter" },
+      { "t": 72, "text": "Ils tournent tous autour de toi mais c'est moi qu'tu veux" },
+      { "t": 77, "text": "Cette soirée, on sait qu'on va la finir à deux" },
+      { "t": 82, "text": "???" }
+    ]
+},
   {
     "id": "15",
     "title": "FRIENDZONE",
@@ -233,8 +301,26 @@
     "audioUrl": "/audio/NORMAN feat NATOO - FRIENDZONE.mp3",
     "cutAt": 80,
     "answer": "à me masturber toute l'éternité ",
-    "points": 10
-  },
+    "points": 10,
+    "lyrics": [
+      { "t": 7, "text": "C'est une histoire d'amitié entre une fille et un garçon" },
+      { "t": 13, "text": "Une histoire d'amitié sans ambiguïté" },
+      { "t": 18, "text": "On est des bons copains, entre nous il se passera jamais rien" },
+      { "t": 23, "text": "Pour moi t'es juste un pote asexué - C'est bon ça va, exagère pas trop" },
+      { "t": 28, "text": "C'est toujours bon d'avoir un pote, quelqu'un sur qui compter" },
+      { "t": 32, "text": "Qui fait ton repassage et te sert de repose-pied" },
+      { "t": 38, "text": "On a les mêmes goûts, on dirait presque que t'as fait exprès" },
+      { "t": 43, "text": "Non, j't'assure, j'adore vraiment le maquillage égocide, girl" },
+      { "t": 47, "text": "T'es la première personne à qui je pense quand je suis en vacances" },
+      { "t": 52, "text": "Et que t'as besoin de quelqu'un pour arroser tes plantes" },
+      { "t": 58, "text": "On est fusionnel, on fait tout comme un petit couple" },
+      { "t": 62, "text": "A part faire l'amour, ce qui est quand même la base d'un couple" },
+      { "t": 67, "text": "J'suis dans la friendzone, zone, zone, zone" },
+      { "t": 73, "text": "Bloqué dans la friendzone, zone, zone, zone" },
+      { "t": 77, "text": "Je suis destiné..." },
+      { "t": 80, "text": "???" }
+    ]
+},
   {
     "id": "16",
     "title": "LA CHANSON DU FAUX",
@@ -242,17 +328,42 @@
     "audioUrl": "/audio/NORMAN - LA CHANSON DU FAUX.mp3",
     "cutAt": 43.1,
     "answer": "Faire 8 ans d'allemand c'est vraiment super utile dans la vie, FAUX. Quand tu va en boite en couple, tu t'amuses vraiment, FAUX",
-    "points": 30
-  },
+    "points": 30,
+    "lyrics": [
+      { "t": 4, "text": "Qu'est-ce que je pourrais faire comme vidéo originale ?" },
+      { "t": 9, "text": "Mais qui reste fidèle à mon univers ? Let's go !" },
+      { "t": 25, "text": "C'est faux, c'est nous ça qu'est la prod." },
+      { "t": 27, "text": "C'est nos vraies vies à tous, let's go !" },
+      { "t": 30, "text": "Quand y'a pas de témoins aux toilettes, je me lave quand même les mains" },
+      { "t": 33, "text": "Lors d'une soirée Netflix fade, on voit le film jusqu'à la fin" },
+      { "t": 36, "text": "J'ai vraiment lu tous les livres qu'il y avait dans ma bibliothèque" },
+      { "t": 40, "text": "Youtube ça a plus d'10 ans, maintenant les médias nous respectent" },
+      { "t": 43, "text": "???" }
+    ]
+},
   {
     "id": "17",
-    "title": "Euro 2016 : J'préfère te prévenir",
-    "artist": "Lolywood 12 mots",
-    "audioUrl": "/audio/Euro 2016  Jpréfère te prévenir (mp3cut.net).mp3",
-    "cutAt": 83.2,
-    "answer": "on fera même plus l'amour, je penserais qu'à Pierre Ménès ",
-    "points": 20
-  },
+    "title": "JE SAIS PAS DANSER!",
+    "artist": "Natoo 22 mots",
+    "audioUrl": "/audio/JE SAIS PAS DANSER! - Natoo (mp3cut.net).mp3",
+    "cutAt": 59,
+    "answer": "Je sais pas dancer, je bouge comme un boulet et t'as mal aux yeux même si je fais de mon mieux",
+    "points": 20,
+    "lyrics": [
+      { "t": 9, "text": "Et là je bouge mon boule, je bouge mon boule" },
+      { "t": 15, "text": "Boule, boule, boule, boule, boule, boule, boule" },
+      { "t": 22, "text": "Écartez-vous de la piste, la bombe vient d'arriver" },
+      { "t": 26, "text": "J'commence par m'échauffer, mais j'crois qu'vous êtes pas prêts" },
+      { "t": 29, "text": "J'ai bossé toutes mes chorés sur les clips de Beyoncé" },
+      { "t": 33, "text": "Spotlight sur moi, bouge de là, baby, shake, skake, aïe" },
+      { "t": 37, "text": "Je viens de me vautrer par terre, j'ai allure d'un veau" },
+      { "t": 41, "text": "En fait j'sais pas danser, j'ai deux pieds gauches, c'est chaud" },
+      { "t": 45, "text": "Aussi rigide qu'un balai, quand je danse, c'est trop laid" },
+      { "t": 48, "text": "Regarde ce move, c'est la loose, baby, twerk, twerk, berk" },
+      { "t": 52, "text": "Je me fiche des rageux, seul Chris Marques peut me juger" },
+      { "t": 59, "text": "???" }
+    ]
+},
   {
     "id": "18",
     "title": "LA CHANSON DE LA JOIE",
@@ -260,7 +371,14 @@
     "audioUrl": "/audio/LA CHANSON DE LA JOIE (DEFI YOUTUBE WARRIOR 2 PERDU RE-UPLOAD).mp3",
     "cutAt": 19 ,
     "answer": "c'est un peu vous les kings",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+      { "t": 2, "text": "Là comme ça vous pensez qu'on va faire une chanson qui va se foutre de la gueule de McFly et Carlito" },
+      { "t": 5, "text": "Mais ça c'est pas notre délire Oh non !" },
+      { "t": 7, "text": "Nous on est plus pour l'amour Donc aujourd'hui les mecs On voulait vous dire "},
+      { "t": 11, "text": "Vous êtes nos amis Des amis pour la vie Sur Internet" },
+      { "t": 19, "text": "???" }
+    ]
   },
   {
     "id": "19",
@@ -269,26 +387,83 @@
     "audioUrl": "/audio/ON NE PORTE PAS DE SOUS-VÊTEMENTS.mp3",
     "cutAt": 61,
     "answer": "moins de textile, plus de style",
-    "points": 10
-  },
+    "points": 10,
+    "lyrics": [
+      { "t": 0, "text": "Et tout de suite, le journal présenté par Yannick Dépresseur" },
+      { "t": 4, "text": "Chômage, insécurité, réchauffement climatique, fractures sociales" },
+      { "t": 10, "text": "Le moral des français est au plus bas cette année. Tout de suite pour..." },
+      { "t": 13, "text": "Oh la vache !" },
+      { "t": 18, "text": "On a tous droit de liberté !" },
+      { "t": 23, "text": "On a tous droit de liberté !" },
+      { "t": 27, "text": "Mais dans le monde d'aujourd'hui c'est compliqué" },
+      { "t": 30, "text": "La pression sociale, le regard des gens" },
+      { "t": 35, "text": "C'est facile d'être apaisé. Mais nous on va changer ça !" },
+      { "t": 38, "text": "Pour s'épanouir vraiment, faut pas avoir peur de faire parler" },
+      { "t": 42, "text": "Faut éviter les clichés, oublier le passé, c'est pas si compliqué" },
+      { "t": 45, "text": "Voici notre secret" },
+      { "t": 49, "text": "On ne porte pas de sous-vêtements" },
+      { "t": 54, "text": "Ça oscille et c'est pas une balle" },
+      { "t": 56, "text": "On ne porte pas de sous-vêtements" },
+      { "t": 61, "text": "???" }
+    ]
+},
   {
     "id": "20",
-    "title": "ON S'FAIT UN FIFA ?",
-    "artist": "Bigorneaux & Coquillage 26 mots",
-    "audioUrl": "/audio/ON SFAIT UN FIFA  - CLIP.mp3",
-    "cutAt": 84.7,
-    "answer": "ma mère veut me torturer ou me tuer ça j'sais pas",
-    "points": 20
-  },
+    "title": "S vs L (Clash des filières)",
+    "artist": "Mcfly et Carlito 26 mots",
+    "audioUrl": "/audio/S vs L (Clash des filières) (mp3cut.net).mp3",
+    "cutAt": 95.6,
+    "answer": "La vérité c'est que tu t'en tapes des grands auteurs, toi t'es un branleur, ton but c'est de faire passer les heures",
+    "points": 30,
+    "lyrics": [
+      { "t": 10, "text": "J'vais te prouver pourquoi, meilleurs sont les L" },
+      { "t": 13, "text": "Direct une anastrophe pour t'en mettre plein les prunelles" },
+      { "t": 15, "text": "Pendant qu't'étudiais les gamètes mâles et femelles" },
+      { "t": 17, "text": "Moi, j'découvrais les relations mâles et femelles" },
+      { "t": 19, "text": "Wouah ! T'as fait rimer femelles et femelles" },
+      { "t": 22, "text": "J'crois que t'es prêt pour la grande section d'maternelle" },
+      { "t": 25, "text": "Moi de l'univers, j'étudie les lois" },
+      { "t": 27, "text": "Et j'ai huit fois plus de chance d'avoir un emploi" },
+      { "t": 29, "text": "Petit hic cependant, oui, c'est ton emploi du temps" },
+      { "t": 31, "text": "L'anatomie que tu connais le mieux, c'est celle de la TI-82" },
+      { "t": 34, "text": "Les seules courbes que tu mates, elles sont dans ton cahier d'maths" },
+      { "t": 40, "text": "Se balader en sarouel et parler d'Hemingway" },
+      { "t": 44, "text": "Mais tu sais des bouquins, tu n'en écriras jamais" },
+      { "t": 49, "text": "Se teindre les cheveux et porter des mitaines" },
+      { "t": 53, "text": "Tu finiras à la FNAC, à conseiller le livre de la semaine" },
+      { "t": 58, "text": "Mais dis-moi un truc sérieux, maintenant que t'es Youtubeur" },
+      { "t": 60, "text": "À quoi ça t'a servi d'apprendre ces formules par cœur ?" },
+      { "t": 62, "text": "Ma classe était paradisiaque, tu parlais de tectonique des plaques" },
+      { "t": 65, "text": "Quand j'te vois avec ta pipette, évidemment j'me fume un pet'" },
+      { "t": 69, "text": "L, L, L, L, c'est la hess, hess, hess, hess" },
+      { "t": 74, "text": "L, L, L, L, j'te mets en PLS, S, S" },
+      { "t": 86, "text": "On peut être chercheur, éradiquer les maladies" },
+      { "t": 88, "text": "Toi t'es un sécheur, dès qu'tu peux à l'infirmerie" },
+      { "t": 91, "text": "Tu crois qu'ça t'ouvre de portes, la seule que tu vas ouvrir" },
+      { "t": 93, "text": "C'est celle de Pôle Emploi, la S sera un lointain souvenir" },
+      { "t": 95, "text": "???" }
+    ]
+},
   {
     "id": "21",
     "title": "ON FAIT LA PAIX ❤️",
     "artist": "Cyprien et Squeezie 9 mots",
     "audioUrl": "/audio/ON FAIT LA PAIX ❤️ (clip Cyprien & Squeezie).mp3",
-    "cutAt": 36 ,
+    "cutAt": 36,
     "answer": "J'ai eu la chance de croiser ton chemin",
-    "points": 10
-  },
+    "points": 10,
+    "lyrics": [
+      { "t": 7, "text": "J'sais pas c'qui nous a pris, j'me souviens encore d'ce jour-là" },
+      { "t": 10, "text": "Avril 2013 t'étais mon favori, voilà pourquoi" },
+      { "t": 14, "text": "J't'ai choisi sans hésiter pour partager tous ces moments" },
+      { "t": 18, "text": "Des tournages, des jeux, des clips : on était tous deux ignorants" },
+      { "t": 22, "text": "Certes tu lis des threads mais d'abord faut que j't'avoue" },
+      { "t": 25, "text": "J'les regarde en scred, tu racontes bien c'est ton atout" },
+      { "t": 29, "text": "Et tes miniatures sont fraîches, j'les critique c'est qu'après tout" },
+      { "t": 33, "text": "Si j'savais faire les mêmes, j'arrêterais d'faire mon jaloux" },
+      { "t": 36, "text": "???" }
+    ]
+},
   {
     "id": "22",
     "title": "PAS TOUT SEUL",
@@ -296,8 +471,21 @@
     "audioUrl": "/audio/SQUEEZIE - PAS TOUT SEUL.mp3",
     "cutAt": 38,
     "answer": "j'suis une tête d'affiche de ma génération",
-    "points": 30
-  },
+    "points": 20,
+    "lyrics": [
+      { "t": 2, "text": "Qu'est-ce qu'il se passe ? Tu vois ce petit stress, là ? C'est bon, ça !" },
+      { "t": 6, "text": "Mais quand on est en haut, je ne fais pas un bruit !" },
+      { "t": 9, "text": "On revient dans 3 minutes, ok ?" },
+      { "t": 17, "text": "Ça va, comment ça va ? Il est là-bas ! Ça va ? Comment tu vas ?" },
+      { "t": 26, "text": "Tu vas bien ?" },
+      { "t": 27, "text": "J'passe mes journées devant un écran" },
+      { "t": 30, "text": "Tout l'monde dit qu'c'est indécent" },
+      { "t": 31, "text": "Pour se lancer pas besoin d'élan" },
+      { "t": 34, "text": "Seul contre tous pas grave je me défends" },
+      { "t": 36, "text": "Sept années sont passées et j'vis d'ma passion" },
+      { "t": 38, "text": "???" }
+    ]
+},
   {
     "id": "23",
     "title": "Millionaire",
@@ -305,8 +493,25 @@
     "audioUrl": "/audio/JOYCA - Millionaire.mp3",
     "cutAt": 55,
     "answer": "chienne de vie, le coffre est pleins de lingots mais c'est bien plus dure que d'empiler des Lego",
-    "points": 30
-  },
+    "points": 30,
+    "lyrics": [
+      { "t": 7, "text": "J'ai connu la rue... pendant 8 heures au moins" },
+      { "t": 11, "text": "J'avais perdu... les clés de mon loft parisien" },
+      { "t": 14, "text": "La vie est dure... Plus que 7000 à la fin du mois" },
+      { "t": 17, "text": "Je pouvais même plus... m'payer une paire de Balenciaga !" },
+      { "t": 22, "text": "Je suis pas millionnaire donc comment faire ?" },
+      { "t": 25, "text": "Mon salaire dépasse pas les 20K mensuels" },
+      { "t": 29, "text": "Je suis pas millionnaire donc comment faire ?" },
+      { "t": 32, "text": "Faut que j'augmente le loyer de mes locataires" },
+      { "t": 35, "text": "J'change de Lambo... sept fois dans l'année !" },
+      { "t": 38, "text": "Ça me fait mal au dos... l'important c'est la santé !" },
+      { "t": 41, "text": "J'partirai loin... si seulement je pouvais !" },
+      { "t": 44, "text": "Mais il n'y a plus de kérosène... dans le jet privé !" },
+      { "t": 48, "text": "Chienne de vie mais je continue de lutter..." },
+      { "t": 51, "text": "Mes dernières vacances remontent à lundi dernier !" },
+      { "t": 55, "text": "???" }
+    ]
+},
   {
     "id": "24",
     "title": "CE PETIT CÔTÉ KAWAII !",
@@ -373,7 +578,7 @@
    {
     "id": "31",
     "title": "FREESTYLE DE POTES",
-    "artist": "sQUEEZIE 11 mots",
+    "artist": "squeezie 11 mots",
     "audioUrl": "/audio/SQUEEZIE - FREESTYLE DE POTES (ft Seb & Maxenss).mp3",
     "cutAt": 31,
     "answer": "J'articule mal donc pour les paroles tu demandes à Nagui",
@@ -410,7 +615,7 @@
     "id": "35",
     "title": "1990 VS 2000 (Clash des générations)",
     "artist": "SQUEEZIE 17 mots",
-    "audioUrl": "/audio/1990 VS 2000 (Clash des générations).mp3",
+    "audioUrl": "/audio/1990 VS 2000 (Clash des générations) (mp3cut.net).mp3",
     "cutAt": 99,
     "answer": "Les discmans ça avait un son de bâtard, vous y connaissez rien avec vos mp3 tout pétés",
     "points": 30
@@ -527,7 +732,7 @@
     "id": "48",
     "title": "Rockstar ft.Inoxtag",
     "artist": "Michou 25 mots",
-    "audioUrl": "/audio/Michou - Rockstar ft. Inoxtag (Clip Officiel).mp3",
+    "audioUrl": "/audio/Rockstar (feat. Inoxtag).mp3",
     "cutAt": 133,
     "answer": "mais moi j'suis toujours en retard, inox, fais passer mon song dans tous les jukebox, à la fin tu feras ma chorée sur tiktok",
     "points": 30
@@ -639,5 +844,185 @@
     "cutAt": 30,
     "answer": "Un creeper explose ma base, j'ai mon stuff faut que j'le pose, y'a un joueur dans les parages",
     "points": 30
+  },
+  {
+    "id": "61",
+    "title": "LA CHANTEUSE DE SALLE DE BAIN",
+    "artist": "Alison Wheeler 19 mots",
+    "audioUrl": "/audio/LA CHANTEUSE DE SALLE DE BAIN (mp3cut.net).mp3",
+    "cutAt": 62,
+    "answer": "La douche appartient à tout ceux qui chantent faux, c'est ma tournée j'paye ma teille de shampoing",
+    "points": 30
+  },
+  {
+    "id": "62",
+    "title": "CLASH ASSASSINS",
+    "artist": "JOYCA 8 mots",
+    "audioUrl": "/audio/JOYCA - CLASH ASSASSINS (Feat Mastu) (mp3cut.net).mp3",
+    "cutAt": 48,
+    "answer": "Soulève la capuche ,c'est le poto bob",
+    "points": 10
+  },
+  {
+    "id": "63",
+    "title": "LOVE YOU feat. Mel Pops",
+    "artist": "Nico Là 14 mots",
+    "audioUrl": "/audio/NICO_LÀ - LOVE YOU feat (mp3cut.net).mp3",
+    "cutAt": 71,
+    "answer": "Faut que t'arrêtes d'hésiter Mel, j'suis le tismé de tes rêves ",
+    "points": 20
+  },
+  {
+    "id": "64",
+    "title": "RAP BATTLE DIVISION",
+    "artist": "CYRILmp4 23 mots",
+    "audioUrl": "/audio/RAP BATTLE DIVISION (Clip Officiel) (mp3cut.net).mp3",
+    "cutAt": 67,
+    "answer": "t'aimerais sauver Washington mais tu passes pas la darkzone, au combat tu prends racine, c'est ta tactique qui est un crime",
+    "points": 30
+  },
+  {
+    "id": "65",
+    "title": "SINGAPOUR",
+    "artist": "Henry Tran 19 mots",
+    "audioUrl": "/audio/SINGAPOUR (Le Clip Officiel) (mp3cut.net).mp3",
+    "cutAt": 46.8,
+    "answer": "Mais j'suis pas venu seul, j'suis venu avec des potes Dianos, Naskid et surtout y'a Bedri",
+    "points": 30
+  },
+  {
+    "id": "66",
+    "title": "Jaime Pas Noël - Cyprien & PV Nova",
+    "artist": "Cyprien 27 mots",
+    "audioUrl": "/audio/Jaime Pas Noël - Cyprien & PV Nova (mp3cut.net).mp3",
+    "cutAt": 80 ,
+    "answer": "Je sais j'suis nul en crèche mais j'fais des efforts, j'l'ai sur le bout de la langue le nom du bébé qui dort",
+    "points": 30
+  },
+  {
+    "id": "67",
+    "title": "CLASH TEMPLIERS (Feat Amixem)",
+    "artist": "CYRILmp4 13 mots",
+    "audioUrl": "/audio/CYRILmp4 - CLASH TEMPLIERS (Feat Amixem) (mp3cut.net).mp3",
+    "cutAt": 127,
+    "answer": "Parceque ces terres je les aimes, c'est l'angleterre le monde moderne",
+    "points": 20
+  },
+  {
+    "id": "68",
+    "title": "LE SON DES ENFERS !",
+    "artist": "Kevin Tran 陈科伟 7 mots",
+    "audioUrl": "/audio/DRAGON BALL - LE SON DES ENFERS ! (Music Video) (mp3cut.net).mp3.mp3",
+    "cutAt": 73,
+    "answer": "a fait partie des conquêtes de Yamcha",
+    "points": 10
+  },
+  {
+    "id": "69",
+    "title": "LE CLASH DES ANTI-FUZE",
+    "artist": "FUZE 6 mots",
+    "audioUrl": "/audio/FUZE - LE CLASH DES ANTI-FUZE (Musique Entière).mp3",
+    "cutAt": 26,
+    "answer": "Pour poser vos cochons de morts ",
+    "points": 20
+  },
+  {
+    "id": "70",
+    "title": "FREESTYLE DE L'AUTODÉRISION",
+    "artist": "SQUEEZIE 9 mots",
+    "audioUrl": "/audio/SQUEEZIE - FREESTYLE DE LAUTODÉRISION.mp3",
+    "cutAt": 41.2,
+    "answer": "J'fais kiffer qu'ton fils de 10 ans",
+    "points": 10
+  },
+   {
+    "id": "71",
+    "title": "Rap Gay",
+    "artist": "Fabrice Eboué 8 mots",
+    "audioUrl": "/audio/Rap Gay - Fabrice Eboué.mp3",
+    "cutAt": 48,
+    "answer": "tous mes gars sûr aiment sucer des bites",
+    "points": 10
+  },
+  {
+    "id": "72",
+    "title": "C'EST LA ROULETTE PALADIENNE",
+    "artist": "FUZE 20 mots",
+    "audioUrl": "/audio/FUZE - CEST LA ROULETTE PALADIENNE (Musique Complète).mp3",
+    "cutAt": 14.7,
+    "answer": "le dispenser t'as perturber, j'sais éperdument qu't'es perdu mais pour toi y'a aucun plan B",
+    "points": 30
+  },
+  {
+    "id": "73",
+    "title": "RAMENEZ LE GREC À LA MAISON (PARODIE)",
+    "artist": "Joyca 4 mots",
+    "audioUrl": "/audio/VEGEDREAM - RAMENEZ LE GREC À LA MAISON (PARODIE) (mp3cut.net).mp3",
+    "cutAt": 27.2,
+    "answer": "La barquette de frite",
+    "points": 10
+  },
+  {
+    "id": "74",
+    "title": "LE MONDE DE DISNEY ! Feat BOOSTEE",
+    "artist": "Joyca 28 mots",
+    "audioUrl": "/audio/LE MONDE DE DISNEY ! Feat BOOSTEE (CLIP).mp3",
+    "cutAt": 49,
+    "answer": "Oe c'est vrai que c'est chelou, on sait pas trop ce qu'ils font, même si au fond je pense qu'ils se déboitent le fion",
+    "points": 30
+  },
+  {
+    "id": "75",
+    "title": "Wow Wow Wow",
+    "artist": "Joyca 22 mots",
+    "audioUrl": "/audio/Wow Wow Wow.mp3",
+    "cutAt": 56,
+    "answer": "J'ai posé une basse et un kick, nan j'ai pas vu Titanic, j'sais juste qu'il fini en italique",
+    "points": 30
+  },
+  {
+    "id": "76",
+    "title": "Déca Danse",
+    "artist": "Monsieur Pof 14 mots",
+    "audioUrl": "/audio/Monsieur Pof - Déca Danse (Clip Officiel).mp3",
+    "cutAt": 47,
+    "answer": "Mère fait tout pour faire de moi, le gentleman que je ne suis pas",
+    "points": 20
+  },
+  {
+    "id": "77",
+    "title": "Bannissons le Punisseur",
+    "artist": "Asterion 12 mots",
+    "audioUrl": "/audio/Asterion - Bannissons le Punisseur (official music).mp3",
+    "cutAt": 57 ,
+    "answer": "Combien de fois tu m'embêteras, combien d'argent tu te feras",
+    "points": 30
+  },
+  {
+    "id": "78",
+    "title": "ELEVE VS PROFS : LE CLASH",
+    "artist": "BATZAIR 26 mots",
+    "audioUrl": "/audio/ELEVE VS PROFS LE CLASH (mp3cut.net).mp3",
+    "cutAt": 90.2,
+    "answer": "J'suis un géant de la géo toi t'es juste génant, j'suis un grand qui t'prend de haut car t'es le perdant",
+    "points": 30
+  },
+  { 
+    "id": "79",
+    "title": "SAINT VALENTIN (ft. JUJUFITCATS)",
+    "artist": "TIBO INSHAPE 7 mots",
+    "audioUrl": "/audio/TIBO INSHAPE - SAINT VALENTIN (ft. JUJUFITCATS).mp3",
+    "cutAt": 61,
+    "answer": "Tu es l'homme parfait beau intelligent ",
+    "points": 10
+  },
+  {
+    "id": "80",
+    "title": "PLACEMENTS DE PRODUITS",
+    "artist": "Squeezie 25 mots",
+    "audioUrl": "/audio/SQUEEZIE - PLACEMENTS DE PRODUITS (ft Maxenss).mp3",
+    "cutAt": 107.8,
+    "answer": "j'prépare ma purée vico, j'tente de rallumer l'tél Wiko, échec j'vais voir les potos, j'suis cool j'ramène les ficellos ",
+    "points": 30
   }
-  ]
+]
