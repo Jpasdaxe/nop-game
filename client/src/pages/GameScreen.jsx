@@ -15,15 +15,14 @@ export default function GameScreen({
   const [volume, setVolume]             = useState(0.8);
   const [audioLoading, setAudioLoading] = useState(false);
   const [isMyTurn, setIsMyTurn]         = useState(false);
-  const countdownRef  = useRef(null);
-  const stopRef       = useRef(null);
-  const cutCheckRef   = useRef(null);
+  const countdownRef = useRef(null);
+  const stopRef      = useRef(null);
+  const cutCheckRef  = useRef(null);
 
   const isHost   = role === "host";
   const isActive = roomState?.activePlayerId === myId;
   const status   = roomState?.status;
 
-  // Effet visuel "c'est ton tour"
   useEffect(() => {
     if (status === "choosing" && isActive) {
       setIsMyTurn(true);
@@ -37,106 +36,91 @@ export default function GameScreen({
   }, [volume]);
 
   useEffect(() => {
-  if (status !== "playing" || !roomState?.currentSong) return;
-  const { audioUrl, cutAt } = roomState.currentSong;
-  const audio = audioRef.current;
+    if (status !== "playing" || !roomState?.currentSong) return;
+    const { audioUrl, cutAt } = roomState.currentSong;
+    const audio = audioRef.current;
 
-  // Nettoie TOUT avant de recommencer
-  clearInterval(cutCheckRef.current);
-  clearInterval(countdownRef.current);
-  clearTimeout(stopRef.current);
-  socket.off("audio:go");
-  socket.off("audio:replay");
-  setCountdown(null);
-  setSubmitted(false);
-  setAnswer("");
-  setAudioLoading(true);
-
-  audio.pause();
-  audio.src = SERVER + audioUrl;
-  audio.volume = volume;
-  audio.load();
-
-  const startAudio = (lagMs = 0) => {
-    const lag = Math.min(lagMs, 2000);
-    audio.currentTime = lag / 1000;
-    audio.play().catch(() => {});
-
-    clearInterval(cutCheckRef.current);
-    clearInterval(countdownRef.current);
-    setCountdown(null);
-
-    cutCheckRef.current = setInterval(() => {
-      if (!audioRef.current) return;
-      if (audioRef.current.currentTime >= cutAt) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-        clearInterval(cutCheckRef.current);
-        setCountdown(null);
-      }
-    }, 50);
-
-    countdownRef.current = setInterval(() => {
-      if (!audioRef.current) return;
-      const remaining = cutAt - audioRef.current.currentTime;
-      if (remaining <= 3 && remaining > 0) {
-        setCountdown(Math.ceil(remaining));
-      }
-      if (remaining <= 0) {
-        clearInterval(countdownRef.current);
-        setCountdown(null);
-      }
-    }, 200);
-  };
-
-  const onCanPlay = () => {
-    setAudioLoading(false);
-    socket.emit("audio:ready", { roomCode: roomState.code });
-  };
-  audio.addEventListener("canplaythrough", onCanPlay, { once: true });
-
-  // once = s'autodétruit après le premier appel, impossible d'en accumuler
-  const onGo = ({ serverTime }) => {
-    const lag = Date.now() - serverTime;
-    console.log("[audio:go] lag:", lag, "ms");
-    startAudio(lag);
-  };
-  socket.once("audio:go", onGo);
-
-  const setupReplay = () => {
-    socket.once("audio:replay", () => {
-      setAudioLoading(true);
-      clearInterval(cutCheckRef.current);
-      clearInterval(countdownRef.current);
-      setCountdown(null);
-      audio.pause();
-      audio.load();
-      audio.addEventListener("canplaythrough", () => {
-        setAudioLoading(false);
-        startAudio(0);
-        // Réenregistre le listener replay pour les prochains replays
-        setupReplay();
-      }, { once: true });
-    });
-  };
-  setupReplay();
-
-  return () => {
-    audio.removeEventListener("canplaythrough", onCanPlay);
-    socket.off("audio:go",     onGo);
-    socket.off("audio:replay");
     clearInterval(cutCheckRef.current);
     clearInterval(countdownRef.current);
     clearTimeout(stopRef.current);
+    socket.off("audio:go");
+    socket.off("audio:replay");
     setCountdown(null);
-    setAudioLoading(false);
-  };
-}, [status, roomState?.currentSong?.audioUrl]);
+    setSubmitted(false);
+    setAnswer("");
+    setAudioLoading(true);
+
+    audio.pause();
+    audio.src = SERVER + audioUrl;
+    audio.volume = volume;
+    audio.load();
+
+    const startAudio = (lagMs = 0) => {
+      const lag = Math.min(lagMs, 2000);
+      audio.currentTime = lag / 1000;
+      audio.play().catch(() => {});
+
+      clearInterval(cutCheckRef.current);
+      clearInterval(countdownRef.current);
+      setCountdown(null);
+
+      cutCheckRef.current = setInterval(() => {
+        if (!audioRef.current) return;
+        if (audioRef.current.currentTime >= cutAt) {
+          audioRef.current.pause();
+          audioRef.current.currentTime = 0;
+          clearInterval(cutCheckRef.current);
+          setCountdown(null);
+        }
+      }, 50);
+
+      countdownRef.current = setInterval(() => {
+        if (!audioRef.current) return;
+        const remaining = cutAt - audioRef.current.currentTime;
+        if (remaining <= 3 && remaining > 0) {
+          setCountdown(Math.ceil(remaining));
+        }
+        if (remaining <= 0) {
+          clearInterval(countdownRef.current);
+          setCountdown(null);
+        }
+      }, 200);
+    };
+
+    const onCanPlay = () => {
+      setAudioLoading(false);
+      socket.emit("audio:ready", { roomCode: roomState.code });
+    };
+    audio.addEventListener("canplaythrough", onCanPlay, { once: true });
+
+    const onGo = ({ serverTime }) => {
+      const lag = Date.now() - serverTime;
+      console.log("[audio:go] lag:", lag, "ms");
+      startAudio(lag);
+    };
+    socket.once("audio:go", onGo);
+
+    const setupReplay = () => {
+      socket.once("audio:replay", () => {
+        setAudioLoading(true);
+        clearInterval(cutCheckRef.current);
+        clearInterval(countdownRef.current);
+        setCountdown(null);
+        audio.pause();
+        audio.load();
+        audio.addEventListener("canplaythrough", () => {
+          setAudioLoading(false);
+          startAudio(0);
+          setupReplay();
+        }, { once: true });
+      });
+    };
+    setupReplay();
 
     return () => {
       audio.removeEventListener("canplaythrough", onCanPlay);
-      socket.off("audio:go",     onGo);
-      socket.off("audio:replay", onReplay);
+      socket.off("audio:go", onGo);
+      socket.off("audio:replay");
       clearInterval(cutCheckRef.current);
       clearInterval(countdownRef.current);
       clearTimeout(stopRef.current);
@@ -160,23 +144,23 @@ export default function GameScreen({
   }
 
   function selectPlayer(playerId) {
-  if (!isHost) return;
-  const available = songs.filter(s => !usedSongIds.includes(s.id));
-  const pool = available.length > 0 ? available : songs;
+    if (!isHost) return;
+    const available = songs.filter(s => !usedSongIds.includes(s.id));
+    const pool = available.length > 0 ? available : songs;
 
-  const easy   = pool.filter(s => s.points === 10);
-  const medium = pool.filter(s => s.points === 20);
-  const hard   = pool.filter(s => s.points === 30);
-  const pick   = (arr) => arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
+    const easy   = pool.filter(s => s.points === 10);
+    const medium = pool.filter(s => s.points === 20);
+    const hard   = pool.filter(s => s.points === 30);
+    const pick   = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-  const choices = [
-    easy.length   > 0 ? { ...pick(easy),   points: 10 } : null,
-    medium.length > 0 ? { ...pick(medium), points: 20 } : null,
-    hard.length   > 0 ? { ...pick(hard),   points: 30 } : null,
-  ];
+    const choices = [
+      easy.length   > 0 ? { ...pick(easy),   points: 10 } : null,
+      medium.length > 0 ? { ...pick(medium), points: 20 } : null,
+      hard.length   > 0 ? { ...pick(hard),   points: 30 } : null,
+    ];
 
-  socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
-}
+    socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
+  }
 
   function judge(verdict) {
     socket.emit("game:judge", { roomCode: roomState.code, verdict });
@@ -195,7 +179,6 @@ export default function GameScreen({
     <div style={{ minHeight:"100vh", display:"flex", flexDirection:"column",
       gap:16, padding:16, maxWidth:860, margin:"0 auto" }}>
 
-      {/* Overlay "c'est ton tour !" */}
       {isMyTurn && (
         <div style={{
           position:"fixed", top:0, left:0, right:0, bottom:0, zIndex:200,
@@ -236,13 +219,10 @@ export default function GameScreen({
       <div className="card" style={{ flex:1, display:"flex", flexDirection:"column",
         gap:20, alignItems:"center", justifyContent:"center", padding:"32px 24px",
         minHeight:300,
-        // Bordure dorée si c'est le tour du joueur
         border: isActive && status === "choosing"
-          ? "2px solid var(--gold)"
-          : "1px solid var(--border)",
+          ? "2px solid var(--gold)" : "1px solid var(--border)",
         boxShadow: isActive && status === "choosing"
-          ? "var(--glow-gold)"
-          : "none",
+          ? "var(--glow-gold)" : "none",
         transition:"border .3s, box-shadow .3s",
       }}>
 
@@ -291,7 +271,6 @@ export default function GameScreen({
           <div style={{ width:"100%", display:"flex", flexDirection:"column",
             gap:20, alignItems:"center" }}>
 
-            {/* Countdown */}
             {countdown !== null && (
               <div style={{ position:"fixed", top:0, left:0, right:0, bottom:0,
                 display:"flex", alignItems:"center", justifyContent:"center",
@@ -305,26 +284,25 @@ export default function GameScreen({
             )}
 
             <div style={{ textAlign:"center" }}>
-  <div style={{ fontFamily:"var(--font-display)", fontSize:"2rem",
-    color:"var(--gold)" }}>{currentSong.title}</div>
-  <div style={{ color:"var(--text-dim)", fontWeight:600 }}>{currentSong.artist}</div>
-  <div style={{ marginTop:8, background:"var(--bg2)", display:"inline-block",
-    padding:"4px 16px", borderRadius:99, color:"var(--gold)",
-    fontFamily:"var(--font-display)", fontSize:"1.1rem" }}>
-    {currentSong.points} pts
-  </div>
-</div>
+              <div style={{ fontFamily:"var(--font-display)", fontSize:"2rem",
+                color:"var(--gold)" }}>{currentSong.title}</div>
+              <div style={{ color:"var(--text-dim)", fontWeight:600 }}>{currentSong.artist}</div>
+              <div style={{ marginTop:8, background:"var(--bg2)", display:"inline-block",
+                padding:"4px 16px", borderRadius:99, color:"var(--gold)",
+                fontFamily:"var(--font-display)", fontSize:"1.1rem" }}>
+                {currentSong.points} pts
+              </div>
+            </div>
 
-{/* Paroles synchronisées */}
-{!audioLoading && currentSong?.lyrics?.length > 0 && (
-  <div style={{ width:"100%", maxWidth:600 }}>
-    <LyricsDisplay
-      audioRef={audioRef}
-      lyrics={currentSong.lyrics}
-      cutAt={currentSong.cutAt}
-    />
-  </div>
-)}
+            {!audioLoading && currentSong?.lyrics?.length > 0 && (
+              <div style={{ width:"100%", maxWidth:600 }}>
+                <LyricsDisplay
+                  audioRef={audioRef}
+                  lyrics={currentSong.lyrics}
+                  cutAt={currentSong.cutAt}
+                />
+              </div>
+            )}
 
             {audioLoading && (
               <div style={{ color:"var(--text-dim)", fontSize:".9rem",
@@ -347,7 +325,6 @@ export default function GameScreen({
             {!audioLoading && isActive && !submitted && (
               <div style={{ width:"100%", maxWidth:500, display:"flex",
                 flexDirection:"column", gap:12, alignItems:"center",
-                // Highlight si c'est le joueur actif
                 background:"rgba(245,200,66,.05)",
                 border:"1px solid rgba(245,200,66,.2)",
                 borderRadius:"var(--radius)", padding:20 }}>
