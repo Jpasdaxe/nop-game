@@ -77,13 +77,8 @@ export default function GameScreen({
       countdownRef.current = setInterval(() => {
         if (!audioRef.current) return;
         const remaining = cutAt - audioRef.current.currentTime;
-        if (remaining <= 3 && remaining > 0) {
-          setCountdown(Math.ceil(remaining));
-        }
-        if (remaining <= 0) {
-          clearInterval(countdownRef.current);
-          setCountdown(null);
-        }
+        if (remaining <= 3 && remaining > 0) setCountdown(Math.ceil(remaining));
+        if (remaining <= 0) { clearInterval(countdownRef.current); setCountdown(null); }
       }, 200);
     };
 
@@ -93,12 +88,9 @@ export default function GameScreen({
     };
     audio.addEventListener("canplaythrough", onCanPlay, { once: true });
 
-    const onGo = ({ serverTime }) => {
-      const lag = Date.now() - serverTime;
-      console.log("[audio:go] lag:", lag, "ms");
-      startAudio(lag);
-    };
-    socket.once("audio:go", onGo);
+    socket.once("audio:go", ({ serverTime }) => {
+      startAudio(Date.now() - serverTime);
+    });
 
     const setupReplay = () => {
       socket.once("audio:replay", () => {
@@ -119,7 +111,7 @@ export default function GameScreen({
 
     return () => {
       audio.removeEventListener("canplaythrough", onCanPlay);
-      socket.off("audio:go", onGo);
+      socket.off("audio:go");
       socket.off("audio:replay");
       clearInterval(cutCheckRef.current);
       clearInterval(countdownRef.current);
@@ -141,6 +133,11 @@ export default function GameScreen({
 
   function handleAbandon() {
     socket.emit("game:abandon", { roomCode: roomState.code });
+  }
+
+  // Annuler le round en cours (host)
+  function cancelRound() {
+    socket.emit("game:cancel", { roomCode: roomState.code });
   }
 
   function selectPlayer(playerId) {
@@ -179,20 +176,15 @@ export default function GameScreen({
     <div style={{ minHeight:"100vh", display:"flex", flexDirection:"column",
       gap:16, padding:16, maxWidth:860, margin:"0 auto" }}>
 
+      {/* Overlay C'EST TON TOUR */}
       {isMyTurn && (
-        <div style={{
-          position:"fixed", top:0, left:0, right:0, bottom:0, zIndex:200,
+        <div style={{ position:"fixed", top:0, left:0, right:0, bottom:0, zIndex:200,
           display:"flex", flexDirection:"column", alignItems:"center",
-          justifyContent:"center", pointerEvents:"none",
-          background:"rgba(0,0,0,.6)",
-          animation:"fadeInOut 3s ease forwards",
-        }}>
-          <div style={{
-            fontFamily:"var(--font-display)", fontSize:"5rem",
-            color:"var(--gold)", letterSpacing:".05em",
-            textShadow:"0 0 60px rgba(245,200,66,.8)",
-            animation:"pop .4s cubic-bezier(.34,1.56,.64,1) both",
-          }}>
+          justifyContent:"center", pointerEvents:"none", background:"rgba(0,0,0,.6)",
+          animation:"fadeInOut 3s ease forwards" }}>
+          <div style={{ fontFamily:"var(--font-display)", fontSize:"5rem", color:"var(--gold)",
+            letterSpacing:".05em", textShadow:"0 0 60px rgba(245,200,66,.8)",
+            animation:"pop .4s cubic-bezier(.34,1.56,.64,1) both" }}>
             C'EST TON TOUR !
           </div>
           <div style={{ color:"var(--text-dim)", fontSize:"1.2rem", marginTop:16 }}>
@@ -219,16 +211,12 @@ export default function GameScreen({
       <div className="card" style={{ flex:1, display:"flex", flexDirection:"column",
         gap:20, alignItems:"center", justifyContent:"center", padding:"32px 24px",
         minHeight:300,
-        border: isActive && status === "choosing"
-          ? "2px solid var(--gold)" : "1px solid var(--border)",
-        boxShadow: isActive && status === "choosing"
-          ? "var(--glow-gold)" : "none",
-        transition:"border .3s, box-shadow .3s",
-      }}>
+        border: isActive && status === "choosing" ? "2px solid var(--gold)" : "1px solid var(--border)",
+        boxShadow: isActive && status === "choosing" ? "var(--glow-gold)" : "none",
+        transition:"border .3s, box-shadow .3s" }}>
 
         {isHost && status === "waiting" && !judgeData && (
-          <div style={{ textAlign:"center", display:"flex",
-            flexDirection:"column", gap:20, width:"100%" }}>
+          <div style={{ textAlign:"center", display:"flex", flexDirection:"column", gap:20, width:"100%" }}>
             <div style={{ fontFamily:"var(--font-display)", fontSize:"1.8rem",
               letterSpacing:".05em", color:"var(--gold)" }}>
               Choisissez un joueur
@@ -268,18 +256,17 @@ export default function GameScreen({
         )}
 
         {(status === "playing" || status === "judging") && currentSong && !judgeData && (
-          <div style={{ width:"100%", display:"flex", flexDirection:"column",
-            gap:20, alignItems:"center" }}>
+          <div style={{ width:"100%", display:"flex", flexDirection:"column", gap:20, alignItems:"center" }}>
 
+            {/* Countdown — en haut, petit, ne cache pas les paroles */}
             {countdown !== null && (
-              <div style={{ position:"fixed", top:0, left:0, right:0, bottom:0,
-                display:"flex", alignItems:"center", justifyContent:"center",
-                pointerEvents:"none", zIndex:100 }}>
-                <div style={{ fontFamily:"var(--font-display)", fontSize:"10rem",
-                  color:"var(--red)", opacity:.95,
-                  textShadow:"0 0 60px rgba(255,77,77,.7)" }}>
+              <div style={{ display:"flex", alignItems:"center", justifyContent:"center",
+                width:80, height:80, borderRadius:"50%",
+                border:"4px solid var(--red)", background:"rgba(255,77,77,.1)" }}>
+                <span style={{ fontFamily:"var(--font-display)", fontSize:"2.5rem",
+                  color:"var(--red)", fontWeight:900 }}>
                   {countdown}
-                </div>
+                </span>
               </div>
             )}
 
@@ -294,13 +281,10 @@ export default function GameScreen({
               </div>
             </div>
 
+            {/* Paroles */}
             {!audioLoading && currentSong?.lyrics?.length > 0 && (
               <div style={{ width:"100%", maxWidth:600 }}>
-                <LyricsDisplay
-                  audioRef={audioRef}
-                  lyrics={currentSong.lyrics}
-                  cutAt={currentSong.cutAt}
-                />
+                <LyricsDisplay audioRef={audioRef} lyrics={currentSong.lyrics} cutAt={currentSong.cutAt} />
               </div>
             )}
 
@@ -314,29 +298,33 @@ export default function GameScreen({
               </div>
             )}
 
+            {/* Boutons host */}
             {isHost && !audioLoading && (
-              <button className="btn btn-ghost"
-                style={{ fontSize:".85rem", padding:"8px 16px" }}
-                onClick={replayAudio}>
-                Relancer la musique
-              </button>
+              <div style={{ display:"flex", gap:10 }}>
+                <button className="btn btn-ghost"
+                  style={{ fontSize:".85rem", padding:"8px 16px" }}
+                  onClick={replayAudio}>
+                  Relancer la musique
+                </button>
+                <button className="btn btn-ghost"
+                  style={{ fontSize:".85rem", padding:"8px 16px", color:"var(--red)", borderColor:"var(--red)" }}
+                  onClick={cancelRound}>
+                  Annuler le round
+                </button>
+              </div>
             )}
 
             {!audioLoading && isActive && !submitted && (
-              <div style={{ width:"100%", maxWidth:500, display:"flex",
-                flexDirection:"column", gap:12, alignItems:"center",
-                background:"rgba(245,200,66,.05)",
-                border:"1px solid rgba(245,200,66,.2)",
-                borderRadius:"var(--radius)", padding:20 }}>
+              <div style={{ width:"100%", maxWidth:500, display:"flex", flexDirection:"column",
+                gap:12, alignItems:"center", background:"rgba(245,200,66,.05)",
+                border:"1px solid rgba(245,200,66,.2)", borderRadius:"var(--radius)", padding:20 }}>
                 <div style={{ color:"var(--gold)", fontWeight:700, fontSize:".95rem" }}>
                   Complete la suite des paroles :
                 </div>
-                <input type="text" placeholder="Ta reponse..." value={answer}
-                  autoFocus
+                <input type="text" placeholder="Ta reponse..." value={answer} autoFocus
                   onChange={e => setAnswer(e.target.value)}
                   onKeyDown={e => e.key === "Enter" && handleSubmit()} />
-                <button className="btn btn-gold"
-                  style={{ width:"100%", fontSize:"1.1rem" }}
+                <button className="btn btn-gold" style={{ width:"100%", fontSize:"1.1rem" }}
                   disabled={!answer.trim()} onClick={handleSubmit}>
                   Valider
                 </button>
@@ -375,12 +363,9 @@ export default function GameScreen({
               <div className="card" style={{ padding:"16px 20px" }}>
                 <div style={{ fontSize:".75rem", fontWeight:900, letterSpacing:".1em",
                   color:"var(--text-dim)", marginBottom:6 }}>REPONSE DU JOUEUR</div>
-                <div style={{ fontSize:"1.2rem", fontWeight:700 }}>
-                  « {judgeData.playerAnswer} »
-                </div>
+                <div style={{ fontSize:"1.2rem", fontWeight:700 }}>« {judgeData.playerAnswer} »</div>
               </div>
-              <div className="card" style={{ padding:"16px 20px",
-                border:"1px solid var(--gold)" }}>
+              <div className="card" style={{ padding:"16px 20px", border:"1px solid var(--gold)" }}>
                 <div style={{ fontSize:".75rem", fontWeight:900, letterSpacing:".1em",
                   color:"var(--gold)", marginBottom:6 }}>PAROLES ATTENDUES</div>
                 <div style={{ fontSize:"1.2rem", fontWeight:700, color:"var(--gold)" }}>
@@ -406,7 +391,7 @@ export default function GameScreen({
                   style={{ flex:1, flexDirection:"column", gap:2, padding:"16px" }}
                   onClick={() => judge("none")}>
                   <span>Rate</span>
-                  <span style={{ fontSize:".85rem", opacity:.8 }}>0 pt</span>
+                  <span style={{ fontSize:".85rem", opacity:.8 }}>-{Math.floor(judgeData.points/2)} pts</span>
                 </button>
               </div>
             )}
@@ -421,12 +406,7 @@ export default function GameScreen({
 
       <style>{`
         @keyframes spin { to { transform: rotate(360deg); } }
-        @keyframes fadeInOut {
-          0%   { opacity: 0; }
-          15%  { opacity: 1; }
-          75%  { opacity: 1; }
-          100% { opacity: 0; }
-        }
+        @keyframes fadeInOut { 0%{opacity:0} 15%{opacity:1} 75%{opacity:1} 100%{opacity:0} }
       `}</style>
     </div>
   );

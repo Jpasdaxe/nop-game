@@ -135,6 +135,14 @@ io.on("connection", (socket) => {
     });
     cb?.(result);
   });
+  // Annuler le round — remet en waiting sans changer les scores
+socket.on("game:cancel", ({ roomCode }) => {
+  const found = gm.findRoomBySocket(socket.id);
+  if (!found || !found.isHost) return;
+  gm.cancelRound(roomCode);
+  const state = gm.getRoomState(roomCode);
+  io.to(roomCode).emit("game:goNext", state);
+});
 
   socket.on("game:nextTurn", ({ roomCode }) => {
     console.log(`[nextTurn] reçu de ${socket.id} pour room ${roomCode}`);

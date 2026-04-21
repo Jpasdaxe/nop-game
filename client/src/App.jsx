@@ -5,7 +5,6 @@ import HostLobby from "./pages/HostLobby";
 import PlayerLobby from "./pages/PlayerLobby";
 import GameScreen from "./pages/GameScreen";
 import RoundEnd from "./pages/RoundEnd";
-import CameraGrid from "./components/CameraGrid";
 
 export default function App() {
   const [screen, setScreen]           = useState("home");
@@ -16,13 +15,11 @@ export default function App() {
   const [songs, setSongs]             = useState([]);
   const [judgeData, setJudgeData]     = useState(null);
   const [usedSongIds, setUsedSongIds] = useState([]);
-  const [localStream, setLocalStream] = useState(null);
-  const audioRef           = useRef(new Audio());
-  const roomCodeRef        = useRef(null);
-  const songsRef           = useRef([]);
-  const lastSongUrlRef     = useRef(null);
-  const lastCutAtRef       = useRef(0);
-  const cameraRequestedRef = useRef(false);
+  const audioRef       = useRef(new Audio());
+  const roomCodeRef    = useRef(null);
+  const songsRef       = useRef([]);
+  const lastSongUrlRef = useRef(null);
+  const lastCutAtRef   = useRef(0);
 
   const fetchSongs = () => {
     fetch(`${import.meta.env.VITE_SERVER_URL || "http://localhost:3001"}/songs`)
@@ -31,37 +28,17 @@ export default function App() {
       .catch(() => {});
   };
 
-  // Demande la caméra UNE SEULE FOIS quand on entre dans le lobby
-  useEffect(() => {
-    if (cameraRequestedRef.current) return;
-    if (screen === "hostLobby" || screen === "playerLobby" || screen === "game") {
-      cameraRequestedRef.current = true;
-      navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-        .then(stream => {
-          console.log("[camera] stream obtenu");
-          setLocalStream(stream);
-        })
-        .catch(e => {
-          console.warn("[camera] refusée ou indisponible:", e);
-          setLocalStream(null);
-        });
-    }
-  }, [screen]);
-
   useEffect(() => {
     socket.connect();
 
     socket.on("connect", () => {
-      console.log("[connect] socket id:", socket.id);
       setMyId(socket.id);
-      if (roomCodeRef.current) {
-        socket.emit("room:rejoin", { roomCode: roomCodeRef.current });
-      }
+      if (roomCodeRef.current) socket.emit("room:rejoin", { roomCode: roomCodeRef.current });
     });
 
-    socket.on("room:updated",       (state) => { setRoomState(state); });
-    socket.on("game:launched",      (state) => { setRoomState(state); setScreen("game"); });
-    socket.on("game:playerSelected",(state) => { setRoomState(state); setJudgeData(null); });
+    socket.on("room:updated",        (state) => { setRoomState(state); });
+    socket.on("game:launched",       (state) => { setRoomState(state); setScreen("game"); });
+    socket.on("game:playerSelected", (state) => { setRoomState(state); setJudgeData(null); });
 
     socket.on("game:songChosen", ({ state }) => {
       setRoomState(state);
@@ -74,7 +51,6 @@ export default function App() {
     socket.on("game:awaitJudge", (data) => { setJudgeData(data); });
 
     socket.on("game:turnEnded", ({ state, result }) => {
-      console.log("[game:turnEnded] correct:", result?.correct, "points:", result?.points);
       if (state?.currentSong?.id) {
         setUsedSongIds(prev => [...prev, state.currentSong.id]);
       }
@@ -85,7 +61,6 @@ export default function App() {
     });
 
     socket.on("game:goNext", (state) => {
-      console.log("[game:goNext] status:", state?.status, "code:", state?.code);
       fetchSongs();
       setRoomState(state);
       setRoundResult(null);
@@ -120,11 +95,6 @@ export default function App() {
     if (roomState?.code) roomCodeRef.current = roomState.code;
   }, [roomState?.code]);
 
-  // CameraGrid visible sur game ET roundEnd — ne se démonte jamais
-  const showCameras = (screen === "game" || screen === "roundEnd")
-    && roomState?.players?.length > 0
-    && localStream;
-
   const props = {
     socket, roomState, setRoomState,
     myId, role, setRole, setScreen,
@@ -135,28 +105,12 @@ export default function App() {
   };
 
   return (
-    <div style={{ paddingBottom: showCameras ? 160 : 0 }}>
-      {showCameras && (
-        <div style={{
-          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
-          background: "var(--card)", borderTop: "1px solid var(--border)",
-          padding: "8px 16px",
-        }}>
-          <CameraGrid
-            players={roomState.players}
-            myId={myId}
-            activePlayerId={roomState.activePlayerId}
-            localStream={localStream}
-            socket={socket}
-          />
-        </div>
-      )}
-
+    <>
       {screen === "home"        && <Home        {...props} />}
       {screen === "hostLobby"   && <HostLobby   {...props} />}
       {screen === "playerLobby" && <PlayerLobby {...props} />}
       {screen === "game"        && <GameScreen  {...props} />}
       {screen === "roundEnd"    && <RoundEnd    {...props} />}
-    </div>
+    </>
   );
 }

@@ -95,6 +95,14 @@ function abandonTurn(roomCode, playerId) {
   room.status = "roundEnd";
   return { success: true };
 }
+function cancelRound(roomCode) {
+  const room = rooms.get(roomCode);
+  if (!room) return;
+  room.status = "waiting";
+  room.activePlayerId = null;
+  room.currentSong = null;
+  room.songChoices = [];
+}
 
 /**
  * Valide la réponse libre du joueur
@@ -115,29 +123,31 @@ function submitAnswer(roomCode, playerId, answer) {
   };
 }
 function judgeAnswer(roomCode, verdict) {
-  // verdict: "full" | "half" | "none"
   const room = rooms.get(roomCode);
   if (!room) return { success: false };
 
-  const basePoints = room.currentSong.points;
-  const points = verdict === "full" ? basePoints
-               : verdict === "half" ? Math.floor(basePoints / 2)
-               : 0;
+  const player = room.players.find(p => p.id === room.activePlayerId);
+  const points = room.currentSong?.points || 0;
+  let awarded = 0;
 
-  if (points > 0) {
-    const p = room.players.find((p) => p.id === room.activePlayerId);
-    if (p) p.score += points;
+  if (verdict === "full") {
+    awarded = points;
+    if (player) player.score += awarded;
+  } else if (verdict === "half") {
+    awarded = Math.floor(points / 2);
+    if (player) player.score += awarded;
+  } else if (verdict === "none") {
+    awarded = -Math.floor(points / 2); // ← retire la moitié
+    if (player) player.score = Math.max(0, player.score + awarded);
   }
 
-  const correct = verdict !== "none";
-  room.status = "roundEnd";
-
+  room.status = "judging";
   return {
-    correct,
-    points,
-    verdict,
-    playerAnswer: room.playerAnswer,
-    expected: room.currentSong.answer,
+    success: true,
+    correct: verdict === "full",
+    points: verdict === "none" ? -Math.floor(points / 2) : awarded,
+    playerAnswer: room.lastAnswer || "",
+    expected: room.currentSong?.answer || "",
   };
 }
 
@@ -195,5 +205,5 @@ module.exports = {
   createRoom, joinRoom, leaveRoom,
   setActivePlayer, chooseSong, abandonTurn,
   submitAnswer, judgeAnswer, endRound,
-  getRoomState, deleteRoom, findRoomBySocket,
+  getRoomState, deleteRoom, findRoomBySocket, cancelRound
 };
