@@ -5,6 +5,7 @@ import HostLobby from "./pages/HostLobby";
 import PlayerLobby from "./pages/PlayerLobby";
 import GameScreen from "./pages/GameScreen";
 import RoundEnd from "./pages/RoundEnd";
+import CameraGrid from "./components/CameraGrid";
 
 export default function App() {
   const [screen, setScreen]           = useState("home");
@@ -15,11 +16,13 @@ export default function App() {
   const [songs, setSongs]             = useState([]);
   const [judgeData, setJudgeData]     = useState(null);
   const [usedSongIds, setUsedSongIds] = useState([]);
+  const [localStream, setLocalStream] = useState(null);
   const audioRef           = useRef(new Audio());
   const roomCodeRef        = useRef(null);
   const songsRef           = useRef([]);
   const lastSongUrlRef     = useRef(null);
   const lastCutAtRef       = useRef(0);
+  const cameraRequestedRef = useRef(false);
 
   const fetchSongs = () => {
     fetch(`${import.meta.env.VITE_SERVER_URL || "http://localhost:3001"}/songs`)
@@ -117,7 +120,10 @@ export default function App() {
     if (roomState?.code) roomCodeRef.current = roomState.code;
   }, [roomState?.code]);
 
-  c
+  // CameraGrid visible sur game ET roundEnd — ne se démonte jamais
+  const showCameras = (screen === "game" || screen === "roundEnd")
+    && roomState?.players?.length > 0
+    && localStream;
 
   const props = {
     socket, roomState, setRoomState,
@@ -129,11 +135,28 @@ export default function App() {
   };
 
   return (
-  <>
-    {screen === "home"        && <Home        {...props} />}
-    {screen === "hostLobby"   && <HostLobby   {...props} />}
-    {screen === "playerLobby" && <PlayerLobby {...props} />}
-    {screen === "game"        && <GameScreen  {...props} />}
-    {screen === "roundEnd"    && <RoundEnd    {...props} />}
-  </>
-);
+    <div style={{ paddingBottom: showCameras ? 160 : 0 }}>
+      {showCameras && (
+        <div style={{
+          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50,
+          background: "var(--card)", borderTop: "1px solid var(--border)",
+          padding: "8px 16px",
+        }}>
+          <CameraGrid
+            players={roomState.players}
+            myId={myId}
+            activePlayerId={roomState.activePlayerId}
+            localStream={localStream}
+            socket={socket}
+          />
+        </div>
+      )}
+
+      {screen === "home"        && <Home        {...props} />}
+      {screen === "hostLobby"   && <HostLobby   {...props} />}
+      {screen === "playerLobby" && <PlayerLobby {...props} />}
+      {screen === "game"        && <GameScreen  {...props} />}
+      {screen === "roundEnd"    && <RoundEnd    {...props} />}
+    </div>
+  );
+}
