@@ -38,12 +38,17 @@
     "answer": "Maintenant j'ai le strawberry ",
     "points": 20,
     "lyrics": [
-    { "t": 3, "text": "Mode, mode brainrot, yeah yeah yeah Unchained on top Je me co encore une fois Grind en boucle, y'a pas le choix" },
+    { "t": 3, "text": "Mode, mode brainrot, yeah yeah yeah Unchained on top" },
+    { "t": 12, "text": "Je me co encore une fois Grind en boucle, y'a pas le choix" },
     { "t": 16, "text": "J'garde le focus, évite les pièges Ils veulent me scam mais j'les baise Unchained, je lock le spot J'avance, droit vers le top " },
-    { "t": 24, "text": "Brainrot, c'est nous dans le top Brainrot, c'est nous dans le top, brainrot Brainrot, c'est nous dans le top Brainrot, c'est nous dans le top, brainrot" },
-    { "t": 40, "text": "Parti d'un Pizzanini" },
-    { "t": 42, "text": "???" }
-    
+    { "t": 24, "text": "Brainrot" },
+    { "t": 26, "text": "c'est nous dans le top" },
+    { "t": 28, "text": "Brainrot, c'est nous dans le top Brainrot" },
+    { "t": 33, "text": "Brainrot" },
+    { "t": 35, "text": "c'est nous dans le top" },
+    { "t": 37, "text": "Brainrot, c'est nous dans le top Brainrot" },
+    { "t": 41, "text": "Parti d'un Pizzanini" },
+    { "t": 43, "text": "???" }
   ]
   },
   {
@@ -350,17 +355,18 @@
     "answer": "Je sais pas dancer, je bouge comme un boulet et t'as mal aux yeux même si je fais de mon mieux",
     "points": 20,
     "lyrics": [
-      { "t": 9, "text": "Et là je bouge mon boule, je bouge mon boule" },
-      { "t": 15, "text": "Boule, boule, boule, boule, boule, boule, boule" },
-      { "t": 22, "text": "Écartez-vous de la piste, la bombe vient d'arriver" },
-      { "t": 26, "text": "J'commence par m'échauffer, mais j'crois qu'vous êtes pas prêts" },
-      { "t": 29, "text": "J'ai bossé toutes mes chorés sur les clips de Beyoncé" },
-      { "t": 33, "text": "Spotlight sur moi, bouge de là, baby, shake, skake, aïe" },
-      { "t": 37, "text": "Je viens de me vautrer par terre, j'ai allure d'un veau" },
-      { "t": 41, "text": "En fait j'sais pas danser, j'ai deux pieds gauches, c'est chaud" },
-      { "t": 45, "text": "Aussi rigide qu'un balai, quand je danse, c'est trop laid" },
-      { "t": 48, "text": "Regarde ce move, c'est la loose, baby, twerk, twerk, berk" },
-      { "t": 52, "text": "Je me fiche des rageux, seul Chris Marques peut me juger" },
+      { "t": 4, "text": "Et là je bouge mon boule" },
+      { "t": 12, "text": "je bouge mon boule" },
+      { "t": 14, "text": "Boule, boule, boule, boule, boule, boule, boule" },
+      { "t": 21, "text": "Écartez-vous de la piste, la bombe vient d'arriver" },
+      { "t": 25, "text": "J'commence par m'échauffer, mais j'crois qu'vous êtes pas prêts" },
+      { "t": 28, "text": "J'ai bossé toutes mes chorés sur les clips de Beyoncé" },
+      { "t": 32, "text": "Spotlight sur moi, bouge de là, baby, shake, skake, aïe" },
+      { "t": 36, "text": "Je viens de me vautrer par terre, j'ai allure d'un veau" },
+      { "t": 40, "text": "En fait j'sais pas danser, j'ai deux pieds gauches, c'est chaud" },
+      { "t": 43, "text": "Aussi rigide qu'un balai, quand je danse, c'est trop laid" },
+      { "t": 47, "text": "Regarde ce move, c'est la loose, baby, twerk, twerk, berk" },
+      { "t": 51, "text": "Je me fiche des rageux, seul Chris Marques peut me juger" },
       { "t": 59, "text": "???" }
     ]
 },
@@ -753,7 +759,7 @@
       { "t": 69, "text": "???" }
     ]
 },
-  {
+ {
     "id": "34",
     "title": "Adieu les filles",
     "artist": "Squeezie 9 mots",
@@ -763,25 +769,29 @@
     "points": 20,
     "lyrics": [
       { "t": 11, "text": "C'est toujours pareil (C'est-à-dire ?) Au début, elles m'aiment (Agréable)" },
-      { "t": 16, "text": "J'leur fais d'la peine (Trou d'balle) Ça se transforme en haine, puis elles m'font des scènes" },
+      { "t": 15, "text": "J'leur fais d'la peine (Trou d'balle) Ça se transforme en haine, puis elles m'font des scènes" },
       { "t": 20, "text": "Et j'finis solo (Vérité) Puis j'en trouve une autre (Ok)" },
-      { "t": 25, "text": "Qui préfère un autre (Ah, dommage) Donc j'en trouve une autre mais j'préférais l'autre" },
-      { "t": 27, "text": "Adieu les filles, adieu les filles, adieu les filles..." },
+      { "t": 22, "text": "Qui préfère un autre (Ah, dommage) Donc j'en trouve une autre mais j'préférais l'autre" },
+      { "t": 26, "text": "Adieu les filles, adieu les filles, adieu les filles..." },
       { "t": 32, "text": "(Vous dansez pas du tout) Adieu les filles, adieu les filles" },
       { "t": 38, "text": "Adieu les filles (C'est-à-dire ?) Adieu les filles" },
       { "t": 43, "text": "La vie c'est pas comme dans un Disney (C'est-à-dire ?)" },
-      { "t": 48, "text": "Pourtant, j'l'avais emmenée à Disney" },
+{ "t": 47, "text": "Pourtant, j'l'avais emmenée à Disney" },
       { "t": 51, "text": "Tout l'monde disait qu'on était mignons (Trop choupis les deux tourtereaux)" },
       { "t": 56, "text": "Eh bah, eh bah, dis donc !" },
-      { "t": 59, "text": "Salut les mecs (Salut), vous êtes moins bêtes (C'est sexiste)" },
-      { "t": 64, "text": "Enfin peut-être (C'est-à-dire ?) Mais j'veux qu'ça s'arrête donc j'vais faire un test" },
-      { "t": 68, "text": "Ça a duré juste une seule nuit, ça devait durer toute la vie" },
-      { "t": 74, "text": "J'me voyais bien mettre ses hoodies, faire le truc du spaghetti" },
-      { "t": 80, "text": "(Ah, dans La Belle et le Clochard ?) Avec la sauce !" },
-      { "t": 83, "text": "Adieu les mecs, adieu les mecs, adieu les mecs..." },
+      { "t": 58, "text": "Salut les mecs (Salut), vous êtes moins bêtes (C'est sexiste)" },
+      { "t": 61, "text": "Enfin peut-être (C'est-à-dire ?) Mais j'veux qu'ça s'arrête donc j'vais faire un test" },
+      { "t": 67, "text": "Ça a duré juste une seule nuit, ça devait durer toute la vie" },
+      { "t": 70, "text": "J'me voyais bien mettre ses hoodies, faire le truc du spaghetti" },
+      { "t": 74, "text": "(Ah, dans La Belle et le Clochard ?) Avec la sauce !" },
+      { "t": 79, "text": "Adieu les mecs, adieu les mecs, adieu les mecs, adieu les mecs" },
+      { "t": 85, "text": "Adieu les mecs, adieu les mecs, adieu les mecs" },
+      { "t": 89, "text": "Adieu les mecs, adieu les mecs, adieu les mecs" },
+      { "t": 92, "text": "Adieu les mecs" },
+      { "t": 94, "text": "Adieu les mecs" },
       { "t": 96, "text": "???" }
     ]
-},
+}, 
   {
     "id": "35",
     "title": "1990 VS 2000 (Clash des générations)",
@@ -852,8 +862,10 @@
     { "t": 10, "text": "Tous sur la ligne de départ, je fais partie de ceux qui pressent A sur le 2" },
     { "t": 15, "text": "Discret donc j'éteins les phares, trois étincelles j'ai fait crisser les pneus" },
     { "t": 19, "text": "Oui j'vais vite, ils pensent tous que je cheat / Pas d'invit', monte en douce dans le cockpit" },
+    { "t": 22, "text": "Pas d'invit', monte en douce dans le cockpit" },
     { "t": 27, "text": "Je voulais gagner depuis les gradins, mais bon je peux pas je suis un bambi" },
     { "t": 31, "text": "Plus tard je dirais à mes gamins : « J'ai fait un feat avec Gambi »" },
+    { "t": 35, "text": "J'ai pas ce que je veux, j'ai les nerfs, j'ai les nerfs, c'est pas ceux que je veux" },
     { "t": 35, "text": "Maintenant que je suis devant eux, ça lance des carapaces bleues" },
     { "t": 43, "text": "Je ramasse l'étoile, sorry, gomen'nasai, je passe devant toi" },
     { "t": 50, "text": "Bella, bella, bella ! Les montagnes je les déplace" },
@@ -1081,23 +1093,48 @@
       { "t": 27.4, "text": "???" }
     ]
   },
-  {
+ {
     "id": "48",
     "title": "Rockstar ft.Inoxtag",
     "artist": "Michou 25 mots",
     "audioUrl": "/audio/Rockstar (feat. Inoxtag).mp3",
-    "cutAt": 68,
+    "cutAt": 64.8,
     "answer": "mais moi j'suis toujours en retard, inox, fais passer mon song dans tous les jukebox, à la fin tu feras ma chorée sur tiktok",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+      { "t": 0, "text": "Hmmmm, hmmmm, hmmmm" },
+      { "t": 8, "text": "Et là j'peux dire qu'j'suis une rockstar sur Insta', ouais j'suis une re-sta" },
+      { "t": 17, "text": "Et là j'peux dire qu'j'suis une rockstar sur Insta', ouais j'suis une re-sta" },
+      { "t": 26, "text": "Lunettes teintées, jean et je frime comme Balvin" },
+      { "t": 28, "text": "J'me jette pas de roses mais j'pourrais t'renvoyer les épines" },
+      { "t": 31, "text": "Entouré d'belles filles, dans le carré VIP tu verras que des Belve'" },
+      { "t": 36, "text": "Vas-y rajoute moi des glaçons, chemises cintrées j'suis beau garçon" },
+      { "t": 40, "text": "Une toff c'est comme ça, elle a percé sur Insta'" },
+      { "t": 45, "text": "Et là j'peux dire qu'j'suis une rockstar sur Insta', ouais j'suis une re-sta" },
+      { "t": 54, "text": "Et là j'peux dire qu'j'suis une rockstar sur Insta', ouais j'suis une re-sta" },
+      { "t": 63, "text": "À c'qu'il parait t'es une rockstar..." },
+      { "t": 64.8, "text": "???" }
+    ]
   },
   {
     "id": "49",
     "title": "Fier",
     "artist": "MICHOU 24 mots",
     "audioUrl": "/audio/Michou - FIER (Clip Officiel).mp3",
-    "cutAt": 42 ,
+    "cutAt": 42,
     "answer": "j'ai toujours eu cette lueur d'espoir, j'étais tout seul solo dans le noir et malgré qu'ils refusaient d'y croire",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+      { "t": 13, "text": "Frérot moi j'ai charbonné, ça date pas d'hier-ier" },
+      { "t": 16, "text": "Pour mes parents j'donnerai tout, j'les rends fier-ier-ier" },
+      { "t": 20, "text": "Le parcours est en acier, dur comme fer y-yeah, y-yeah" },
+      { "t": 23, "text": "J'en ai jamais eu assez, j'suis déter' y-yeah, y-yeah" },
+      { "t": 26, "text": "C'était pas facile, j'ai dû bosser, j'en ai bavé, j'ai tout donné" },
+      { "t": 31, "text": "Même pas d'abonnés, papa et maman furent donc les premiers" },
+      { "t": 35, "text": "J'm'arrêtais jamais malgré les moqueries de certains amis" },
+      { "t": 39, "text": "Aujourd'hui ça a changé..." },
+      { "t": 42, "text": "???" }
+    ]
   },
   {
     "id": "50",
@@ -1106,7 +1143,18 @@
     "audioUrl": "/audio/Anyme - Shamballa feat. Shaydees (Clip officiel).mp3",
     "cutAt": 48.8,
     "answer": "oe j't'ai vue en boite t'avais des fesses de quality",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+      { "t": 10, "text": "Shaydee's... Arrogante comme d'hab... Anyme, goûtez ça" },
+      { "t": 28, "text": "Baby girl, j'suis trop nostalgique" },
+      { "t": 30, "text": "L'temps s'arrête quand ton corps rentrait nu dans la shamballa" },
+      { "t": 32, "text": "Ba-bad man, pas romantique" },
+      { "t": 34, "text": "Quand j'la voyais la nuit, c'était pas pour faire des shamballas" },
+      { "t": 37, "text": "Maintenant, elle veut plus m'parler, baby girl, bad man, elle veut plus s'tromper" },
+      { "t": 42, "text": "Maintenant, elle veut plus m'parler, baby girl, j't'en prie, je peux pas t'oublier" },
+      { "t": 46, "text": "Physicality, physicality..." },
+      { "t": 48.8, "text": "???" }
+    ]
   },
 {
     "id": "51",
@@ -1115,16 +1163,50 @@
     "audioUrl": "/audio/La chanson des choses inutiles feat. Julien Doré.mp3",
     "cutAt": 35.4,
     "answer": "La petite signature au dos de la carte bleue, linkedin (on ne sait pas), les cookies sur internet",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+      { "t": 0, "text": "Voici une liste de choses dont on questionne l'utilité, est-ce que vous êtes ready ?" },
+      { "t": 6, "text": "Let's go ! L'émoji baril, la partie inférieure du coupe-ongle" },
+      { "t": 12, "text": "Le point virgule (on n'sait pas), la notice dans les boîtes de médicaments" },
+      { "t": 17, "text": "L'application boussole, les petits oignons dans les bocaux de cornichons" },
+      { "t": 21, "text": "Les smart-box (useless), la vésicule biliaire" },
+      { "t": 25, "text": "On n'sait pas à quoi ça sert, ces choses sont-elles nécessaires ?" },
+      { "t": 29, "text": "Qui utilise ça vraiment ? Répondez sans bégaiement" },
+      { "t": 33, "text": "Le ô circonflexe..." },
+      { "t": 35.4, "text": "???" }
+    ]
   },
-  {
+ {
     "id": "52",
     "title": "La chanson des commentaires",
     "artist": "Amixem 21 mots",
     "audioUrl": "/audio/LA CHANSON DES COMMENTAIRES - AMIXEM (Clip Officiel).mp3",
-    "cutAt": 33.7 ,
-    "answer": "Ok merci Père Fouras, paye tu tes impôts en france ? J'ai quitté Pornhub pour ta vidéo,  Je m'appelle Léonard",
-    "points": 30
+    "cutAt": 165,
+    "answer": "Ok merci Père Fouras, paye tu tes impôts en france ? J'ai quitté Pornhub pour ta vidéo, Je m'appelle Léonard",
+    "points": 30,
+    "lyrics": [
+      { "t": 9, "text": "Qui a entendu la cloche du Tram, à 10:23 ?" },
+      { "t": 17, "text": "Son zizi il l'as trouvé, sur un site chinois" },
+      { "t": 24, "text": "Tu te fringues chez Celio, j'ai le même" },
+      { "t": 32, "text": "J'viens d'me rendre que si tu changes les lettres de Maxime, t'as Amixem" },
+      { "t": 41, "text": "Plagia Star Trek nul à chier, c'est nul, désabonné" },
+      { "t": 50, "text": "Il dit « ce compte Twitter » alors qu'c'est un compte Insta, JPP" },
+      { "t": 59, "text": "T'est pas drôle, mais tes vidéos sont bien" },
+      { "t": 66, "text": "3 minutes 11 j'étais en train de me griller du pain" },
+      { "t": 75, "text": "T'est pas drôle, mais tes vidéos sont bien" },
+      { "t": 82, "text": "Qui est là pendant le confinement 2020" },
+      { "t": 93, "text": "J'ai des Bics à vendre deux euros cinquante pour un voyage à mon école" },
+      { "t": 103, "text": "5:42 t'est bourré mec, arrête l'alcool" },
+      { "t": 112, "text": "Why is the title in English but speaks French the whole video" },
+      { "t": 120, "text": "Pour draguer ça sera dur avec la tête que t'as en f'sant du piano" },
+      { "t": 128, "text": "T'est pas drôle, mais tes vidéos sont bien" },
+      { "t": 136, "text": "3 minutes 11 j'étais en train de me griller du pain" },
+      { "t": 145, "text": "T'est pas drôle, mais tes vidéos sont bien" },
+      { "t": 153, "text": "Qui est là pendant le confinement 2020" },
+      { "t": 162, "text": "Pas de clap bonjour" },
+      { "t": 165, "text": "Définition de P.L.S. J'ai fait un exposé sur la lune" },
+      { "t": 33.7, "text": "???" }
+    ]
   },
   {
     "id": "53",
@@ -1163,27 +1245,62 @@
     "title": "Influenceur",
     "artist": "squeezie 8 mots",
     "audioUrl": "/audio/SQUEEZIE - INFLUENCEURS.mp3",
-    "cutAt": 37,
+    "cutAt": 36.8,
     "answer": "quand dans les médias on parle de moi",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+      { "t": 7, "text": "Jeune et brillant, monde déprimant" },
+      { "t": 11, "text": "J'inspire les gens, les petits, les grands" },
+      { "t": 18, "text": "J'suis belle, j'fais du make-up (oh yeah)" },
+      { "t": 20, "text": "J'suis geek, j'fais des world cup (oh yeah)" },
+      { "t": 22, "text": "Malaise, j'fais des lip dub (oh yeah)" },
+      { "t": 24, "text": "Balèze, j'fais du work-out (ouh)" },
+      { "t": 26, "text": "J'veux la fame sans les responsabilités" },
+      { "t": 31, "text": "La flemme donc je fais de la quantité" },
+      { "t": 35, "text": "Ça m'peine..." },
+      { "t": 36, "text": "???" }
+    ]
   },
-  {
+ {
     "id": "55",
-    "title": "la chanson des licornes",
+    "title": "la chanson des choses inutiles",
     "artist": "Natoo 12 mots",
     "audioUrl": "/audio/La chanson des licornes - Natoo.mp3",
     "cutAt": 27,
     "answer": "Chez nous y'a pas de sex, on fait seulement des bisous",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+      { "t": 4, "text": "Je vais chanter la chanson des licornes" },
+      { "t": 5, "text": "Parce que tout le monde aime les licornes" },
+      { "t": 6, "text": "À part les putains de meurtriers... C'est parti !" },
+      { "t": 10, "text": "Je suis une licorne avec des pouvoirs magiques" },
+      { "t": 13, "text": "Mon style est épileptique" },
+      { "t": 16, "text": "Je suis une licorne avec une crinière swagguée" },
+      { "t": 20, "text": "Elle est douce comme Beyoncé" },
+      { "t": 23, "text": "Une licorne c'est une corne avec un ch'val au bout" },
+      { "t": 27, "text": "???" }
+    ]
   },
   {
     "id": "56",
     "title": "Kawai ft. Gaelle Garcia",
     "artist": "Natoo 5 mots",
     "audioUrl": "/audio/Natoo Gaelle Garcia Diaz Kawai.mp3",
-    "cutAt": 46.3 ,
+    "cutAt": 46.3,
     "answer": "ramène ici tes grosses couilles",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+      { "t": 3, "text": "On est des filles trop mignonnes, j'dirais même qu'on est bonnes" },
+      { "t": 6, "text": "J'aime les licornes et les chats / Moi le porno et les chattes" },
+      { "t": 10, "text": "Monte dans notre bus magique, même le chauffeur a la trique" },
+      { "t": 13, "text": "Je cours sur des arc-en-ciel / Et moi sur un nuage de sperme !" },
+      { "t": 17, "text": "Pute, pute, salope, salope..." },
+      { "t": 20, "text": "[Dialogue] On avait dit une chanson mignonne et Kawaii !" },
+      { "t": 33, "text": "[Dialogue] J'vais faire des efforts, j'suis désolée, viens faire un câlin" },
+      { "t": 39, "text": "On termine la chanson de manière mignonne ? / Ok promis" },
+      { "t": 44, "text": "Regardez j'ai fait des nouilles..." },
+      { "t": 46.3, "text": "???" }
+    ]
   },
   {
     "id": "57",
@@ -1192,7 +1309,20 @@
     "audioUrl": "/audio/Dégagez dici - Sidney feat Vince (Clip Officiel).mp3",
     "cutAt": 48.4,
     "answer": "dégagez d'ici ou vous finirez au cimetière",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+      { "t": 11, "text": "OK mesdames, je vous préviens c'est la guerre (wesh)" },
+      { "t": 15, "text": "Lui c'est mon âme-sœur, tu l'approches je t'enterre" },
+      { "t": 19, "text": "Et vous les mecs, vous n'avez rien dans la tête" },
+      { "t": 23, "text": "Il a des pecs, contrairement à vos sœurettes" },
+      { "t": 27, "text": "Ouis des galipettes à Saint Malo, t'as vu la gueule de tous les oiseaux" },
+      { "t": 32, "text": "Boom chaka boom chaka boom cha boom cha boom" },
+      { "t": 35, "text": "Elles veulent toutes finir dans son lit, elles vont bouffer le parterre" },
+      { "t": 39, "text": "Les filles, les griffes sont de sortie, je vais vous faire vivre un enfer" },
+      { "t": 43, "text": "Elles bavent toutes en voyant ma vie, mais moi, j'en ai rien à faire" },
+      { "t": 47, "text": "Un conseil..." },
+      { "t": 48.4, "text": "???" }
+    ]
   },
   {
     "id": "58",
@@ -1275,18 +1405,36 @@
     "title": "ON M'APPELLE FUZE III",
     "artist": "FUZE III 21 mots",
     "audioUrl": "/audio/FUZE - ON MAPPELLE FUZE III (Musique Complète).mp3",
-    "cutAt": 30,
+    "cutAt": 30, 
     "answer": "Un creeper explose ma base, j'ai mon stuff faut que j'le pose, y'a un joueur dans les parages",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+      { "t": 12, "text": "On m'appelle Fuze III, on m'appelle Fuze III" },
+      { "t": 25, "text": "J'suis parti, squatte plus le spawn" },
+      { "t": 26, "text": "Cherche des bases, j'défonce la faune" },
+      { "t": 28, "text": "Sur Minecraft j'vaux pas grand chose" },
+      { "t": 30, "text": "???" }
+    ]
   },
-  {
+ {
     "id": "61",
     "title": "LA CHANTEUSE DE SALLE DE BAIN",
     "artist": "Alison Wheeler 19 mots",
     "audioUrl": "/audio/LA CHANTEUSE DE SALLE DE BAIN (mp3cut.net).mp3",
-    "cutAt": 62,
+    "cutAt": 47,
     "answer": "La douche appartient à tout ceux qui chantent faux, c'est ma tournée j'paye ma teille de shampoing",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+      { "t": 5, "text": "Pas besoin de savon pour se faire mousser, si tu chantes dans le pommeau" },
+      { "t": 10, "text": "Sous la douche je craque craque mon slip panthère" },
+      { "t": 16, "text": "Sous la douche je bouge je fais des clips imaginaires" },
+      { "t": 21, "text": "Attention lever de rideau sur l’artiste" },
+      { "t": 24, "text": "Quand je pose j’arrose mon flow attention qui arrive" },
+      { "t": 28, "text": "C’est Dirty Ali, postichée au plus grand des calmes" },
+      { "t": 32, "text": "Drop le mic, se jeter dans la fosse façon Shy’m" },
+      { "t": 42, "text": "Le monde appartient à ceux qui se lèvent tôt" },
+      { "t": 46, "text": "???" }
+    ]
   },
   {
     "id": "62",
@@ -1294,26 +1442,68 @@
     "artist": "JOYCA 8 mots",
     "audioUrl": "/audio/JOYCA - CLASH ASSASSINS (Feat Mastu) (mp3cut.net).mp3",
     "cutAt": 48,
-    "answer": "Soulève la capuche ,c'est le poto bob",
-    "points": 10
+    "answer": "Soulève la capuche, c'est le poto Bob",
+    "points": 10,
+    "lyrics": [
+      { "t": 22, "text": "Sortez les marteaux, faut qu'ça s'tape" },
+      { "t": 23, "text": "Comme adversaire t'es pas d'taille" },
+      { "t": 25, "text": "J'vois l'temps passer, les corps s'entassent" },
+      { "t": 27, "text": "Drakkar levé comme T-max, j'lance la hache toujours dans l'axe" },
+      { "t": 33, "text": "On débarque en équipe dans l'château fort" },
+      { "t": 34, "text": "La patate d'Eivor et de McGregor" },
+       { "t": 37, "text": "J'crois que j'ai déjà croisé ton nom sur ma liste (ouh ouh)" },
+      { "t": 41, "text": "Si j'dis pas d'la D, c'est Lord Mister Beast (ouh ouh)" },
+      { "t": 45, "text": "J'ai la lame secrète, cachée sous mon lobе (ouh ouh)" },
+
+      { "t": 48, "text": "???" }
+    ]
   },
-  {
+ {
     "id": "63",
     "title": "LOVE YOU feat. Mel Pops",
-    "artist": "Nico Là 14 mots",
+    "artist": "Nico Là 8 mots",
     "audioUrl": "/audio/NICO_LÀ - LOVE YOU feat (mp3cut.net).mp3",
-    "cutAt": 71,
-    "answer": "Faut que t'arrêtes d'hésiter Mel, j'suis le tismé de tes rêves ",
-    "points": 20
+    "cutAt": 54,
+    "answer": "Je ne vais pas lâcher Prouve-le-moi",
+    "points": 20,
+    "lyrics": [
+      { "t": 0, "text": "Oh mel let me love you, tu vaux mieux que ce voyou" },
+      { "t": 6, "text": "Je te donnerai ce que tu veux mon baby" },
+      { "t": 11, "text": "Faut que tu arrêtes d'hésiter Mel, chuis l’tismey de tes rêves" },
+      { "t": 23, "text": "La première fois que je t'ai vu, cheveux bordeaux très atypique" },
+      { "t": 28, "text": "Tout le quartier s’est figé, mais c’est moi que t’as regardé" },
+        { "t": 33, "text": "J’vais pas te raconter dе story (story), j’ai personne dans ma vie (dans ma vie), j’ai besoin de toi, entendre ta voix (entendre ta voix) et t’avoir près de moi" },
+      { "t": 43, "text": "C'est qui ce vieux mec ? (C'est mon gars) Pourquoi il est là ? (Il est à moi)" },
+      { "t": 47, "text": "Qu'est-ce qu'on attend ? (Ah, tu me veux toi ?) C'est pas comme ça" },
+      { "t": 51, "text": "Fais tes preuves, mon gars (Qu'est-ce que je dois faire ?) Débrouille-toi" },
+      { "t": 54, "text": "???" }
+    ]
   },
-  {
+ {
     "id": "64",
     "title": "RAP BATTLE DIVISION",
     "artist": "CYRILmp4 23 mots",
     "audioUrl": "/audio/RAP BATTLE DIVISION (Clip Officiel) (mp3cut.net).mp3",
     "cutAt": 67,
     "answer": "t'aimerais sauver Washington mais tu passes pas la darkzone, au combat tu prends racine, c'est ta tactique qui est un crime",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+      { "t": 5, "text": "Bienvenue chez les hyènes, pour toi c'est la fin du game" },
+      { "t": 8, "text": "Le nounours sur ton sac, c'est pour vaincre ton trac ?" },
+      { "t": 11, "text": "T'as raison d'avoir peur, t'es comme un titre aguicheur" },
+      { "t": 14, "text": "T'arrives à plaire, t'as du style, mais dans le fond t'es inutile" },
+      { "t": 20, "text": "Je fais mon entrée dans le cercle, à la fianso" },
+      { "t": 24, "text": "T'as l'air grillé comme un steak, prends un verre d'eau" },
+      { "t": 27, "text": "T'as de la peinture dans la tête, je vois que tu flanches" },
+      { "t": 30, "text": "Laisse-moi lancer la fête devant la maison blanche" },
+      { "t": 33, "text": "Division, divi-division, Quand vient la fin du monde, tous unis pour la nation" },
+      { "t": 41, "text": "Division, divi-division, Quand vient la fin du monde, plus de règles que de la destruction" },
+       { "t": 45, "text": "Division, divi-division, Quand vient la fin du monde, tous unis pour la nation" },
+      { "t": 50, "text": "Division, divi-division, Quand vient la fin du monde, plus de règles que de la destruction" },
+      { "t": 58, "text": "[Jenny] Oh Djadja, y'a pas moyen Djadja" },
+      { "t": 60, "text": "J'suis pas ta catin Djadja, en kimono baby..." },
+      { "t": 67, "text": "???" }
+    ]
   },
   {
     "id": "65",
@@ -1322,16 +1512,57 @@
     "audioUrl": "/audio/SINGAPOUR (Le Clip Officiel) (mp3cut.net).mp3",
     "cutAt": 46.8,
     "answer": "Mais j'suis pas venu seul, j'suis venu avec des potes Dianos, Naskid et surtout y'a Bedri",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+      { "t": 0, "text": "Singapour !" },
+      { "t": 3, "text": "Tu n'iras jamais, jamais, jamais (Never)" },
+      { "t": 7, "text": "Singapour, 2018, t'avais pas les notes. 2019, t'avais pas les notes" },
+      { "t": 15, "text": "L'année d'après, tout était fermé et 2021, tu n'avais pas les notes" },
+        { "t": 23, "text": "Singapour !" },
+      { "t": 25, "text": "J'ai trop kiffé à Singapour, je m'ennuie pas à Singapour" },
+      { "t": 33, "text": "La bouffe est bonne à Singapour, tu n'es pas venu à Singapour" },
+      { "t": 39, "text": "Du coup, comme t'es nul, j'me suis dévoué, j'ai pris des billets" },
+      { "t": 44, "text": "Pour tout te montrer..." },
+      { "t": 46.8, "text": "???" }
+    ]
   },
-  {
+ {
     "id": "66",
     "title": "Jaime Pas Noël - Cyprien & PV Nova",
     "artist": "Cyprien 27 mots",
     "audioUrl": "/audio/Jaime Pas Noël - Cyprien & PV Nova (mp3cut.net).mp3",
-    "cutAt": 80 ,
+    "cutAt": 80,
     "answer": "Je sais j'suis nul en crèche mais j'fais des efforts, j'l'ai sur le bout de la langue le nom du bébé qui dort",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+      { "t": 0, "text": "J'ai jamais pu blairer Noël déjà tout p'tit c'était pas ça" },
+      { "t": 7, "text": "J'lui écrivais au gros barbu je crois qu'mes lettres il les lisait pas" },
+      { "t": 9, "text": "Ou bien peut être qu'il confondait Nintendo et Cluedo" },
+      { "t": 11, "text": "Si j'le croise ce gros bâtard j'peux t'dire que j'lui f'rais pas d'cadeaux" },
+      { "t": 14, "text": "J'ai grandi cette année ne me demande pas si j'étais sage" },
+      { "t": 16, "text": "J'suis toujours pas casé et maintenant j'suis au chômage" },
+      { "t": 18, "text": "J'ai la phobie des rennes et j'ai peur des lutins verts" },
+      { "t": 20, "text": "Les bons sentiments de ma grand-mère, j'les ai vomis dans l'vent d'hiver" },
+   { "t": 25, "text": "Bientôt on prendra un sapin avant la fin du mois d'printemps" },
+      { "t": 27, "text": "Et puis j'sais pas comment tu fais pour le calendrier de l'avent" },
+      { "t": 29, "text": "Moi je dois en acheter 24 tellement j'suis impatient" },
+      { "t": 31, "text": "J'avoue j'ai trop la flemme j'm'y prends la veille au soir" },
+      { "t": 34, "text": "Je me réjouis déjà de faire la queue des heures durant" },
+      { "t": 36, "text": "Dans un magasin blindé finalement j'arrive trop tard" },
+      { "t": 38, "text": "Pour la barbie pute à frange pour ma cousine de 6 ans" },
+      { "t": 40, "text": "Petit papa Noël, s'te plait descends pas du ciel" },
+      { "t": 49, "text": "Cette fois-ci ta fête elle est annulée" },
+      { "t": 53, "text": "Il passe par où le père Noël quand y a pas de cheminée ? Dans ton cul !" },
+      { "t": 61, "text": "Et cette année encore on va chez des inconnus" },
+      { "t": 64, "text": "Y a que des gens flippants comme sur un plateau d'Delarue" },
+      { "t": 66, "text": "Paraît qu'c'est d'la famille à moi je les avais pas reconnus" },
+      { "t": 68, "text": "La prochaine fois que je materai Confessions Intimes je n'manquerai plus" },
+      { "t": 71, "text": "Ras l'bol du saumon au chocolat, d'la dinde fourrée aux Ferrero" },
+      { "t": 73, "text": "Envie de vomir, j'cours à la crèche et j'crache le morceau" },
+      { "t": 75, "text": "Désolé les rois mages en plus j'connais même pas vos noms" },
+      { "t": 77, "text": "J'crois qu'il y a Melchior, Balthazar et euh... Harry Potter !" },
+      { "t": 80, "text": "???" }
+    ]
   },
   {
     "id": "67",
@@ -1371,7 +1602,28 @@
     "audioUrl": "/audio/DRAGON BALL - LE SON DES ENFERS ! (Music Video) (mp3cut.net).mp3",
     "cutAt": 73,
     "answer": "a fait partie des conquêtes de Yamcha",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+      { "t": 10, "text": "Bientôt 30 piges que j'fais qu'crever en balle" },
+      { "t": 12, "text": "J'suis pas respecté, pourtant je suis le mal" },
+      { "t": 14, "text": "D'abord, j'me fais péter par un vieux mec" },
+      { "t": 16, "text": "Ensuite on m'découpe comme si j'étais un grec !" },
+      { "t": 18, "text": "Ennemi d'Enma, j'ai fini en Enfer, tout ça pour qu'on me ressuscite sur Terre" },
+      { "t": 22, "text": "Pour me refaire fumer par l'même vieux mec, de retour avec une teinture pas nette !" },
+      { "t": 26, "text": "Le pire c'est son pote, le Prince des Saiyans... qui a pris la confiance alors qu'c'était ma ch*****" },
+      { "t": 30, "text": "Il m'appelait Maître Frieza, eh ! Sang de Namek sur ma pizza, eh !" },
+      { "t": 34, "text": "Mort à Porunga et la prophétie, Krillin explose, ça fait des confettis" },
+      { "t": 38, "text": "Jeune alien maîtrise le Ki, Papa s'fait griller comme Panini !" },
+      { "t": 42, "text": "La phrase sur la ch*****, t'étais pas obligé. T'as d'la chance t'es d'jà mort" },
+      { "t": 45, "text": "J'veux du M, M, M... J'ai la haine, haine, haine..." },
+      { "t": 50, "text": "Un chauve a explosé ma planète ! J'ai vendu mon âme à un insecte !" },
+      { "t": 53, "text": "Goku s'retient toujours contre toi disent-ils, j'me suis fait sauté, j'étais la seule victime !" },
+      { "t": 58, "text": "Humilié, humilié, devant mon propre tipeu, j'n'ai pas pu rivaliser contre Buule de gomme" },
+      { "t": 63, "text": "Décimée, décimée, toute ma race... Arbre généalogique n'a qu'une seule branche" },
+      { "t": 67, "text": "En plus, j'apprends m'être fait Kakarotter, le Super Saiyan 3, on me l'a bien caché..." },
+      { "t": 71, "text": "On m'a pas prévenu non plus que ma Bulma..." },
+      { "t": 73, "text": "???" }
+    ]
   },
   {
     "id": "69",
@@ -1379,8 +1631,15 @@
     "artist": "FUZE 6 mots",
     "audioUrl": "/audio/FUZE - LE CLASH DES ANTI-FUZE (Musique Entière).mp3",
     "cutAt": 26,
-    "answer": "Pour poser vos cochons de morts ",
-    "points": 20
+    "answer": "Pour poser vos cochons de morts",
+    "points": 20,
+    "lyrics": [
+      { "t": 13, "text": "Raptor, Gaspoul, Immersion..." },
+      { "t": 15, "text": "Vous cherchez mon attention, une bande de fanboys refoulés" },
+      { "t": 19, "text": "Contre une nation solide, vous êtes tous détestés" },
+      { "t": 24, "text": "Dans notre base invisible..." },
+      { "t": 26, "text": "???" }
+    ]
   },
   {
     "id": "70",
@@ -1389,16 +1648,49 @@
     "audioUrl": "/audio/SQUEEZIE - FREESTYLE DE LAUTODÉRISION.mp3",
     "cutAt": 56,
     "answer": "J'fais kiffer qu'ton fils de 10 ans",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+      { "t": 0, "text": "Bon, aujourd'hui je voulais faire un chanson, mais je savais pas trop de quoi parler" },
+      { "t": 4, "text": "Puis je me suis rappeler que j'étais qu'une petite merde qui a un peu trop pris la confiance" },
+      { "t": 9, "text": "Du coup, je vais me faire redescendre un peu" },
+      { "t": 11, "text": "Mais pour une fois on va arrêter de se cacher derrière une voix grave" },
+      { "t": 13, "text": "Et on va assumer notre voix peu virile d'adolescent de 15 ans, on y va" },
+      { "t": 19, "text": "Fais pas genre t'es déjà tombé sur mes vidéos" },
+      { "t": 21, "text": "Un mec pas très drôle, comme ils disent \"Une star des ados\"" },
+      { "t": 24, "text": "J'arrête pas de dire que j'ai grandi, car j'ai attendu ça longtemps" },
+      { "t": 26, "text": "J'ai kiffé quand j'ai eu ma barbe, plus que le jour de mes 18 ans" },
+      { "t": 28, "text": "J'suis plus les modes sur YouTube, que tu suis de gens sur Twitter" },
+      { "t": 30, "text": "Depuis l'enfance on m'le répète \"quand est-ce-que tu vas chez l'coiffeur ?\"" },
+      { "t": 33, "text": "J'me suis fait tout seul si tout seul c'est Cyprien" },
+      { "t": 35, "text": "Mon corps on dirait une feuille, la muscu' j'connais pas bien" },
+      { "t": 38, "text": "9 millions d'abonnés, seulement 12 amis sur Facebook" },
+      { "t": 40, "text": "Dans la vraie vie, j'suis plus nul qu'un mec de l'émission \"Change de look\"" },
+      { "t": 42, "text": "Ma première musique a marché, mais j'ai rien inventé" },
+      { "t": 45, "text": "J'suis la parfaite fusion nulle, de Nekfeu et Keen'V" },
+      { "t": 47, "text": "J'dis toujours que j'ai un corps de lâche, pour faire genre que je l'assume" },
+      { "t": 50, "text": "Mais j'vais tout m'faire refaire, maintenant que j'ai des thunes" },
+      { "t": 52, "text": "Tu cliques fais gaffe, mes cris t'agacent, c'est loin d'être satisfaisant" },
+      { "t": 54, "text": "J'suis méprisant, j'suis médisant..." },
+      { "t": 56, "text": "???" }
+    ]
   },
-   {
+  {
     "id": "71",
     "title": "Rap Gay",
     "artist": "Fabrice Eboué 8 mots",
     "audioUrl": "/audio/Rap Gay - Fabrice Eboué.mp3",
     "cutAt": 48,
     "answer": "tous mes gars sûr aiment sucer des bites",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+      { "t": 10, "text": "Quartier sauvage braquage et deal, on t'envoie au cimetière si t'es fragile" },
+      { "t": 16, "text": "J'appelle toujours mes gars sûrs quand ma matraque devient dur (mhhhhh)" },
+      { "t": 24, "text": "Gros calibre attention belek, kiff la sauce blanche mais pas dans mon grec" },
+      { "t": 31, "text": "Représente ghetto arc-en-ciel, j'enlève des caleçons pas des strings ficelles" },
+      { "t": 38, "text": "91, 92, 93, 94, tous mes vrais gars sont à quatre pattes" },
+      { "t": 45, "text": "95, 75, 77, 78..." },
+      { "t": 48, "text": "???" }
+    ]
   },
   {
     "id": "72",
@@ -1407,8 +1699,14 @@
     "audioUrl": "/audio/FUZE - CEST LA ROULETTE PALADIENNE (Musique Complète).mp3",
     "cutAt": 29,
     "answer": "le dispenser t'as perturber, j'sais éperdument qu't'es perdu mais pour toi y'a aucun plan B",
-    "points": 30
-  },
+    "points": 30,
+    "lyrics": [
+      { "t": 16, "text": "Une chance sur 2 d'perdre ta thune, une chance sur 2 d'finir sur la lune" },
+      { "t": 20, "text": "Une chance sur 2, y t'en reste plus qu'une, tu t'es fais buté sans rancunes" },
+      { "t": 24, "text": "Chuis une vrai raclure, j'met que des malus, j'met que des malus" },
+      { "t": 29, "text": "???" }
+    ]
+  }, 
   {
     "id": "73",
     "title": "RAMENEZ LE GREC À LA MAISON (PARODIE)",
@@ -1416,7 +1714,16 @@
     "audioUrl": "/audio/VEGEDREAM - RAMENEZ LE GREC À LA MAISON (PARODIE) (mp3cut.net).mp3",
     "cutAt": 27.2,
     "answer": "La barquette de frite",
-    "points": 10
+    "points": 10,
+    "lyrics": [
+      { "t": 1, "text": "Et moi je sais jouer du biniou oh easy" },
+      { "t": 7, "text": "Quand je le mange c'est officiel, j'ai le ventre rempli" },
+      { "t": 12, "text": "Quand je le mange c'est officiel, j'ai le ventre rempli" },
+      { "t": 16, "text": "Quand je le mange c'est officiel, j'ai le ventre rempli" },
+      { "t": 21, "text": "Quand je le mange c'est officiel, j'ai le ventre rempli" },
+      { "t": 25, "text": "Si j'veux du gras je peux toujours ajouter..." },
+      { "t": 27.2, "text": "???" }
+    ]
   },
   {
     "id": "74",
@@ -1425,7 +1732,21 @@
     "audioUrl": "/audio/LE MONDE DE DISNEY ! Feat BOOSTEE (CLIP).mp3",
     "cutAt": 49,
     "answer": "Oe c'est vrai que c'est chelou, on sait pas trop ce qu'ils font, même si au fond je pense qu'ils se déboitent le fion",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+        { "t": 8, "text": "J'aimerais vivre dans le monde de Disney !" },
+        { "t": 11, "text": "J'aime le monde de Disney !" },
+        { "t": 12, "text": "Je veux mon prince charmant me disent-elles ! Moi je veux tout faire comme dans le monde Disney !" },
+        { "t": 17, "text": "J'aimerais vivre dans le monde de Disney !" },
+        { "t": 17, "text": "Avoir la belle vie comme Sacha Distel !" },
+        { "t": 21, "text": "Je sens que mes souvenirs se distillent ! Donc ramenez moi tout de suite dans le monde de Disney !" },
+        { "t": 25, "text": "Dans la vie réelle, les génies n'existent pas ! 3 voeux... tu te fous de mois ?" },
+        { "t": 30, "text": "Dans la vie réelle, un tapis ne vole pas ! Excuse moi Aladin !" },
+        { "t": 34, "text": "La même pour toi, Petite Sirène... On sait tous que tu sais écrire" },
+        { "t": 38.5, "text": "T'aurais pu retrouver ta voix sans peine... Mais t'y a pas pensé t'es vraiment la pire" },
+        { "t": 43, "text": "Je n'ai jamais vu un nain en vrai ... Donc 7 encore moins, encore moins avec une fille perdue au milieu de rien (à 5 c'est chelou quand même)" },
+        { "t": 49, "text": "???" }
+      ]
   },
   {
     "id": "75",
@@ -1434,16 +1755,57 @@
     "audioUrl": "/audio/Wow Wow Wow.mp3",
     "cutAt": 56,
     "answer": "J'ai posé une basse et un kick, nan j'ai pas vu Titanic, j'sais juste qu'il fini en italique",
-    "points": 30
+    "points": 30,
+     "lyrics": [
+        { "t": 6, "text": "Tes colis sont en retard , Ils viennent de Wish, peu surprenant comme le Filet-O-Fish" },
+        { "t": 10, "text": "J'me couche un peu tard Faut qu'jron-piche" },
+        { "t": 12, "text": "On dirait un sort quand j'dis ils viennent de Wish" },
+        { "t": 14, "text": "De tous mes potos j'suis le plus chaud (ouais) Parce que des potos, j'en ai zéro (c'est vrai)" },
+        { "t": 17, "text": "L'épreuve des poteaux, j'donne tout, j'tombe pas (ah) J'mets jamais de polos, j'déteste ça (rah)" },
+        { "t": 21, "text": "Le refrain tu l'connais par cœur parce que ça fait, rapapa (claqué)" },
+        { "t": 24, "text": "Nan t'as pas bеsoin d'être chanteur parce quе ça fait rapapa" },
+        { "t": 27, "text": "Wow wow wow (rapapapa)" },
+        { "t": 32, "text": "Wow wow wow" },
+        { "t": 33, "text": "Ça fait wow, wow wow wow" },
+        { "t": 35, "text": "J'aime trop les wow wow wow" },
+        { "t": 37, "text": "J'veux que des wow wow wow" },
+        { "t": 39, "text": "En vrai, j'te trouve wow wow wow (wow)" },
+        { "t": 41, "text": "Que des évidences dans mes couplets (ouais)" },
+        { "t": 42.5, "text": "Pour faire un bébé, faut s'accoupler (je sais)" },
+        { "t": 44, "text": "Si t'as mal au dos, faut pas forcer (ah)" },
+        { "t": 46, "text": "J'te conseille de consulter (ah)" },
+        { "t": 48, "text": "Dans la rue porte ton masque Parce que dehors il y a le Corona (corona)" },
+        { "t": 51, "text": "Sans ma commu, j'taperai des portes Pour vendre des poissons et du chocolat (tout pareil)" },
+        { "t": 54, "text": "J'voulais une instru dynamique" },
+        { "t": 56, "text": "???" }
+      ]
   },
   {
     "id": "76",
     "title": "Déca Danse",
     "artist": "Monsieur Pof 14 mots",
     "audioUrl": "/audio/Monsieur Pof - Déca Danse (Clip Officiel).mp3",
-    "cutAt": 47,
+    "cutAt": 46.8,
     "answer": "Mère fait tout pour faire de moi, le gentleman que je ne suis pas",
-    "points": 20
+    "points": 20,
+    "lyrics": [
+        { "t": 1, "text": "Je dédie cette sérénade à ma muse, moi-même.»" },
+        { "t": 8.5, "text": "Courtoisie et distinction," },
+        { "t": 10.5, "text": "Droiture, posture, politesse" },
+        { "t": 12, "text": "Comme je suis las de ces vertus" },
+        { "t": 14, "text": "Me défendant de proclamer « Wesh ! »" },
+        { "t": 16, "text": "Tenez vous droit ! Articulez !" },
+        { "t": 18, "text": "Soyez charmant et bien élevé !" },
+        { "t": 20, "text": "Élégant, considéré" },
+        { "t": 22, "text": "Toujours souriant, jamais grossier !" },
+        { "t": 24, "text": "Et si je souhaitais m’échapper de la haute société" },
+        { "t": 28, "text": "Le temps d’une valse, dire zut à toutes ces mondanités" },
+        { "t": 32, "text": "Plus de tasse de thé, mais un tantinet de bonne Tequila" },
+        { "t": 35, "text": "Trêve de respect ! En survêt’, je breakdance et t’es chokbar !" },
+        { "t": 39, "text": "C’est la décadence, saperlipopette !" },
+        { "t": 43, "text": "C’est la décadence, sa-per-li-popette !" },
+        { "t": 46.8, "text": "???" }
+      ]
   },
   {
     "id": "77",
@@ -1745,13 +2107,34 @@
     "audioUrl": "/audio/TIBO INSHAPE - POKÉMON (clip officiel).mp3",
     "cutAt": 82,
     "answer": "Quand il faudra faire des tractions, mes amis seront là. Et tous ensemble nous trinquerons à la santé des gros bras",
-    "points": 30
+    "points": 30,
+    "lyrics": [
+      { "t": 10, "text": "Un jour je s'rais l'meilleur bodybuilder" },
+      { "t": 13, "text": "Je squatt'rai sans répits" },
+      { "t": 17, "text": "Je f'rai tout pour être énorme et sec" },
+      { "t": 19, "text": "Et gagner des bibis" },
+      { "t": 23, "text": "Je parcourrai les salles entières" },
+      { "t": 26, "text": "Traquant avec espoir" },
+      { "t": 30, "text": "Les petites et leur derrière" },
+      { "t": 32, "text": "Le secret de leurs pouvoirs" },
+      { "t": 35, "text": "LA TEAMSHAPE Hey! Hey! Hey! c'est votre devoir" },
+      { "t": 40, "text": "Ensemble pour la victoire" },
+      { "t": 42, "text": "LA TEAMSHAPE rien ne nous arrêtera, la p'tite veine triomphera" },
+      { "t": 48, "text": "LA TEAMSHAPE Hey! Hey! Hey! qu'importe votre âge" },
+      { "t": 52, "text": "un training d'aprentissage" },
+      { "t": 55, "text": "ça demande du courage LA TEAMSHAPE" },
+      { "t": 60, "text": "Motivez-vous tous! Movitez-vous tous!" },
+      { "t": 65, "text": "DAAMN !" },
+      { "t": 69, "text": "Rien ni personne dans ma salle de sport ne pourra me stopper" },
+      { "t": 75, "text": "Car pour accomplir mon effort je suis congestionné" },
+      { "t": 82, "text": "???" }
+    ]
   },
 {
     "id": "90",
     "title": "Je vais à Pleasant Park !",
     "artist": "Jeanfils 26 mots",
-    "audioUrl": "/audio/Je vais à Pleasant Park ! - JEANFILS.mp3",
+    "audioUrl": "/audio/COMMENT FAIRE UN TOP 1 RAP FORTNITE JEANFILS.mp3",
     "cutAt": 48.7,
     "answer": "je vais à shifty shaft pour faire le taf', je vais à retail row pour faire le chaud, je vais à junk jonction sans bonnes intentions",
     "points": 30,
