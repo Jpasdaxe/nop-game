@@ -15,6 +15,10 @@ export default function GameScreen({
   const [volume, setVolume]             = useState(0.8);
   const [audioLoading, setAudioLoading] = useState(false);
   const [isMyTurn, setIsMyTurn]         = useState(false);
+  const [songPickerOpen, setSongPickerOpen]   = useState(false);
+  const [pickedSongs, setPickedSongs]         = useState([null, null, null]);
+  const [searchTerms, setSearchTerms]         = useState(["", "", ""]);
+  const [pendingPlayerId, setPendingPlayerId] = useState(null);
   const countdownRef = useRef(null);
   const stopRef      = useRef(null);
   const cutCheckRef  = useRef(null);
@@ -135,28 +139,49 @@ export default function GameScreen({
     socket.emit("game:abandon", { roomCode: roomState.code });
   }
 
-  // Annuler le round en cours (host)
   function cancelRound() {
     socket.emit("game:cancel", { roomCode: roomState.code });
   }
 
-  function selectPlayer(playerId) {
+  function openPicker(playerId) {
     if (!isHost) return;
+    setPendingPlayerId(playerId);
+    setPickedSongs([null, null, null]);
+    setSearchTerms(["", "", ""]);
+    setSongPickerOpen(true);
+  }
+
+  function pickRandom() {
     const available = songs.filter(s => !usedSongIds.includes(s.id));
     const pool = available.length > 0 ? available : songs;
-
     const easy   = pool.filter(s => s.points === 10);
     const medium = pool.filter(s => s.points === 20);
     const hard   = pool.filter(s => s.points === 30);
-    const pick   = (arr) => arr[Math.floor(Math.random() * arr.length)];
+    const pick   = (arr) => arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
+    setPickedSongs([pick(easy), pick(medium), pick(hard)]);
+    setSearchTerms(["", "", ""]);
+  }
 
+  function confirmSelection() {
+    if (!pendingPlayerId) return;
+    if (pickedSongs.some(s => s === null)) return;
     const choices = [
-      easy.length   > 0 ? { ...pick(easy),   points: 10 } : null,
-      medium.length > 0 ? { ...pick(medium), points: 20 } : null,
-      hard.length   > 0 ? { ...pick(hard),   points: 30 } : null,
+      { ...pickedSongs[0], points: 10 },
+      { ...pickedSongs[1], points: 20 },
+      { ...pickedSongs[2], points: 30 },
     ];
+    socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId: pendingPlayerId, choices });
+    setSongPickerOpen(false);
+    setPendingPlayerId(null);
+  }
 
-    socket.emit("game:selectPlayer", { roomCode: roomState.code, playerId, choices });
+  function pickSongForSlot(slotIndex, song) {
+    const next = [...pickedSongs];
+    next[slotIndex] = song;
+    setPickedSongs(next);
+    const nextTerms = [...searchTerms];
+    nextTerms[slotIndex] = "";
+    setSearchTerms(nextTerms);
   }
 
   function judge(verdict) {
@@ -176,7 +201,6 @@ export default function GameScreen({
     <div style={{ minHeight:"100vh", display:"flex", flexDirection:"column",
       gap:16, padding:16, maxWidth:860, margin:"0 auto" }}>
 
-      {/* Overlay C'EST TON TOUR */}
       {isMyTurn && (
         <div style={{ position:"fixed", top:0, left:0, right:0, bottom:0, zIndex:200,
           display:"flex", flexDirection:"column", alignItems:"center",
@@ -215,7 +239,8 @@ export default function GameScreen({
         boxShadow: isActive && status === "choosing" ? "var(--glow-gold)" : "none",
         transition:"border .3s, box-shadow .3s" }}>
 
-        {isHost && status === "waiting" && !judgeData && (
+        {/* HOST : choisit un joueur */}
+        {isHost && status === "waiting" && !judgeData && !songPickerOpen && (
           <div style={{ textAlign:"center", display:"flex", flexDirection:"column", gap:20, width:"100%" }}>
             <div style={{ fontFamily:"var(--font-display)", fontSize:"1.8rem",
               letterSpacing:".05em", color:"var(--gold)" }}>
@@ -225,12 +250,117 @@ export default function GameScreen({
               {players.map(p => (
                 <button key={p.id} className="btn btn-ghost"
                   style={{ minWidth:130, flexDirection:"column", gap:4, padding:"16px 20px" }}
-                  onClick={() => selectPlayer(p.id)}>
+                  onClick={() => openPicker(p.id)}>
                   <span style={{ fontFamily:"var(--font-display)", fontSize:"1.2rem" }}>{p.name}</span>
                   <span style={{ color:"var(--gold)", fontFamily:"var(--font-display)" }}>{p.score} pts</span>
                 </button>
               ))}
             </div>
+          </div>
+        )}
+
+        {/* HOST : song picker */}
+        {isHost && status === "waiting" && !judgeData && songPickerOpen && (
+          <div style={{ width:"100%", display:"flex", flexDirection:"column", gap:20 }}>
+            <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+              <div style={{ fontFamily:"var(--font-display)", fontSize:"1.4rem", color:"var(--gold)" }}>
+                Choisissez 3 chansons
+              </div>
+              <button className="btn btn-ghost" style={{ fontSize:".8rem", padding:"6px 12px" }}
+                onClick={() => setSongPickerOpen(false)}>
+                ← Retour
+              </button>
+            </div>
+
+            <button className="btn btn-ghost" style={{ width:"100%", color:"var(--gold)" }}
+              onClick={pickRandom}>
+              Remplir automatiquement (aléatoire)
+            </button>
+
+            {[
+              { label:"FACILE",    color:"var(--green)", pts:10 },
+              { label:"MOYEN",     color:"var(--gold)",  pts:20 },
+              { label:"DIFFICILE", color:"var(--pink)",  pts:30 },
+            ].map((slot, i) => {
+              const available = songs.filter(s => !usedSongIds.includes(s.id));
+              const pool = available.length > 0 ? available : songs;
+              const filtered = pool.filter(s =>
+                searchTerms[i] === ""
+                  ? false
+                  : s.title.toLowerCase().includes(searchTerms[i].toLowerCase()) ||
+                    s.artist.toLowerCase().includes(searchTerms[i].toLowerCase())
+              );
+
+              return (
+                <div key={i} style={{ display:"flex", flexDirection:"column", gap:8 }}>
+                  <div style={{ fontSize:".75rem", fontWeight:900, color:slot.color,
+                    letterSpacing:".1em" }}>
+                    {slot.label} — {slot.pts} pts
+                  </div>
+
+                  {pickedSongs[i] ? (
+                    <div style={{ display:"flex", alignItems:"center", gap:12, padding:"12px 16px",
+                      background:"var(--bg2)", border:`2px solid ${slot.color}`,
+                      borderRadius:"var(--radius-sm)" }}>
+                      <div style={{ flex:1 }}>
+                        <div style={{ fontWeight:800 }}>{pickedSongs[i].title}</div>
+                        <div style={{ color:"var(--text-dim)", fontSize:".85rem" }}>{pickedSongs[i].artist}</div>
+                      </div>
+                      <button className="btn btn-ghost"
+                        style={{ fontSize:".75rem", padding:"4px 10px", color:"var(--red)" }}
+                        onClick={() => { const n=[...pickedSongs]; n[i]=null; setPickedSongs(n); }}>
+                        Changer
+                      </button>
+                    </div>
+                  ) : (
+                    <div style={{ position:"relative" }}>
+                      <input
+                        type="text"
+                        placeholder={`Rechercher une chanson ${slot.label.toLowerCase()}...`}
+                        value={searchTerms[i]}
+                        onChange={e => {
+                          const n = [...searchTerms];
+                          n[i] = e.target.value;
+                          setSearchTerms(n);
+                        }}
+                        style={{ width:"100%", boxSizing:"border-box" }}
+                      />
+                      {filtered.length > 0 && (
+                        <div style={{ position:"absolute", top:"100%", left:0, right:0, zIndex:100,
+                          background:"var(--card)", border:"1px solid var(--border)",
+                          borderRadius:"var(--radius-sm)", maxHeight:200, overflowY:"auto",
+                          boxShadow:"0 8px 24px rgba(0,0,0,.4)" }}>
+                          {filtered.slice(0, 8).map(song => (
+                            <button key={song.id}
+                              onClick={() => pickSongForSlot(i, song)}
+                              style={{ width:"100%", padding:"10px 14px", background:"none",
+                                border:"none", borderBottom:"1px solid var(--border)",
+                                cursor:"pointer", textAlign:"left", display:"flex",
+                                flexDirection:"column", gap:2 }}>
+                              <span style={{ fontWeight:700, color:"var(--text)", fontSize:".9rem" }}>
+                                {song.title}
+                              </span>
+                              <span style={{ color:"var(--text-dim)", fontSize:".8rem" }}>
+                                {song.artist} — {song.points} pts (base)
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            <button className="btn btn-gold"
+              style={{ width:"100%", fontSize:"1.1rem", padding:"16px",
+                opacity: pickedSongs.every(s => s !== null) ? 1 : .4,
+                cursor: pickedSongs.every(s => s !== null) ? "pointer" : "not-allowed" }}
+              disabled={pickedSongs.some(s => s === null)}
+              onClick={confirmSelection}>
+              Confirmer les 3 chansons →
+            </button>
           </div>
         )}
 
@@ -258,7 +388,6 @@ export default function GameScreen({
         {(status === "playing" || status === "judging") && currentSong && !judgeData && (
           <div style={{ width:"100%", display:"flex", flexDirection:"column", gap:20, alignItems:"center" }}>
 
-            {/* Countdown — en haut, petit, ne cache pas les paroles */}
             {countdown !== null && (
               <div style={{ display:"flex", alignItems:"center", justifyContent:"center",
                 width:80, height:80, borderRadius:"50%",
@@ -281,7 +410,6 @@ export default function GameScreen({
               </div>
             </div>
 
-            {/* Paroles */}
             {!audioLoading && currentSong?.lyrics?.length > 0 && (
               <div style={{ width:"100%", maxWidth:600 }}>
                 <LyricsDisplay audioRef={audioRef} lyrics={currentSong.lyrics} cutAt={currentSong.cutAt} />
@@ -298,7 +426,6 @@ export default function GameScreen({
               </div>
             )}
 
-            {/* Boutons host */}
             {isHost && !audioLoading && (
               <div style={{ display:"flex", gap:10 }}>
                 <button className="btn btn-ghost"
@@ -391,7 +518,7 @@ export default function GameScreen({
                   style={{ flex:1, flexDirection:"column", gap:2, padding:"16px" }}
                   onClick={() => judge("none")}>
                   <span>Rate</span>
-                  <span style={{ fontSize:".85rem", opacity:.8 }}>-{Math.floor(judgeData.points/2)} pts</span>
+                  <span style={{ fontSize:".85rem", opacity:.8 }}>0 pt</span>
                 </button>
               </div>
             )}
